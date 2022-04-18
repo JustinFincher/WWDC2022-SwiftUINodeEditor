@@ -1,31 +1,31 @@
 {
   "images" : [
     {
-      "filename" : "PlaceholderAppIcon-smiley-60@2x.png",
+      "filename" : "PlaceholderAppIcon-earth-60@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "PlaceholderAppIcon-smiley-60@3x.png",
+      "filename" : "PlaceholderAppIcon-earth-60@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "PlaceholderAppIcon-smiley-76@2x.png",
+      "filename" : "PlaceholderAppIcon-earth-76@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "PlaceholderAppIcon-smiley-83.5@2x.png",
+      "filename" : "PlaceholderAppIcon-earth-83.5@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "PlaceholderAppIcon-smiley-1024.png",
+      "filename" : "PlaceholderAppIcon-earth-1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

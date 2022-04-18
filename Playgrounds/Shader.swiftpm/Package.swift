@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "My App",
+    name: "Shader Node Editor",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "My App",
+            name: "Shader Node Editor",
             targets: ["AppModule"],
             displayVersion: "1.0",
             bundleVersion: "1",
