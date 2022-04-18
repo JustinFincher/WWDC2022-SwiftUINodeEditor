@@ -16,6 +16,7 @@
 		0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD9F280D4D4D00601308 /* Environment.swift */; };
 		0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA3280D5D1400601308 /* NodeView.swift */; };
 		0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA5280D5DED00601308 /* NodeData.swift */; };
+		0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */; };
 		0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		0D43AD9F280D4D4D00601308 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0D43ADA3280D5D1400601308 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		0D43ADA5280D5DED00601308 /* NodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeData.swift; sourceTree = "<group>"; };
+		0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewPresentable.swift; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* ShaderNodeEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderNodeEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderNodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
 				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
 				0D43ADA3280D5D1400601308 /* NodeView.swift */,
+				0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
+				0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,

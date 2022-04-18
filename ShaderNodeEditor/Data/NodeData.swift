@@ -7,6 +7,7 @@
 
 import Foundation
 
-class NodeData {
-    
+class NodeData : ObservableObject {
+    @Published var canvasPosX = 0.0;
+    @Published var canvasPosY = 0.0;
 }
