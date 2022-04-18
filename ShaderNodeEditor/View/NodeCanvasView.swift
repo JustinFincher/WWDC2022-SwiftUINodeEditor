@@ -11,10 +11,12 @@ import UIKit
 struct NodeCanvasView: View {
     var body: some View {
         ScrollView([.horizontal, .vertical]) {
-            Color.init(UIColor.systemBackground)
+            Color(UIColor.systemBackground)
                 .frame(width: 500, height: 500)
                 .overlay(ZStack {
                     Text("Test")
+                        .position(x: 100, y: 100)
+                    NodeView()
                 })
         }
     }

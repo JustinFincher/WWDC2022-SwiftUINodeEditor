@@ -22,9 +22,9 @@ struct NodeCanvasNavigationView: View {
                             Image(systemName: "plus")
                         })
                         .popover(isPresented: $isShowingPopover) {
-                                    Text("Popover Content")
-                                        .padding()
-                                }
+                            Text("Popover Content")
+                                .padding()
+                        }
                     }
                 }
         }.navigationViewStyle(.stack)
