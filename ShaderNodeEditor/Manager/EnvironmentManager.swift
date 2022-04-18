@@ -15,5 +15,13 @@ class EnvironmentManager : BaseManager {
         return instance
     }
     
-//    let env : Env = Env()
+    let environment : Environment = Environment()
+    
+    override func setup() {
+        
+    }
+    
+    override func destroy() {
+        
+    }
 }

@@ -11,6 +11,8 @@ struct NodeCanvasNavigationView: View {
     var body: some View {
         NavigationView {
             NodeCanvasView()
+                .navigationTitle("Editor")
+                .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
     }
 }

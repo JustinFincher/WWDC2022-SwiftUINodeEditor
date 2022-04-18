@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct NodeCanvasView: View {
     var body: some View {
-        ZStack {
-            
+        ScrollView([.horizontal, .vertical]) {
+            Color.init(UIColor.systemBackground)
+                .frame(width: 500, height: 500)
+                .overlay(ZStack {
+                    Text("Test")
+                })
         }
     }
 }
