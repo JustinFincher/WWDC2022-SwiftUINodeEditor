@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */; };
+		0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */; };
+		0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD97280CE2CE00601308 /* BaseManager.swift */; };
+		0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD99280CE2E400601308 /* EnvironmentManager.swift */; };
+		0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD9B280CE2F300601308 /* Bundle+Version.swift */; };
+		0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD9C280CE2F300601308 /* Class+Runtime.swift */; };
 		0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */; };
-		0D8E6A64280AAC100071A4D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A63280AAC100071A4D5 /* ContentView.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasView.swift; sourceTree = "<group>"; };
+		0D43AD8F280CDBC900601308 /* ShaderNodeEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShaderNodeEditor.entitlements; sourceTree = "<group>"; };
+		0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasNavigationView.swift; sourceTree = "<group>"; };
+		0D43AD97280CE2CE00601308 /* BaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
+		0D43AD99280CE2E400601308 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
+		0D43AD9B280CE2F300601308 /* Bundle+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
+		0D43AD9C280CE2F300601308 /* Class+Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Class+Runtime.swift"; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* ShaderNodeEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderNodeEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderNodeEditorApp.swift; sourceTree = "<group>"; };
-		0D8E6A63280AAC100071A4D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +43,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D43AD92280CE26C00601308 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0D43AD93280CE27C00601308 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0D43AD97280CE2CE00601308 /* BaseManager.swift */,
+				0D43AD99280CE2E400601308 /* EnvironmentManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0D43AD94280CE28C00601308 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0D43AD9B280CE2F300601308 /* Bundle+Version.swift */,
+				0D43AD9C280CE2F300601308 /* Class+Runtime.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		0D43AD95280CE29900601308 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0D43AD96280CE2AD00601308 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
+				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0D8E6A55280AAC100071A4D5 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +104,12 @@
 		0D8E6A60280AAC100071A4D5 /* ShaderNodeEditor */ = {
 			isa = PBXGroup;
 			children = (
-				0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */,
-				0D8E6A63280AAC100071A4D5 /* ContentView.swift */,
+				0D43AD95280CE29900601308 /* App */,
+				0D43AD94280CE28C00601308 /* Helper */,
+				0D43AD93280CE27C00601308 /* Manager */,
+				0D43AD92280CE26C00601308 /* Data */,
+				0D43AD96280CE2AD00601308 /* View */,
+				0D43AD8F280CDBC900601308 /* ShaderNodeEditor.entitlements */,
 				0D8E6A65280AAC140071A4D5 /* Assets.xcassets */,
 				0D8E6A67280AAC140071A4D5 /* Preview Content */,
 			);
@@ -137,8 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D8E6A64280AAC100071A4D5 /* ContentView.swift in Sources */,
 				0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */,
+				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
+				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
+				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
+				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
+				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
+				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +326,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShaderNodeEditor/ShaderNodeEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderNodeEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = 9QJ8M25J77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -279,9 +343,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.ShaderNodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,12 +358,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShaderNodeEditor/ShaderNodeEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShaderNodeEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = 9QJ8M25J77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,9 +375,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.ShaderNodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

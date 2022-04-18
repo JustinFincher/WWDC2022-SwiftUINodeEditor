@@ -11,7 +11,7 @@ import SwiftUI
 struct ShaderNodeEditorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NodeCanvasNavigationView()
         }
     }
 }
