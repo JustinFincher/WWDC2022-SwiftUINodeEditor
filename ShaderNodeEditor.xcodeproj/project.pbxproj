@@ -20,7 +20,7 @@
 		0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
-		0DB6B080280E53F0005D7080 /* CGPoint+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */; };
+		0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,11 +35,11 @@
 		0D43ADA3280D5D1400601308 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		0D43ADA5280D5DED00601308 /* NodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeData.swift; sourceTree = "<group>"; };
 		0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewPresentable.swift; sourceTree = "<group>"; };
-		0D8E6A5E280AAC100071A4D5 /* ShaderNodeEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaderNodeEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderNodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Math.swift"; sourceTree = "<group>"; };
+		0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Math.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			children = (
 				0D43AD9B280CE2F300601308 /* Bundle+Version.swift */,
 				0D43AD9C280CE2F300601308 /* Class+Runtime.swift */,
-				0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */,
+				0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 		0D8E6A5F280AAC100071A4D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D8E6A5E280AAC100071A4D5 /* ShaderNodeEditor.app */,
+				0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 			);
 			name = ShaderNodeEditor;
 			productName = ShaderNodeEditor;
-			productReference = 0D8E6A5E280AAC100071A4D5 /* ShaderNodeEditor.app */;
+			productReference = 0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -215,7 +215,7 @@
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
-				0DB6B080280E53F0005D7080 /* CGPoint+Math.swift in Sources */,
+				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
@@ -364,8 +364,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.ShaderNodeEditor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.WWDC2022;
+				PRODUCT_NAME = WWDC2022;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -396,8 +396,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.ShaderNodeEditor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustZht.WWDC2022;
+				PRODUCT_NAME = WWDC2022;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

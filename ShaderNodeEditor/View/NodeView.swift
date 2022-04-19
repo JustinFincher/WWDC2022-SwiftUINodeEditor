@@ -11,64 +11,77 @@ import UIKit
 struct NodeView: View {
     
     @State var holding = false
-    @State var holdingPosition = CGPoint.zero
     @ObservedObject var nodeData = NodeData()
     
+    
+    @State private var currentOffset: CGSize = .zero
+    @State private var savedOffset: CGSize = .zero
+    
     var body: some View {
-        VStack {
-            Text("Node")
-                .foregroundColor(Color(UIColor.label))
-            Text("Node")
-                    .foregroundColor(Color(UIColor.label))
+        ZStack {
+            VStack(alignment: .leading) {
+                Text("Node Name")
+                    .font(.title3.monospaced())
+                HStack(alignment: .top) {
+                    VStack {
+                        HStack {
+                            Circle()
+                                .frame(width: 8, height: 8, alignment: .center)
+                            Text("Input 1")
+                                .font(.footnote.monospaced())
+                        }
+                    }
+                    .layoutPriority(1)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(Color.mint.opacity(0.6))
+                    .mask(RoundedRectangle(cornerRadius: 6))
+                    
+
+                    VStack {
+                        HStack {
+                            Text("Output 1")
+                                .font(.footnote.monospaced())
+                            Circle()
+                                .frame(width: 8, height: 8, alignment: .center)
+                        }
+                    }
+                    .layoutPriority(1)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(Color.indigo.opacity(0.6))
+                    .mask(RoundedRectangle(cornerRadius: 6))
+                }
+            }
         }
-        .padding()
-        .frame(width: 120)
+        .padding(.all, 8)
+        .frame(width: 200)
         .background(
-            GeometryReader(content: { proxy in
-                Color(UIColor.secondarySystemBackground)
-            })
+            Color.clear.background(Material.thin)
         )
         .mask {
             RoundedRectangle(cornerRadius: 8)
         }
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 8)
-//                .stroke(lineWidth: 4)
-//        )
-        .shadow(color: .black.opacity(0.1), radius: 12, x: 0, y: 0)
-        .gesture(
-            DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                .onChanged({ value in
-                    if (holding == false) {
-                        holdingPosition = nodeData.canvasPos
-                    }
-                    holding = true
-                    nodeData.canvasPos = holdingPosition + (value.location - value.startLocation)
-                    print("\(nodeData.canvasPos)")
-                }).onEnded({ value in
-                    holding = false
-                    
-                })
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .strokeBorder(Color.orange, lineWidth: holding ? 4 : 0)
         )
-        .scaleEffect(1 + (holding ? 0.2 : 0.0))
-        .contextMenu(menuItems: {
-            Button {
-                print("Delete Clicked")
-            } label: {
-                Label("Delete", systemImage: "xmark")
-            }
-            Divider()
-            Text("Coordinates")
-                .contextMenu {
-//                    Text("Size \(parentProxy.size.width), \(parentProxy.size.height)")
-//                    Text("Local +X \(parentProxy.frame(in: .local).maxX)")
-//                    Text("Local +Y \(parentProxy.frame(in: .local).maxY)")
-//                    Text("Global +/X \(parentProxy.frame(in: .global).maxX)")
-//                    Text("Global +Y \(parentProxy.frame(in: .global).maxY)")
+        .shadow(color: .black.opacity(0.1), radius: 12, x: 0, y: 0)
+        .scaleEffect(1 + (holding ? 0.1 : 0.0))
+        .offset(x: self.currentOffset.width, y: self.currentOffset.height)
+        .gesture(DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                if !holding {
+                    holding = true
                 }
-        })
-        .position(nodeData.canvasPos)
+                self.currentOffset = value.translation + self.savedOffset
+            }
+            .onEnded { value in
+                self.currentOffset = value.translation + self.savedOffset
+                self.savedOffset = self.currentOffset
+                holding = false
+            }
+        )
         .animation(.easeInOut, value: holding)
+        .animation(.easeInOut, value: currentOffset)
         .animation(.easeInOut, value: nodeData.canvasPos)
     }
     

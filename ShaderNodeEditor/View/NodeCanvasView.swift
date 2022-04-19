@@ -23,7 +23,7 @@ struct NodeCanvasView: View {
                 }))
             }
             
-        }
+        }.background(Color(UIColor.secondarySystemBackground))
     }
 }
 
