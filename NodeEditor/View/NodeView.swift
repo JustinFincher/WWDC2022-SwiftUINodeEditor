@@ -11,7 +11,7 @@ import UIKit
 struct NodeView: View {
     
     @State var holding = false
-    @ObservedObject var nodeData : NodeData
+    @State var nodeData : NodeData
     
     
     @State private var savedOffset: CGPoint = .zero
@@ -68,29 +68,30 @@ struct NodeView: View {
 //        .contextMenu {
 //            Text("Test")
 //        }
-        .position(nodeData.canvasOffset)
-        .gesture(DragGesture(minimumDistance: 0)
-            .onChanged { value in
-                if !holding {
-                    savedOffset = nodeData.canvasOffset
-                    holding = true
-                }
-                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
-            }
-            .onEnded { value in
-                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
-                savedOffset = nodeData.canvasOffset
-                holding = false
-            }
-        )
+        .position(x: CGFloat(nodeData.canvasOffsetX), y: CGFloat(nodeData.canvasOffsetY))
+//        .gesture(DragGesture(minimumDistance: 0)
+//            .onChanged { value in
+//                if !holding {
+//                    savedOffset = nodeData.canvasOffset
+//                    holding = true
+//                }
+//                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
+//            }
+//            .onEnded { value in
+//                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
+//                savedOffset = nodeData.canvasOffset
+//                holding = false
+//            }
+//        )
         .animation(.easeInOut, value: holding)
-        .animation(.easeInOut, value: nodeData.canvasOffset)
+        .animation(.easeInOut, value: nodeData.canvasOffsetX)
+        .animation(.easeInOut, value: nodeData.canvasOffsetY)
     }
     
 }
 
 struct NodeView_Previews: PreviewProvider {
     static var previews: some View {
-        NodeView(nodeData: NodeData(nodeID: 0, title: "Test"))
+        ZStack{}
     }
 }

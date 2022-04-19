@@ -10,7 +10,7 @@ import SwiftUI
 struct NodePortView: View {
     
     @State var direction : NodePortDirection = .input
-    @ObservedObject var nodePortData : NodePortData
+    @State var nodePortData : NodePortData
     
     var body: some View {
         HStack {
@@ -20,7 +20,7 @@ struct NodePortView: View {
                     .background(GeometryReader(content: { proxy in
                         Color.clear
                             .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
-                                nodePortData.canvasOffset = portKnotPos.origin
+//                                nodePortData.canvasOffset = portKnotPos.origin
                             }
                     }))
                     .gesture(
@@ -41,7 +41,7 @@ struct NodePortView: View {
                     .background(GeometryReader(content: { proxy in
                         Color.clear
                             .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
-                                nodePortData.canvasOffset = portKnotPos.origin
+//                                nodePortData.canvasOffset = portKnotPos.origin
                             }
                     }))
                     .gesture(

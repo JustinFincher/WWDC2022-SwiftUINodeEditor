@@ -9,13 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class NodeCanvasData : ObservableObject {
+struct NodeCanvasData {
     
-    
-    @Published var nodes : [NodeData] = []
-    
-    
-    init(nodes : [NodeData]) {
-        self.nodes = nodes
-    }
+    var nodes : [NodeData] = []
 }

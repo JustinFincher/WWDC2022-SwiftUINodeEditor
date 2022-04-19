@@ -10,10 +10,9 @@ import UIKit
 
 struct NodeCanvasView: View {
     
-    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData(nodes: [
-        IntNode(nodeID: 0, canvasOffset: .init(x: 500, y: 500)),
-        DummyNode(nodeID: 1, canvasOffset: .init(x: 150, y: 200)),
-        DummyNode(nodeID: 2, canvasOffset: .init(x: 400, y: 200))
+    var nodeCanvasData : NodeCanvasData = NodeCanvasData(nodes: [
+        IntNode(canvasOffsetX: 500, canvasOffsetY: 200, nodeID: 0)
+        
     ])
     
     var body: some View {
@@ -34,10 +33,10 @@ struct NodeCanvasView: View {
                         path.move(to: .init(x: 0, y: 0))
                         path.addCurve(to: .init(x: 100, y: 100), controlPoint1: .init(x: 100, y: 0), controlPoint2: .init(x: 0, y: 100))
                         
-                        path.move(to: nodeCanvasData.nodes[0].outPorts[0].canvasOffset)
-                        path.addCurve(to: nodeCanvasData.nodes[1].inPorts[0].canvasOffset,
-                                      controlPoint1: .init(x: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.y),
-                                      controlPoint2: .init(x: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.y))
+//                        path.move(to: nodeCanvasData.nodes[0].outPorts[0].canvasOffset)
+//                        path.addCurve(to: nodeCanvasData.nodes[1].inPorts[0].canvasOffset,
+//                                      controlPoint1: .init(x: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.y),
+//                                      controlPoint2: .init(x: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.y))
                         context.stroke(.init(path.cgPath), with: .color(.green), lineWidth: 4)
                     }
                     .allowsHitTesting(false)
