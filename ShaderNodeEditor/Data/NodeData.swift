@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 class NodeData : ObservableObject {
-    @Published var canvasPosX = 0.0;
-    @Published var canvasPosY = 0.0;
+    
+    @Published var canvasPos = CGPoint.zero
+    @Published var title = ""
+    @Published var inPorts : [Int] = [0]
+    @Published var outPorts : [Int] = [0, 1]
 }

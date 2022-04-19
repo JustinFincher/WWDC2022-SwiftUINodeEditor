@@ -10,13 +10,19 @@ import UIKit
 
 struct NodeCanvasView: View {
     var body: some View {
-        ScrollView([.horizontal, .vertical]) {
-            ZStack {
-                Text("Test")
-                NodeView()
+        ZStack {
+            ScrollView([.horizontal, .vertical]) {
+                ZStack {
+                    NodeView()
+                    NodeView()
+                    Color.clear.frame(width: 1200, height: 1200, alignment: .center)
+                }
+                .clipped()
+                .background(GeometryReader(content: { proxy in
+                    Text("Proxy \(proxy.size.width) \(proxy.size.height)")
+                }))
             }
-            .frame(width: 1000, height: 1000, alignment: .center)
-            .background(Color.red)
+            
         }
     }
 }

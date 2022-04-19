@@ -20,6 +20,7 @@
 		0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
+		0DB6B080280E53F0005D7080 /* CGPoint+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderNodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Math.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				0D43AD9B280CE2F300601308 /* Bundle+Version.swift */,
 				0D43AD9C280CE2F300601308 /* Class+Runtime.swift */,
+				0DB6B07F280E53F0005D7080 /* CGPoint+Math.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
+				0DB6B080280E53F0005D7080 /* CGPoint+Math.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
