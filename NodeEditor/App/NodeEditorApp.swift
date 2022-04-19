@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct ShaderNodeEditorApp: App {
+struct NodeEditorApp: App {
     var body: some Scene {
         WindowGroup {
             NodeCanvasNavigationView()
