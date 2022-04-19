@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class NodeCanvasData : ObservableObject {
+    @Published var nodes : [NodeData] = []
+    
+    init(nodes : [NodeData]) {
+        self.nodes = nodes
+    }
+}

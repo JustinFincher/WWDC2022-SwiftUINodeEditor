@@ -35,7 +35,7 @@ protocol NodeProtocol : ObservableObject {
     func getDefaultOutPorts() -> [NodePortData]
 }
 
-class NodeData : NodeProtocol {
+class NodeData : NodeProtocol, Identifiable {
     func getDefaultTitle() -> String {
         return ""
     }

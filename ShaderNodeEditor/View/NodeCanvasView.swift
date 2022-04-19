@@ -9,6 +9,13 @@ import SwiftUI
 import UIKit
 
 struct NodeCanvasView: View {
+    
+    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData(nodes: [
+        IntNode(nodeID: 0, canvasOffset: .init(x: 500, y: 500)),
+        DummyNode(nodeID: 0, canvasOffset: .init(x: 150, y: 200)),
+        DummyNode(nodeID: 0, canvasOffset: .init(x: 400, y: 200))
+    ])
+    
     var body: some View {
         ZStack {
             
@@ -21,10 +28,9 @@ struct NodeCanvasView: View {
                         path.addCurve(to: .init(x: 100, y: 100), controlPoint1: .init(x: 100, y: 0), controlPoint2: .init(x: 0, y: 100))
                         context.stroke(.init(path.cgPath), with: .color(.green), lineWidth: 4)
                     }
-                    
-                    NodeView(nodeData: IntNode(nodeID: 0, canvasOffset: .init(x: 500, y: 500)))
-                    NodeView(nodeData: DummyNode(nodeID: 0, canvasOffset: .init(x: 150, y: 200)))
-                    NodeView(nodeData: DummyNode(nodeID: 0, canvasOffset: .init(x: 400, y: 200)))
+                    ForEach(nodeCanvasData.nodes) { nodeData in
+                        NodeView(nodeData: nodeData)
+                    }
                     Color.clear.frame(width: 1200, height: 1200, alignment: .center)
                 }
                 .coordinateSpace(name: "canvas")
