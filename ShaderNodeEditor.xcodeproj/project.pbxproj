@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B269B280ED29A0005280A /* NodeCanvasData.swift */; };
+		0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B269D280EDCFB0005280A /* NodePortView.swift */; };
 		0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */; };
 		0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */; };
 		0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD97280CE2CE00601308 /* BaseManager.swift */; };
@@ -17,13 +19,19 @@
 		0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA3280D5D1400601308 /* NodeView.swift */; };
 		0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA5280D5DED00601308 /* NodeData.swift */; };
 		0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */; };
+		0D4E13F1280EE7D700D62781 /* NodeConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E13F0280EE7D700D62781 /* NodeConfigView.swift */; };
 		0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
 		0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */; };
+		0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */; };
+		0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C5280EE1CF008D82DB /* IntNode.swift */; };
+		0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C8280EE549008D82DB /* DummyNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D3B269B280ED29A0005280A /* NodeCanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasData.swift; sourceTree = "<group>"; };
+		0D3B269D280EDCFB0005280A /* NodePortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortView.swift; sourceTree = "<group>"; };
 		0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasView.swift; sourceTree = "<group>"; };
 		0D43AD8F280CDBC900601308 /* ShaderNodeEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShaderNodeEditor.entitlements; sourceTree = "<group>"; };
 		0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasNavigationView.swift; sourceTree = "<group>"; };
@@ -35,11 +43,15 @@
 		0D43ADA3280D5D1400601308 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		0D43ADA5280D5DED00601308 /* NodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeData.swift; sourceTree = "<group>"; };
 		0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewPresentable.swift; sourceTree = "<group>"; };
+		0D4E13F0280EE7D700D62781 /* NodeConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeConfigView.swift; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* ShaderNodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderNodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Math.swift"; sourceTree = "<group>"; };
+		0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasToolbarView.swift; sourceTree = "<group>"; };
+		0DEBE6C5280EE1CF008D82DB /* IntNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNode.swift; sourceTree = "<group>"; };
+		0DEBE6C8280EE549008D82DB /* DummyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +69,9 @@
 			isa = PBXGroup;
 			children = (
 				0D43AD9F280D4D4D00601308 /* Environment.swift */,
+				0D3B269B280ED29A0005280A /* NodeCanvasData.swift */,
 				0D43ADA5280D5DED00601308 /* NodeData.swift */,
+				0DEBE6C7280EE1D3008D82DB /* Nodes */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -95,6 +109,9 @@
 				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
 				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
 				0D43ADA3280D5D1400601308 /* NodeView.swift */,
+				0D4E13F0280EE7D700D62781 /* NodeConfigView.swift */,
+				0D3B269D280EDCFB0005280A /* NodePortView.swift */,
+				0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */,
 				0D43ADA7280E26FA00601308 /* UIScrollViewPresentable.swift */,
 			);
 			path = View;
@@ -137,6 +154,15 @@
 				0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0DEBE6C7280EE1D3008D82DB /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				0DEBE6C5280EE1CF008D82DB /* IntNode.swift */,
+				0DEBE6C8280EE549008D82DB /* DummyNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,18 +235,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */,
 				0D8E6A62280AAC100071A4D5 /* ShaderNodeEditorApp.swift in Sources */,
 				0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */,
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
+				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
+				0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */,
+				0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */,
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43ADA8280E26FA00601308 /* UIScrollViewPresentable.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
+				0D4E13F1280EE7D700D62781 /* NodeConfigView.swift in Sources */,
+				0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

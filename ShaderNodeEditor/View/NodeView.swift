@@ -11,44 +11,43 @@ import UIKit
 struct NodeView: View {
     
     @State var holding = false
-    @ObservedObject var nodeData = NodeData()
+    @ObservedObject var nodeData : NodeData
     
     
-    @State private var currentOffset: CGSize = .zero
-    @State private var savedOffset: CGSize = .zero
+    @State private var savedOffset: CGPoint = .zero
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text("Node Name")
+                Text("\(nodeData.title)")
                     .font(.title3.monospaced())
                 HStack(alignment: .top) {
-                    VStack {
-                        HStack {
-                            Circle()
-                                .frame(width: 8, height: 8, alignment: .center)
-                            Text("Input 1")
-                                .font(.footnote.monospaced())
+                    if !nodeData.inPorts.isEmpty {
+                        VStack(alignment: .leading) {
+                            ForEach(nodeData.inPorts) { nodePortData in
+                                NodePortView(direction: .input, nodePortData: nodePortData)
+                            }
                         }
+                        .padding(.all, 4)
+                        .layoutPriority(1)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Color.mint.opacity(0.6))
+                        .mask(RoundedRectangle(cornerRadius: 6))
                     }
-                    .layoutPriority(1)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.mint.opacity(0.6))
-                    .mask(RoundedRectangle(cornerRadius: 6))
                     
-
-                    VStack {
-                        HStack {
-                            Text("Output 1")
-                                .font(.footnote.monospaced())
-                            Circle()
-                                .frame(width: 8, height: 8, alignment: .center)
+                    
+                    if !nodeData.outPorts.isEmpty {
+                        VStack(alignment: .trailing) {
+                            ForEach(nodeData.outPorts) { nodePortData in
+                                NodePortView(direction: .output, nodePortData: nodePortData)
+                            }
                         }
+                        .padding(.all, 4)
+                        .layoutPriority(1)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Color.indigo.opacity(0.6))
+                        .mask(RoundedRectangle(cornerRadius: 6))
                     }
-                    .layoutPriority(1)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.indigo.opacity(0.6))
-                    .mask(RoundedRectangle(cornerRadius: 6))
                 }
             }
         }
@@ -66,29 +65,32 @@ struct NodeView: View {
         )
         .shadow(color: .black.opacity(0.1), radius: 12, x: 0, y: 0)
         .scaleEffect(1 + (holding ? 0.1 : 0.0))
-        .offset(x: self.currentOffset.width, y: self.currentOffset.height)
+//        .contextMenu {
+//            Text("Test")
+//        }
+        .position(nodeData.canvasOffset)
         .gesture(DragGesture(minimumDistance: 0)
             .onChanged { value in
                 if !holding {
+                    savedOffset = nodeData.canvasOffset
                     holding = true
                 }
-                self.currentOffset = value.translation + self.savedOffset
+                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
             }
             .onEnded { value in
-                self.currentOffset = value.translation + self.savedOffset
-                self.savedOffset = self.currentOffset
+                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
+                savedOffset = nodeData.canvasOffset
                 holding = false
             }
         )
         .animation(.easeInOut, value: holding)
-        .animation(.easeInOut, value: currentOffset)
-        .animation(.easeInOut, value: nodeData.canvasPos)
+        .animation(.easeInOut, value: nodeData.canvasOffset)
     }
     
 }
 
 struct NodeView_Previews: PreviewProvider {
     static var previews: some View {
-        NodeView()
+        NodeView(nodeData: NodeData(nodeID: 0, title: "Test"))
     }
 }
