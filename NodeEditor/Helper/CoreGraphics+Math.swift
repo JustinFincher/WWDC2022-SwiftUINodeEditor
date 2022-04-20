@@ -28,3 +28,9 @@ extension CGSize {
         return CGPoint(x: self.width, y: self.height)
     }
 }
+
+extension CGRect {
+    func toCenter() -> CGPoint {
+        return CGPoint(x: self.midX, y: self.midY)
+    }
+}

@@ -12,44 +12,37 @@ struct NodePortView: View {
     @State var direction : NodePortDirection = .input
     @ObservedObject var nodePortData : NodePortData
     
+    var textView : some View {
+        Text("\(nodePortData.name)")
+            .font(.footnote.monospaced())
+    }
+    var circleView : some View {
+        Circle()
+            .frame(width: 8, height: 8, alignment: .center)
+            .background(GeometryReader(content: { proxy in
+                Color.clear
+                    .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
+                        nodePortData.canvasOffset = portKnotPos.toCenter()
+                    }
+            }))
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged({ value in
+                        
+                    })
+            )
+    }
+    
     var body: some View {
         HStack {
             if direction == .input {
-                Circle()
-                    .frame(width: 8, height: 8, alignment: .center)
-                    .background(GeometryReader(content: { proxy in
-                        Color.clear
-                            .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
-                                nodePortData.canvasOffset = portKnotPos.origin
-                            }
-                    }))
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged({ value in
-                                
-                            })
-                    )
+                circleView
                 Spacer()
-                Text("\(nodePortData.name)")
-                    .font(.footnote.monospaced())
+                textView
             } else {
-                Text("\(nodePortData.name)")
-                    .font(.footnote.monospaced())
+                textView
                 Spacer()
-                Circle()
-                    .frame(width: 8, height: 8, alignment: .center)
-                    .background(GeometryReader(content: { proxy in
-                        Color.clear
-                            .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
-                                nodePortData.canvasOffset = portKnotPos.origin
-                            }
-                    }))
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged({ value in
-                                
-                            })
-                    )
+                circleView
             }
         }
     }

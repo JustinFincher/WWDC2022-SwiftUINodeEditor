@@ -10,19 +10,14 @@ import UIKit
 
 struct NodeCanvasView: View {
     
-    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData(nodes: [
-        IntNode(nodeID: 0, canvasOffset: .init(x: 500, y: 500)),
-        DummyNode(nodeID: 1, canvasOffset: .init(x: 150, y: 200)),
-        DummyNode(nodeID: 2, canvasOffset: .init(x: 400, y: 200))
-    ])
+    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData().withTestConfig()
     
     var body: some View {
         ZStack {
-            
             ScrollView([.horizontal, .vertical]) {
                 ZStack {
                     
-                    Color.clear.frame(width: 1200, height: 1200, alignment: .center)
+                    Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
                     
                     ForEach(nodeCanvasData.nodes) { nodeData in
                         NodeView(nodeData: nodeData)
@@ -31,14 +26,29 @@ struct NodeCanvasView: View {
                     Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
                         
                         let path = UIBezierPath()
-                        path.move(to: .init(x: 0, y: 0))
-                        path.addCurve(to: .init(x: 100, y: 100), controlPoint1: .init(x: 100, y: 0), controlPoint2: .init(x: 0, y: 100))
                         
-                        path.move(to: nodeCanvasData.nodes[0].outPorts[0].canvasOffset)
-                        path.addCurve(to: nodeCanvasData.nodes[1].inPorts[0].canvasOffset,
-                                      controlPoint1: .init(x: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.y),
-                                      controlPoint2: .init(x: nodeCanvasData.nodes[0].outPorts[0].canvasOffset.x, y: nodeCanvasData.nodes[1].inPorts[0].canvasOffset.y))
+                        nodeCanvasData.nodes.forEach { nodeData in
+                            nodeData.outPorts.forEach { nodePortData in
+                                nodePortData.connections.forEach { nodePortConnectionData in
+                                    if let startPort = nodePortConnectionData.startPort,
+                                       let endPort = nodePortConnectionData.endPort {
+                                        let distance = abs(startPort.canvasOffset.x - endPort.canvasOffset.x)
+                                        let controlPoint1 = startPort.canvasOffset - CGPoint.init(x: distance, y: 0)
+                                        let controlPoint2 = endPort.canvasOffset + CGPoint.init(x: distance, y: 0)
+                                        
+                                        path.move(to: startPort.canvasOffset)
+                                        path.addCurve(to: endPort.canvasOffset,
+                                                      controlPoint1: controlPoint1,
+                                                      controlPoint2: controlPoint2)
+                                    }
+                                }
+                            }
+                        }
+                        
                         context.stroke(.init(path.cgPath), with: .color(.green), lineWidth: 4)
+                        
+                        
+                        
                     }
                     .allowsHitTesting(false)
                     

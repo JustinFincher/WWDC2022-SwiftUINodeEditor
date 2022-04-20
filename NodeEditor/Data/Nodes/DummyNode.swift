@@ -15,14 +15,14 @@ class DummyNode : NodeData {
     
     override func getDefaultOutPorts() -> [NodePortData] {
         return [
-            NodePortData(portID: 0, name: "Output 1"),
-            NodePortData(portID: 0, name: "Output 2")
+            NodePortData(portID: 0, name: "Output 1", direction: .output),
+            NodePortData(portID: 1, name: "Output 2", direction: .output)
         ]
     }
     
     override func getDefaultInPorts() -> [NodePortData] {
         return [
-            NodePortData(portID: 0, name: "Input")
+            NodePortData(portID: 0, name: "Input", direction: .input)
         ]
     }
 }

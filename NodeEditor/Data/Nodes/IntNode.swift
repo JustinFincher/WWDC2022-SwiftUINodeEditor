@@ -15,7 +15,7 @@ class IntNode : NodeData {
     
     override func getDefaultOutPorts() -> [NodePortData] {
         return [
-            NodePortData(portID: 0, name: "Result")
+            NodePortData(portID: 0, name: "Result", direction: .output)
         ]
     }
 }
