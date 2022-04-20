@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct NodeCanvasNavigationView: View {
+    @State var isShowingPopover = false
     var body: some View {
-        NavigationView {
-            NodeCanvasView()
-        }.navigationViewStyle(.stack)
+        NodeCanvasView()
+            .navigationViewStyle(.stack)
     }
 }
 
