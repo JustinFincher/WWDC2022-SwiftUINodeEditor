@@ -77,7 +77,7 @@ struct NodeCanvasView: View {
             NodeCanvasToolbarView()
             
         }
-        .background(Color(UIColor.secondarySystemBackground))
+        .background(Color(UIColor.systemGroupedBackground))
         .environmentObject(nodeCanvasData)
     }
 }

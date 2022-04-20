@@ -30,7 +30,7 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .background(Color.mint.opacity(0.6))
+                        .background(Color.mint.opacity(0.3))
                         .mask(RoundedRectangle(cornerRadius: 6))
                     }
                     
@@ -43,7 +43,7 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .background(Color.indigo.opacity(0.6))
+                        .background(Color.indigo.opacity(0.3))
                         .mask(RoundedRectangle(cornerRadius: 6))
                     }
                 }
@@ -61,7 +61,7 @@ struct NodeView: View {
             RoundedRectangle(cornerRadius: 8)
                 .strokeBorder(Color.orange, lineWidth: holding ? 4 : 0)
         )
-        .shadow(color: .black.opacity(0.1), radius: 12, x: 0, y: 0)
+        .shadow(color: .black.opacity(holding ? 0.1 : 0.15), radius: holding ? 24 : 12, x: 0, y: 0)
         .scaleEffect(1 + (holding ? 0.1 : 0.0))
 //        .contextMenu {
 //            Text("Test")
