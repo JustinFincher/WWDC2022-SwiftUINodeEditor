@@ -14,10 +14,20 @@ struct NodeCanvasView: View {
     
     var body: some View {
         ZStack {
+            
             ScrollView([.horizontal, .vertical]) {
                 ZStack {
                     
                     Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
+                        .gesture(
+                            DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                .onChanged({ value in
+                                    
+                                })
+                                .onEnded({ value in
+                                    
+                                })
+                        )
                     
                     ForEach(nodeCanvasData.nodes) { nodeData in
                         NodeView(nodeData: nodeData)
@@ -93,6 +103,8 @@ struct NodeCanvasView: View {
                     .padding()
                 }))
             }
+            
+//            NodeCanvasMinimapView()
         }
         .background(Color(UIColor.systemGroupedBackground))
     }

@@ -12,7 +12,7 @@ struct NodePortView: View {
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     @ObservedObject var nodePortData : NodePortData
     @State var holdingKnot : Bool = false
-    @State var holdingConnection : NodePortConnection? = nil
+    @State var holdingConnection : NodePortConnectionData? = nil
     
     var textView : some View {
         Text("\(nodePortData.name)")
@@ -43,7 +43,7 @@ struct NodePortView: View {
                             
                             if self.nodePortData.canConnect() {
                                 // can connect
-                                let newConnection = NodePortConnection()
+                                let newConnection = NodePortConnectionData()
                                 
                                 // new connection with basic setup
                                 if self.nodePortData.direction == .output {
@@ -74,10 +74,28 @@ struct NodePortView: View {
                     })
                     .onEnded({ value in
                         holdingKnot = false
+                        
+                        if let pendingDirection = holdingConnection?.getPendingPortDirection,
+                           let portToConnectTo = nodeCanvasData.nodes.flatMap({ nodeData in
+                               pendingDirection == .input ? nodeData.inPorts : nodeData.outPorts
+                           }).filter({ nodePortData in
+                               nodePortData.canConnectTo(anotherPort: self.nodePortData)
+                           }).filter({ nodePortData in
+                               nodePortData.canvasRect.contains(value.location)
+                           }).first {
+                            // if knot can be connected
+                            portToConnectTo.connectTo(anotherPort: self.nodePortData)
+                            
+                        } else {
+                            
+                            // if no knot to connect to
+                            holdingConnection?.disconnect()
+                        }
+                        
+                        // remove pending connection
                         nodeCanvasData.pendingConnections.removeAll { connection in
                             connection == holdingConnection
                         }
-                        holdingConnection?.disconnect()
                         holdingConnection = nil
                     })
             )

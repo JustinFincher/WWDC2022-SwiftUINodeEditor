@@ -19,7 +19,7 @@ class NodeCanvasData : ObservableObject {
             })
         }
     }
-    @Published var pendingConnections : [NodePortConnection] = [] {
+    @Published var pendingConnections : [NodePortConnectionData] = [] {
         willSet {
             newValue.forEach({ node in
                 node.objectWillChange.assign(to: &$childWillChange)
