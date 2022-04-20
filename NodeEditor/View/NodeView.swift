@@ -25,7 +25,7 @@ struct NodeView: View {
                     if !nodeData.inPorts.isEmpty {
                         VStack(alignment: .leading) {
                             ForEach(nodeData.inPorts) { nodePortData in
-                                NodePortView(direction: .input, nodePortData: nodePortData)
+                                NodePortView(nodePortData: nodePortData)
                             }
                         }
                         .padding(.all, 4)
@@ -38,7 +38,7 @@ struct NodeView: View {
                     if !nodeData.outPorts.isEmpty {
                         VStack(alignment: .trailing) {
                             ForEach(nodeData.outPorts) { nodePortData in
-                                NodePortView(direction: .output, nodePortData: nodePortData)
+                                NodePortView(nodePortData: nodePortData)
                             }
                         }
                         .padding(.all, 4)
@@ -66,23 +66,23 @@ struct NodeView: View {
 //        .contextMenu {
 //            Text("Test")
 //        }
-        .position(nodeData.canvasOffset)
+        .position(nodeData.canvasPosition)
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
             .onChanged { value in
                 if !holding {
-                    savedOffset = nodeData.canvasOffset
+                    savedOffset = nodeData.canvasPosition
                     holding = true
                 }
-                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
+                nodeData.canvasPosition = savedOffset + value.translation.toPoint()
             }
             .onEnded { value in
-                nodeData.canvasOffset = savedOffset + value.translation.toPoint()
-                savedOffset = nodeData.canvasOffset
+                nodeData.canvasPosition = savedOffset + value.translation.toPoint()
+                savedOffset = nodeData.canvasPosition
                 holding = false
             }
         )
         .animation(.easeInOut, value: holding)
-        .animation(.easeInOut, value: nodeData.canvasOffset)
+        .animation(.easeInOut, value: nodeData.canvasPosition)
     }
     
 }

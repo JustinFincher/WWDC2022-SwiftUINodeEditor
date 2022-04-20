@@ -25,28 +25,38 @@ struct NodeCanvasView: View {
                     
                     Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
                         
-                        let path = UIBezierPath()
                         
-                        nodeCanvasData.nodes.forEach { nodeData in
-                            nodeData.outPorts.forEach { nodePortData in
-                                nodePortData.connections.forEach { nodePortConnectionData in
-                                    let startPos = nodePortConnectionData.startPos
-                                    let endPos = nodePortConnectionData.endPos
-                                    let distance = abs(startPos.x - endPos.x)
-                                    let controlPoint1 = startPos - CGPoint.init(x: distance, y: 0)
-                                    let controlPoint2 = endPos + CGPoint.init(x: distance, y: 0)
-                                    
-                                    path.move(to: startPos)
-                                    path.addCurve(to: endPos,
-                                                  controlPoint1: controlPoint1,
-                                                  controlPoint2: controlPoint2)
-                                    
+                        Set(nodeCanvasData.nodes.flatMap { nodeData in
+                            [nodeData.inPorts, nodeData.outPorts].flatMap { ports in
+                                ports.flatMap { ports in
+                                    ports.connections
                                 }
                             }
+                        }).forEach { nodePortConnectionData in
+                            let path = UIBezierPath()
+                            let startPos = nodePortConnectionData.startPos
+                            let endPos = nodePortConnectionData.endPos
+                            let distance = abs(startPos.x - endPos.x)
+                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+
+                            path.move(to: startPos)
+                            path.addCurve(to: endPos,
+                                          controlPoint1: controlPoint1,
+                                          controlPoint2: controlPoint2)
+                            
+                            var colors : [Color] = []
+                            if nodePortConnectionData.getPendingPortDirection == .output {
+                                colors.append(Color.yellow)
+                                colors.append(Color.green)
+                            } else if nodePortConnectionData.getPendingPortDirection == .input {
+                                colors.append(Color.green)
+                                colors.append(Color.yellow)
+                            } else {
+                                colors.append(Color.green)
+                            }
+                            context.stroke(.init(path.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
                         }
-                        
-                        context.stroke(.init(path.cgPath), with: .color(.green), lineWidth: 4)
-                        
                         
                         
                     }
@@ -66,7 +76,9 @@ struct NodeCanvasView: View {
             }
             NodeCanvasToolbarView()
             
-        }.background(Color(UIColor.secondarySystemBackground))
+        }
+        .background(Color(UIColor.secondarySystemBackground))
+        .environmentObject(nodeCanvasData)
     }
 }
 

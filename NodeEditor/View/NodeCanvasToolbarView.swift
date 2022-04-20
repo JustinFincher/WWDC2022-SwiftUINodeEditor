@@ -8,41 +8,49 @@
 import SwiftUI
 
 struct NodeCanvasToolbarView: View {
+    
+    
+    @State private var showSettings = false
+    @State private var showNodeList = false
+    
     var body: some View {
         ZStack (alignment: .bottom) {
             
             HStack(alignment: .center, spacing: 18) {
 
                 Button {
-
+                    showNodeList = true
                 } label: {
                     Image(systemName: "square.3.stack.3d.top.filled")
-                }
-
-                Button {
-
-                } label: {
-                    Image(systemName: "stop.fill")
+                        .padding(.all, 8)
+                }.popover(isPresented: $showNodeList) {
+                    NodeCanvasInspectionView()
                 }
 
                 Button {
 
                 } label: {
                     Image(systemName: "play.fill")
+                        .padding(.all, 8)
                 }
 
                 Button {
 
                 } label: {
                     Image(systemName: "rectangle.righthalf.inset.filled")
+                        .padding(.all, 8)
                 }
 
                 Divider()
 
                 Button {
-
+                    showSettings = true
                 } label: {
                     Image(systemName: "ellipsis")
+                        .padding(.all, 8)
+                }
+                .popover(isPresented: $showSettings) {
+                    SettingsNavigationView()
                 }
             }
             .padding()

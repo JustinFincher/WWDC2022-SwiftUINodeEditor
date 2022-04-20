@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NodePortView: View {
     
-    @State var direction : NodePortDirection = .input
     @State var holdingKnot : Bool = false
     @ObservedObject var nodePortData : NodePortData
     @State var holdingConnection : NodePortConnection? = nil
@@ -41,18 +40,39 @@ struct NodePortView: View {
                         if !holdingKnot {
                             holdingKnot = true
                             
-                            let newConnection = NodePortConnection()
-                            if direction == .input {
-                                newConnection.startPort = self.nodePortData
-                            } else {
-                                newConnection.endPort = self.nodePortData
+                            if self.nodePortData.canConnect() {
+                                // can connect
+                                let newConnection = NodePortConnection()
+                                
+                                // new connection with basic setup
+                                if self.nodePortData.direction == .input {
+                                    newConnection.startPort = self.nodePortData
+                                } else {
+                                    newConnection.endPort = self.nodePortData
+                                }
+                                self.nodePortData.connections.append(newConnection)
+                                holdingConnection = newConnection
+                            } else if let existingConnection = nodePortData.connections.first {
+                                // cannot connect, but if there is an existing line, disconnect that line
+                                if self.nodePortData.direction == .output {
+                                    existingConnection.startPort?.connections.removeAll { connection in
+                                        connection == existingConnection
+                                    }
+                                    existingConnection.startPort = nil
+                                } else {
+                                    existingConnection.endPort?.connections.removeAll { connection in
+                                        connection == existingConnection
+                                    }
+                                    existingConnection.endPort = nil
+                                }
+                                holdingConnection = existingConnection
                             }
-                            holdingConnection = newConnection
-                            self.nodePortData.connections.append(newConnection)
                         }
                         
-                        if let holdingConnection = holdingConnection {
-                            if direction == .input {
+                        if let holdingConnection = holdingConnection,
+                           let pendingDirection = holdingConnection.getPendingPortDirection
+                        {
+                            if pendingDirection == .input {
                                 holdingConnection.endPosIfPortNull = value.location
                             } else {
                                 holdingConnection.startPosIfPortNull = value.location
@@ -61,8 +81,15 @@ struct NodePortView: View {
                     })
                     .onEnded({ value in
                         holdingKnot = false
-                        self.nodePortData.connections.removeAll { connection in
-                            connection == holdingConnection
+                        if let startPort = holdingConnection?.startPort {
+                            startPort.connections.removeAll { connection in
+                                connection == holdingConnection
+                            }
+                        }
+                        if let endPort = holdingConnection?.endPort {
+                            endPort.connections.removeAll { connection in
+                                connection == holdingConnection
+                            }
                         }
                         holdingConnection = nil
                     })
@@ -71,7 +98,7 @@ struct NodePortView: View {
     
     var body: some View {
         HStack {
-            if direction == .input {
+            if self.nodePortData.direction == .input {
                 circleView
                 textView
             } else {
@@ -79,13 +106,13 @@ struct NodePortView: View {
                 circleView
             }
         }
-        .padding(direction == .output ? .leading : .trailing, 8)
+        .padding(self.nodePortData.direction == .output ? .leading : .trailing, 8)
         .animation(.easeInOut, value: holdingKnot)
     }
 }
 
 struct NodePortView_Previews: PreviewProvider {
     static var previews: some View {
-        NodePortView(nodePortData: NodePortData(portID: 0))
+        NodePortView(nodePortData: NodePortData(portID: 0, direction: .input))
     }
 }

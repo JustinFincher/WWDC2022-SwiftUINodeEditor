@@ -17,7 +17,7 @@ class DummyNode : NodeData {
         return [
             NodePortData(portID: 0, name: "Output 1", direction: .output),
             NodePortData(portID: 1, name: "Output 2", direction: .output),
-            NodePortData(portID: 1, name: "VERY LONG OUTPUT 3", direction: .output)
+            NodePortData(portID: 2, name: "VERY LONG OUTPUT 3", direction: .output)
         ]
     }
     
