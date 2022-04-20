@@ -168,9 +168,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0D8E6A5D280AAC100071A4D5 /* NodeEditor */ = {
+		0D8E6A5D280AAC100071A4D5 /* ScriptNode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0D8E6A6C280AAC140071A4D5 /* Build configuration list for PBXNativeTarget "NodeEditor" */;
+			buildConfigurationList = 0D8E6A6C280AAC140071A4D5 /* Build configuration list for PBXNativeTarget "ScriptNode" */;
 			buildPhases = (
 				0D8E6A5A280AAC100071A4D5 /* Sources */,
 				0D8E6A5B280AAC100071A4D5 /* Frameworks */,
@@ -180,7 +180,7 @@
 			);
 			dependencies = (
 			);
-			name = NodeEditor;
+			name = ScriptNode;
 			productName = ShaderNodeEditor;
 			productReference = 0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */;
 			productType = "com.apple.product-type.application";
@@ -200,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0D8E6A59280AAC100071A4D5 /* Build configuration list for PBXProject "NodeEditor" */;
+			buildConfigurationList = 0D8E6A59280AAC100071A4D5 /* Build configuration list for PBXProject "ScriptNode" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -213,7 +213,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0D8E6A5D280AAC100071A4D5 /* NodeEditor */,
+				0D8E6A5D280AAC100071A4D5 /* ScriptNode */,
 			);
 		};
 /* End PBXProject section */
@@ -440,7 +440,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D8E6A59280AAC100071A4D5 /* Build configuration list for PBXProject "NodeEditor" */ = {
+		0D8E6A59280AAC100071A4D5 /* Build configuration list for PBXProject "ScriptNode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D8E6A6A280AAC140071A4D5 /* Debug */,
@@ -449,7 +449,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0D8E6A6C280AAC140071A4D5 /* Build configuration list for PBXNativeTarget "NodeEditor" */ = {
+		0D8E6A6C280AAC140071A4D5 /* Build configuration list for PBXNativeTarget "ScriptNode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D8E6A6D280AAC140071A4D5 /* Debug */,
