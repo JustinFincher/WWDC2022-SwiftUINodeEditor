@@ -12,20 +12,23 @@ struct NodeCanvasNavigationView: View {
     @EnvironmentObject var environment : Environment
     
     var body: some View {
-        HStack(alignment: .center, spacing: 8) {
-            if environment.toggleNodeListPanel {
-                NodeCanvasHierarchyView()
+        ZStack {
+            HStack(alignment: .center, spacing: 8) {
+                if environment.toggleNodeListPanel {
+                    NodeCanvasHierarchyView()
+                        .mask(RoundedRectangle(cornerRadius: 16).ignoresSafeArea())
+                        .layoutPriority(0.4)
+                }
+                NodeCanvasView()
                     .mask(RoundedRectangle(cornerRadius: 16).ignoresSafeArea())
-                    .layoutPriority(0.4)
+                    .layoutPriority(1.0)
+                if environment.toggleNodeInspectionPanel {
+                    NodeCanvasInspectionView()
+                        .mask(RoundedRectangle(cornerRadius: 16).ignoresSafeArea())
+                        .layoutPriority(0.5)
+                }
             }
-            NodeCanvasView()
-                .mask(RoundedRectangle(cornerRadius: 16).ignoresSafeArea())
-                .layoutPriority(1.0)
-            if environment.toggleNodeInspectionPanel {
-                NodeCanvasInspectionView()
-                    .mask(RoundedRectangle(cornerRadius: 16).ignoresSafeArea())
-                    .layoutPriority(0.5)
-            }
+            NodeCanvasToolbarView()
         }
         .padding(.all, environment.toggleNodeListPanel || environment.toggleNodeInspectionPanel ? 8 : 0)
         .animation(.easeInOut, value: environment.toggleNodeListPanel)

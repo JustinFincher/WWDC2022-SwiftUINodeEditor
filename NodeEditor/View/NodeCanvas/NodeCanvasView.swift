@@ -79,16 +79,20 @@ struct NodeCanvasView: View {
                 .coordinateSpace(name: "canvas")
                 .clipped()
                 .background(GeometryReader(content: { proxy in
-                    ZStack {
+                    VStack(alignment: .leading) {
                         Text("Canvas Size \(proxy.size.width) × \(proxy.size.height)")
+                            .font(.subheadline.monospaced())
+                            .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
+                        Text("Node Count \(nodeCanvasData.nodes.count)")
+                            .font(.subheadline.monospaced())
+                            .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
+                        Text("Pending Connection Count \(nodeCanvasData.pendingConnections.count)")
                             .font(.subheadline.monospaced())
                             .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
                     }
                     .padding()
                 }))
             }
-            NodeCanvasToolbarView()
-            
         }
         .background(Color(UIColor.systemGroupedBackground))
     }

@@ -23,7 +23,7 @@ struct NodeCanvasInspectionView: View {
             }
             .navigationTitle("Inspector")
         }
-        .frame(minWidth: 260, idealWidth: 380, maxWidth: nil,
+        .frame(minWidth: 300, idealWidth: 380, maxWidth: nil,
                minHeight: 360, idealHeight: 540, maxHeight: nil,
                alignment: .top)
         

@@ -55,7 +55,8 @@ struct NodePortView: View {
                                 holdingConnection = newConnection
                             } else if let existingConnection = nodePortData.connections.first {
                                 // cannot connect, but if there is an existing line, disconnect that line
-                                existingConnection.disconnect(portDirection: self.nodePortData.direction)
+                                existingConnection.isolate()
+                                existingConnection.disconnect(portDirection: nodePortData.direction)
                                 nodeCanvasData.pendingConnections.append(existingConnection)
                                 holdingConnection = existingConnection
                             }

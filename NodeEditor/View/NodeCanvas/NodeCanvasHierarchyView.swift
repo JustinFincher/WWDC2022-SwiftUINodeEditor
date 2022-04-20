@@ -79,7 +79,7 @@ struct NodeCanvasHierarchyView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(nodeCanvasData.nodes, id: \.self) { node in
+                ForEach(nodeCanvasData.nodes, id: \.self.nodeID) { node in
                     NavigationLink {
                         NodeHierarchyView(node: node)
                     } label: {
@@ -95,7 +95,7 @@ struct NodeCanvasHierarchyView: View {
             }
             .navigationTitle("Hierarchy")
         }
-        .frame(minWidth: 200, idealWidth: 300, maxWidth: nil,
+        .frame(minWidth: 280, idealWidth: 320, maxWidth: nil,
                minHeight: 360, idealHeight: 540, maxHeight: nil,
                alignment: .top)
     }

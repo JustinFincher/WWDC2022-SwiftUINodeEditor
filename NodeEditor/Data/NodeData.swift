@@ -64,29 +64,34 @@ class NodePortConnection : ObservableObject, Identifiable, Equatable, Hashable {
         return nil
     }
     
-    func disconnect(portDirection : NodePortDirection) {
+    func isolate(portDirection : NodePortDirection) {
         if portDirection == .output {
             startPort?.connections.removeAll { connection in
                 connection == self
             }
-            startPort = nil
         } else {
             endPort?.connections.removeAll { connection in
                 connection == self
             }
+        }
+    }
+    
+    func disconnect(portDirection : NodePortDirection) {
+        if portDirection == .output {
+            startPort = nil
+        } else {
             endPort = nil
         }
     }
     
     func disconnect() {
-        startPort?.connections.removeAll { connection in
-            connection == self
-        }
-        startPort = nil
-        endPort?.connections.removeAll { connection in
-            connection == self
-        }
-        endPort = nil
+        disconnect(portDirection: .input)
+        disconnect(portDirection: .output)
+    }
+    
+    func isolate() {
+        isolate(portDirection: .input)
+        isolate(portDirection: .output)
     }
 }
 
@@ -184,6 +189,8 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         hasher.combine(canvasPosition)
         hasher.combine(nodeID)
         hasher.combine(title)
+        hasher.combine(inPorts)
+        hasher.combine(outPorts)
     }
     
     func getDefaultTitle() -> String {
