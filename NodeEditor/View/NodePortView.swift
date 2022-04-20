@@ -45,7 +45,7 @@ struct NodePortView: View {
                                 let newConnection = NodePortConnection()
                                 
                                 // new connection with basic setup
-                                if self.nodePortData.direction == .input {
+                                if self.nodePortData.direction == .output {
                                     newConnection.startPort = self.nodePortData
                                 } else {
                                     newConnection.endPort = self.nodePortData
@@ -54,17 +54,7 @@ struct NodePortView: View {
                                 holdingConnection = newConnection
                             } else if let existingConnection = nodePortData.connections.first {
                                 // cannot connect, but if there is an existing line, disconnect that line
-                                if self.nodePortData.direction == .output {
-                                    existingConnection.startPort?.connections.removeAll { connection in
-                                        connection == existingConnection
-                                    }
-                                    existingConnection.startPort = nil
-                                } else {
-                                    existingConnection.endPort?.connections.removeAll { connection in
-                                        connection == existingConnection
-                                    }
-                                    existingConnection.endPort = nil
-                                }
+                                existingConnection.disconnect(portDirection: self.nodePortData.direction)
                                 holdingConnection = existingConnection
                             }
                         }
