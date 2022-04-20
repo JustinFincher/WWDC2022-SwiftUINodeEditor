@@ -12,7 +12,7 @@ struct NodeView: View {
     
     @State var holding = false
     @ObservedObject var nodeData : NodeData
-    
+    @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     @State private var savedOffset: CGPoint = .zero
     

@@ -12,6 +12,7 @@ struct NodeEditorApp: App {
     var body: some Scene {
         WindowGroup {
             NodeCanvasNavigationView()
+                .environmentObject(EnvironmentManager.shared.environment)
         }
     }
 }

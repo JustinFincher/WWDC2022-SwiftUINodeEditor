@@ -9,8 +9,9 @@ import SwiftUI
 
 struct NodePortView: View {
     
-    @State var holdingKnot : Bool = false
+    @EnvironmentObject var nodeCanvasData : NodeCanvasData
     @ObservedObject var nodePortData : NodePortData
+    @State var holdingKnot : Bool = false
     @State var holdingConnection : NodePortConnection? = nil
     
     var textView : some View {
@@ -50,11 +51,12 @@ struct NodePortView: View {
                                 } else {
                                     newConnection.endPort = self.nodePortData
                                 }
-                                self.nodePortData.connections.append(newConnection)
+                                nodeCanvasData.pendingConnections.append(newConnection)
                                 holdingConnection = newConnection
                             } else if let existingConnection = nodePortData.connections.first {
                                 // cannot connect, but if there is an existing line, disconnect that line
                                 existingConnection.disconnect(portDirection: self.nodePortData.direction)
+                                nodeCanvasData.pendingConnections.append(existingConnection)
                                 holdingConnection = existingConnection
                             }
                         }
@@ -71,6 +73,9 @@ struct NodePortView: View {
                     })
                     .onEnded({ value in
                         holdingKnot = false
+                        nodeCanvasData.pendingConnections.removeAll { connection in
+                            connection == holdingConnection
+                        }
                         holdingConnection?.disconnect()
                         holdingConnection = nil
                     })

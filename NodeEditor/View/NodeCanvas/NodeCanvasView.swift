@@ -10,7 +10,7 @@ import UIKit
 
 struct NodeCanvasView: View {
     
-    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData().withTestConfig()
+    @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     var body: some View {
         ZStack {
@@ -25,26 +25,39 @@ struct NodeCanvasView: View {
                     
                     Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
                         
-                        
-                        Set(nodeCanvasData.nodes.flatMap { nodeData in
-                            [nodeData.inPorts, nodeData.outPorts].flatMap { ports in
-                                ports.flatMap { ports in
-                                    ports.connections
-                                }
+                        // stable lines
+                        let stablePath = UIBezierPath()
+                        nodeCanvasData.nodes.flatMap({ nodeData in
+                            nodeData.outPorts.flatMap { nodePortData in
+                                nodePortData.connections
                             }
-                        }).forEach { nodePortConnectionData in
-                            let path = UIBezierPath()
+                        })
+                        .forEach { nodePortConnectionData in
                             let startPos = nodePortConnectionData.startPos
                             let endPos = nodePortConnectionData.endPos
                             let distance = abs(startPos.x - endPos.x)
                             let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
                             let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
-
-                            path.move(to: startPos)
-                            path.addCurve(to: endPos,
+                            stablePath.move(to: startPos)
+                            stablePath.addCurve(to: endPos,
                                           controlPoint1: controlPoint1,
                                           controlPoint2: controlPoint2)
-                            
+                        }
+                        context.stroke(.init(stablePath.cgPath), with: .color(.green), lineWidth: 4)
+                        
+                        // pending lines
+                        nodeCanvasData.pendingConnections
+                        .forEach { nodePortConnectionData in
+                            let unstablePath = UIBezierPath()
+                            let startPos = nodePortConnectionData.startPos
+                            let endPos = nodePortConnectionData.endPos
+                            let distance = abs(startPos.x - endPos.x)
+                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+                            unstablePath.move(to: startPos)
+                            unstablePath.addCurve(to: endPos,
+                                          controlPoint1: controlPoint1,
+                                          controlPoint2: controlPoint2)
                             var colors : [Color] = []
                             if nodePortConnectionData.getPendingPortDirection == .output {
                                 colors.append(Color.yellow)
@@ -55,9 +68,9 @@ struct NodeCanvasView: View {
                             } else {
                                 colors.append(Color.green)
                             }
-                            context.stroke(.init(path.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
+                            context.stroke(.init(unstablePath.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
+                                                   
                         }
-                        
                         
                     }
                     .allowsHitTesting(false)
@@ -78,7 +91,6 @@ struct NodeCanvasView: View {
             
         }
         .background(Color(UIColor.systemGroupedBackground))
-        .environmentObject(nodeCanvasData)
     }
 }
 

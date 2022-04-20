@@ -11,8 +11,15 @@ import SwiftUI
 
 class NodeCanvasData : ObservableObject {
     
-    @Published var canvasSize : CGSize = .init(width: 1200, height: 1200)
+    @Published var canvasSize : CGSize = .init(width: 3200, height: 3200)
     @Published var nodes : [NodeData] = [] {
+        willSet {
+            newValue.forEach({ node in
+                node.objectWillChange.assign(to: &$childWillChange)
+            })
+        }
+    }
+    @Published var pendingConnections : [NodePortConnection] = [] {
         willSet {
             newValue.forEach({ node in
                 node.objectWillChange.assign(to: &$childWillChange)

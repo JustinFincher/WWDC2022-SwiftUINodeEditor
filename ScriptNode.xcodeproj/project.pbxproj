@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */; };
 		0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB0281001400068C52F /* SettingsNavigationView.swift */; };
-		0D32FFB328100C660068C52F /* NodeCanvasInspectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB228100C660068C52F /* NodeCanvasInspectionView.swift */; };
+		0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */; };
+		0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */; };
+		0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */; };
+		0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB82810261C0068C52F /* PreferenceManager.swift */; };
+		0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFBA2810268E0068C52F /* ToggleButtonView.swift */; };
 		0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B269B280ED29A0005280A /* NodeCanvasData.swift */; };
 		0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B269D280EDCFB0005280A /* NodePortView.swift */; };
 		0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */; };
@@ -27,6 +31,7 @@
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
 		0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */; };
 		0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */; };
+		0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */; };
 		0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C5280EE1CF008D82DB /* IntNode.swift */; };
 		0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C8280EE549008D82DB /* DummyNode.swift */; };
 /* End PBXBuildFile section */
@@ -34,7 +39,11 @@
 /* Begin PBXFileReference section */
 		0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Hashable.swift"; sourceTree = "<group>"; };
 		0D32FFB0281001400068C52F /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
-		0D32FFB228100C660068C52F /* NodeCanvasInspectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasInspectionView.swift; sourceTree = "<group>"; };
+		0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasHierarchyView.swift; sourceTree = "<group>"; };
+		0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasMinimapView.swift; sourceTree = "<group>"; };
+		0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SwiftUI.swift"; sourceTree = "<group>"; };
+		0D32FFB82810261C0068C52F /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		0D32FFBA2810268E0068C52F /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
 		0D3B269B280ED29A0005280A /* NodeCanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasData.swift; sourceTree = "<group>"; };
 		0D3B269D280EDCFB0005280A /* NodePortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortView.swift; sourceTree = "<group>"; };
 		0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasView.swift; sourceTree = "<group>"; };
@@ -54,6 +63,7 @@
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Math.swift"; sourceTree = "<group>"; };
 		0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasToolbarView.swift; sourceTree = "<group>"; };
+		0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasInspectionView.swift; sourceTree = "<group>"; };
 		0DEBE6C5280EE1CF008D82DB /* IntNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNode.swift; sourceTree = "<group>"; };
 		0DEBE6C8280EE549008D82DB /* DummyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +79,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D32FFBC281029300068C52F /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				0D32FFBA2810268E0068C52F /* ToggleButtonView.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		0D32FFBD2810293C0068C52F /* NodeCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
+				0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */,
+				0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */,
+				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
+				0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */,
+				0D43ADA3280D5D1400601308 /* NodeView.swift */,
+				0D3B269D280EDCFB0005280A /* NodePortView.swift */,
+				0D4E13F0280EE7D700D62781 /* NodeConfigView.swift */,
+				0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */,
+			);
+			path = NodeCanvas;
+			sourceTree = "<group>";
+		};
+		0D32FFBE2810294B0068C52F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0D32FFB0281001400068C52F /* SettingsNavigationView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		0D43AD92280CE26C00601308 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +127,7 @@
 			children = (
 				0D43AD97280CE2CE00601308 /* BaseManager.swift */,
 				0D43AD99280CE2E400601308 /* EnvironmentManager.swift */,
+				0D32FFB82810261C0068C52F /* PreferenceManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -96,6 +139,7 @@
 				0D43AD9C280CE2F300601308 /* Class+Runtime.swift */,
 				0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */,
 				0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */,
+				0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -111,14 +155,9 @@
 		0D43AD96280CE2AD00601308 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
-				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
-				0D43ADA3280D5D1400601308 /* NodeView.swift */,
-				0D4E13F0280EE7D700D62781 /* NodeConfigView.swift */,
-				0D3B269D280EDCFB0005280A /* NodePortView.swift */,
-				0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */,
-				0D32FFB228100C660068C52F /* NodeCanvasInspectionView.swift */,
-				0D32FFB0281001400068C52F /* SettingsNavigationView.swift */,
+				0D32FFBD2810293C0068C52F /* NodeCanvas */,
+				0D32FFBE2810294B0068C52F /* Settings */,
+				0D32FFBC281029300068C52F /* Control */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,7 +284,9 @@
 				0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */,
 				0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */,
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
+				0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
+				0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */,
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
@@ -253,13 +294,16 @@
 				0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */,
 				0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */,
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
+				0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
+				0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
+				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,
 				0D4E13F1280EE7D700D62781 /* NodeConfigView.swift in Sources */,
-				0D32FFB328100C660068C52F /* NodeCanvasInspectionView.swift in Sources */,
+				0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */,
 				0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
