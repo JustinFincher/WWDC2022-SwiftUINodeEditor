@@ -57,7 +57,7 @@ struct NodeCanvasView: View {
                 .clipped()
                 .background(GeometryReader(content: { proxy in
                     ZStack {
-                        Text("Canvas Size \(proxy.size.width) \(proxy.size.height)")
+                        Text("Canvas Size \(proxy.size.width) × \(proxy.size.height)")
                             .font(.subheadline.monospaced())
                             .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
                     }

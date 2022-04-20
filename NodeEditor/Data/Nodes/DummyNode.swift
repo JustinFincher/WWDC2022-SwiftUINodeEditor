@@ -16,7 +16,8 @@ class DummyNode : NodeData {
     override func getDefaultOutPorts() -> [NodePortData] {
         return [
             NodePortData(portID: 0, name: "Output 1", direction: .output),
-            NodePortData(portID: 1, name: "Output 2", direction: .output)
+            NodePortData(portID: 1, name: "Output 2", direction: .output),
+            NodePortData(portID: 1, name: "VERY LONG OUTPUT 3", direction: .output)
         ]
     }
     

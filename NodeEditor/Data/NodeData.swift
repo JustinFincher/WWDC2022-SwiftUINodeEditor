@@ -23,7 +23,15 @@ enum NodePortDirection {
 
 class NodePortConnection : ObservableObject, Identifiable {
     weak var startPort : NodePortData?
+    @Published var startPosIfPortNull : CGPoint = .zero
+    var startPos : CGPoint {
+        return startPort?.canvasOffset ?? startPosIfPortNull
+    }
     weak var endPort : NodePortData?
+    @Published var endPosIfPortNull : CGPoint = .zero
+    var endPos : CGPoint {
+        return endPort?.canvasOffset ?? endPosIfPortNull
+    }
 }
 
 class NodePortData : ObservableObject, Identifiable {

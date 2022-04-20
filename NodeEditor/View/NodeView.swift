@@ -30,7 +30,6 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .frame(minWidth: 0, maxWidth: .infinity)
                         .background(Color.mint.opacity(0.6))
                         .mask(RoundedRectangle(cornerRadius: 6))
                     }
@@ -44,7 +43,6 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .frame(minWidth: 0, maxWidth: .infinity)
                         .background(Color.indigo.opacity(0.6))
                         .mask(RoundedRectangle(cornerRadius: 6))
                     }
@@ -52,7 +50,7 @@ struct NodeView: View {
             }
         }
         .padding(.all, 8)
-        .frame(width: 200)
+//        .frame(width: 200)
         .background(
             Color.clear.background(Material.thin)
         )
@@ -69,7 +67,7 @@ struct NodeView: View {
 //            Text("Test")
 //        }
         .position(nodeData.canvasOffset)
-        .gesture(DragGesture(minimumDistance: 0)
+        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
             .onChanged { value in
                 if !holding {
                     savedOffset = nodeData.canvasOffset

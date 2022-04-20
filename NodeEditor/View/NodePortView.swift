@@ -14,20 +14,29 @@ struct NodePortView: View {
     
     var textView : some View {
         Text("\(nodePortData.name)")
+            .lineLimit(1)
             .font(.footnote.monospaced())
     }
     var circleView : some View {
         Circle()
-            .frame(width: 8, height: 8, alignment: .center)
+            .padding(.all, 8)
+            .frame(width: 24, height: 24, alignment: .center)
             .background(GeometryReader(content: { proxy in
                 Color.clear
+                    .onAppear {
+                        nodePortData.canvasOffset = proxy.frame(in: .named("canvas")).toCenter()
+                    }
                     .onChange(of: proxy.frame(in: .named("canvas"))) { portKnotPos in
                         nodePortData.canvasOffset = portKnotPos.toCenter()
                     }
             }))
+            .contentShape(Rectangle())
             .gesture(
-                DragGesture(minimumDistance: 0)
+                DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
                     .onChanged({ value in
+                        
+                    })
+                    .onEnded({ value in
                         
                     })
             )
@@ -37,14 +46,12 @@ struct NodePortView: View {
         HStack {
             if direction == .input {
                 circleView
-                Spacer()
                 textView
             } else {
                 textView
-                Spacer()
                 circleView
             }
-        }
+        }.padding(direction == .output ? .leading : .trailing, 8)
     }
 }
 
