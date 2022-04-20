@@ -77,6 +77,17 @@ class NodePortConnection : ObservableObject, Identifiable, Equatable, Hashable {
             endPort = nil
         }
     }
+    
+    func disconnect() {
+        startPort?.connections.removeAll { connection in
+            connection == self
+        }
+        startPort = nil
+        endPort?.connections.removeAll { connection in
+            connection == self
+        }
+        endPort = nil
+    }
 }
 
 class NodePortData : ObservableObject, Identifiable, Equatable, Hashable {

@@ -71,16 +71,7 @@ struct NodePortView: View {
                     })
                     .onEnded({ value in
                         holdingKnot = false
-                        if let startPort = holdingConnection?.startPort {
-                            startPort.connections.removeAll { connection in
-                                connection == holdingConnection
-                            }
-                        }
-                        if let endPort = holdingConnection?.endPort {
-                            endPort.connections.removeAll { connection in
-                                connection == holdingConnection
-                            }
-                        }
+                        holdingConnection?.disconnect()
                         holdingConnection = nil
                     })
             )

@@ -21,6 +21,10 @@ struct NodePortInspectionView: View {
                 Text("\(nodePort.direction.rawValue)")
                     .font(.body.monospaced())
             }
+            Section("Position") {
+                Text("X \(nodePort.canvasRect.toCenter().x)\nY \(nodePort.canvasRect.toCenter().y)")
+                    .font(.body.monospaced())
+            }
             Section("Connection") {
                 ForEach(nodePort.connections, id: \.self) {connection in
                     Text("\(connection.startPort?.portID ?? -1) - \(connection.endPort?.portID ?? -1)")
