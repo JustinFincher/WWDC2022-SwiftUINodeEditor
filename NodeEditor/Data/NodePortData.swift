@@ -9,13 +9,20 @@ import Foundation
 import UIKit
 import Combine
 
+protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
+    func canConnect() -> Bool
+    func canConnectTo(anotherPort : NodeDataPortData)
+    func connectTo(anotherPort : NodeDataPortData)
+}
+
 enum NodePortDirection : String {
     case input
     case output
 }
 
-class NodePortData : ObservableObject, Identifiable, Equatable, Hashable {
-    static func == (lhs: NodePortData, rhs: NodePortData) -> Bool {
+
+class NodeDataPortData : ObservableObject, Identifiable, Equatable, Hashable {
+    static func == (lhs: NodeDataPortData, rhs: NodeDataPortData) -> Bool {
         return lhs.portID == rhs.portID
         && lhs.direction == rhs.direction
         && lhs.name == rhs.name
@@ -62,7 +69,7 @@ class NodePortData : ObservableObject, Identifiable, Equatable, Hashable {
         return true
     }
     
-    func canConnectTo(anotherPort : NodePortData) -> Bool {
+    func canConnectTo(anotherPort : NodeDataPortData) -> Bool {
         // input node can only connect at most 1
         if (self.direction == .input && !self.connections.isEmpty) {
             return false
@@ -75,7 +82,7 @@ class NodePortData : ObservableObject, Identifiable, Equatable, Hashable {
         return true
     }
     
-    func connectTo(anotherPort : NodePortData) {
+    func connectTo(anotherPort : NodeDataPortData) {
         if (!canConnectTo(anotherPort: anotherPort)) {
             return
         }

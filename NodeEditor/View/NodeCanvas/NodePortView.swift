@@ -17,7 +17,7 @@ struct NodePortView: View {
     var textView : some View {
         Text("\(nodePortData.name)")
             .lineLimit(1)
-            .font(.footnote.monospaced().weight(holdingKnot ? .heavy : .regular))
+            .font(.footnote.monospaced())
     }
     
     var circleView : some View {
@@ -118,6 +118,6 @@ struct NodePortView: View {
 
 struct NodePortView_Previews: PreviewProvider {
     static var previews: some View {
-        NodePortView(nodePortData: NodePortData(portID: 0, direction: .input))
+        NodePortView(nodePortData: NodeDataPortData(portID: 0, direction: .input))
     }
 }

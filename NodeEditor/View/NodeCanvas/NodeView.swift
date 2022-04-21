@@ -22,9 +22,34 @@ struct NodeView: View {
                 Text("\(nodeData.title)")
                     .font(.title3.monospaced())
                 HStack(alignment: .top) {
-                    if !nodeData.inPorts.isEmpty {
+                    if !nodeData.inControlPorts.isEmpty {
                         VStack(alignment: .leading) {
-                            ForEach(nodeData.inPorts) { nodePortData in
+                            ForEach(nodeData.inControlPorts) { nodePortData in
+                                NodePortView(nodePortData: nodePortData)
+                            }
+                        }
+                        .padding(.all, 4)
+                        .layoutPriority(1)
+                    }
+                    
+                    
+                    if !nodeData.outControlPorts.isEmpty {
+                        VStack(alignment: .trailing) {
+                            ForEach(nodeData.outControlPorts) { nodePortData in
+                                NodePortView(nodePortData: nodePortData)
+                            }
+                        }
+                        .padding(.all, 4)
+                        .layoutPriority(1)
+                    }
+                }
+                .background(Color.blue.opacity(0.3))
+                .mask(RoundedRectangle(cornerRadius: 6))
+                
+                HStack(alignment: .top) {
+                    if !nodeData.inDataPorts.isEmpty {
+                        VStack(alignment: .leading) {
+                            ForEach(nodeData.inDataPorts) { nodePortData in
                                 NodePortView(nodePortData: nodePortData)
                             }
                         }
@@ -35,9 +60,9 @@ struct NodeView: View {
                     }
                     
                     
-                    if !nodeData.outPorts.isEmpty {
+                    if !nodeData.outDataPorts.isEmpty {
                         VStack(alignment: .trailing) {
-                            ForEach(nodeData.outPorts) { nodePortData in
+                            ForEach(nodeData.outDataPorts) { nodePortData in
                                 NodePortView(nodePortData: nodePortData)
                             }
                         }

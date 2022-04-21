@@ -44,8 +44,8 @@ struct NodeHierarchyView: View {
     
     var body: some View {
         List {
-            Section("In Ports") {
-                ForEach(node.inPorts, id: \.self) {port in
+            Section("In Data Ports") {
+                ForEach(node.inDataPorts, id: \.self) {port in
                     NavigationLink {
                         NodePortHierarchyView(nodePort: port)
                     } label: {
@@ -56,8 +56,31 @@ struct NodeHierarchyView: View {
                 }
             }
             
-            Section("Out Ports") {
-                ForEach(node.outPorts, id: \.self) {port in
+            Section("Out Data Ports") {
+                ForEach(node.outDataPorts, id: \.self) {port in
+                    NavigationLink {
+                        NodePortHierarchyView(nodePort: port)
+                    } label: {
+                        Text("\(port.portID) \(port.name)")
+                            .font(.body.monospaced())
+                    }
+                }
+            }
+            
+            Section("In Control Ports") {
+                ForEach(node.inControlPorts, id: \.self) {port in
+                    NavigationLink {
+                        NodePortHierarchyView(nodePort: port)
+                    } label: {
+                        Text("\(port.portID) \(port.name)")
+                            .font(.body.monospaced())
+                    }
+
+                }
+            }
+            
+            Section("Out Control Ports") {
+                ForEach(node.outControlPorts, id: \.self) {port in
                     NavigationLink {
                         NodePortHierarchyView(nodePort: port)
                     } label: {

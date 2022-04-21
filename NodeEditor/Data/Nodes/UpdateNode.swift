@@ -1,5 +1,5 @@
 //
-//  StartNode.swift
+//  UpdateNode.swift
 //  ScriptNode
 //
 //  Created by fincher on 4/21/22.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-class StartNode : NodeData {
+class UpdateNode : NodeData {
     
     override func getDefaultTitle() -> String {
-        "Start"
+        "Update"
     }
     
     override func getDefaultControlOutPorts() -> [NodeControlPortData] {
