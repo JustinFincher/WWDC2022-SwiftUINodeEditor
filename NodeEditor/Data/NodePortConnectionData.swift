@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 import Combine
 
 class NodePortConnectionData : ObservableObject, Identifiable, Equatable, Hashable {
@@ -80,5 +81,12 @@ class NodePortConnectionData : ObservableObject, Identifiable, Equatable, Hashab
     func isolate() {
         isolate(portDirection: .input)
         isolate(portDirection: .output)
+    }
+    
+    var color : Color {
+        let port = [startPort, endPort].compactMap { nodePortData in
+            nodePortData
+        }.first
+        return port?.color() ?? .black
     }
 }

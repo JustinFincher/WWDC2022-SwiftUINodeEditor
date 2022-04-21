@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 import Combine
+import SwiftUI
 
 protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
     func canConnect() -> Bool
     func canConnectTo(anotherPort : Self) -> Bool
     func connectTo(anotherPort :Self)
+    func icon() -> Image
+    func color() -> Color
 }
 
 enum NodePortDirection : String {
@@ -21,6 +24,7 @@ enum NodePortDirection : String {
 }
 
 class NodePortData : NodePortProtocol {
+    
     
     @Published var portID : Int
     @Published var direction : NodePortDirection = .input
@@ -61,6 +65,14 @@ class NodePortData : NodePortProtocol {
         hasher.combine(connections)
     }
     
+    func icon() -> Image {
+        Image(systemName: "circlebadge.fill")
+    }
+    
+    func color() -> Color {
+        Color.black
+    }
+    
     func canConnect() -> Bool {
         false
     }
@@ -77,7 +89,18 @@ class NodePortData : NodePortProtocol {
 // Control flow
 class NodeControlPortData : NodePortData {
     
+    override func icon() -> Image {
+        return Image(systemName: "arrowtriangle.forward.fill")
+    }
+    
+    override func color() -> Color {
+        Color.blue
+    }
+    
     override func canConnect() -> Bool {
+        if (self.direction == .output && !self.connections.isEmpty) {
+            return false
+        }
         return true
     }
     
@@ -115,6 +138,14 @@ class NodeControlPortData : NodePortData {
 
 // Data flow
 class NodeDataPortData : NodePortData {
+    
+    override func icon() -> Image {
+        return Image(systemName: "circlebadge.fill")
+    }
+    
+    override func color() -> Color {
+        Color.green
+    }
     
     override func canConnect() -> Bool {
         if (self.direction == .input && !self.connections.isEmpty) {
