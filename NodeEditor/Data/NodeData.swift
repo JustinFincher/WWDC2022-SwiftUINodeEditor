@@ -11,12 +11,21 @@ import Combine
 
 
 protocol NodeProtocol : ObservableObject {
+    func perform() -> Void
+    func exposeToUser() -> Bool
     func getDefaultTitle() -> String
     func getDefaultInPorts() -> [NodePortData]
     func getDefaultOutPorts() -> [NodePortData]
 }
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
+    func perform() {
+        
+    }
+    
+    func exposeToUser() -> Bool {
+        false
+    }
     
     static func == (lhs: NodeData, rhs: NodeData) -> Bool {
         return lhs.canvasPosition == rhs.canvasPosition

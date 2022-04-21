@@ -9,6 +9,10 @@ import Foundation
 
 class DummyNode : NodeData {
     
+    override func exposeToUser() -> Bool {
+        true
+    }
+    
     override func getDefaultTitle() -> String {
         "Dummy"
     }
