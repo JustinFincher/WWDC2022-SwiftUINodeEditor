@@ -63,9 +63,9 @@ struct NodeView: View {
         )
         .shadow(color: .black.opacity(holding ? 0.1 : 0.15), radius: holding ? 24 : 12, x: 0, y: 0)
         .scaleEffect(1 + (holding ? 0.1 : 0.0))
-//        .contextMenu {
-//            Text("Test")
-//        }
+        .contextMenu {
+            Text("Test")
+        }
         .position(nodeData.canvasPosition)
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
             .onChanged { value in
