@@ -42,7 +42,7 @@ struct NodeAddSelectionView: View {
                 ForEach(nodeList) { nodeData in
                     Button {
                         showPopover = false
-                        nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
+                        _ = nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
                     } label: {
                         HStack {
                             Text("\(nodeData.title)")

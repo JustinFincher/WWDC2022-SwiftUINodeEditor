@@ -84,10 +84,25 @@ struct NodeView: View, Identifiable {
                 .mask(RoundedRectangle(cornerRadius: 6))
             }
         }
+        .contentShape(RoundedRectangle(cornerRadius: 8))
+        .conditionalModifier(!demoMode, transform: { view in
+            view.contextMenu {
+                Button {
+                    
+                } label: {
+                    Label {
+                        Text("Delete")
+                    } icon: {
+                        Image(systemName: "xmark")
+                    }
+
+                }
+
+            }
+        })
         .padding(.all, 8)
-//        .frame(width: 200)
         .background(
-            Color.clear.background(Material.thin)
+            Color.clear.background(Material.ultraThin)
         )
         .mask {
             RoundedRectangle(cornerRadius: 8)
@@ -101,7 +116,7 @@ struct NodeView: View, Identifiable {
         .allowsHitTesting(!demoMode)
         .disabled(demoMode)
         .conditionalModifier(!demoMode, transform: { view in
-                view.position(nodeData.canvasPosition)
+            view.position(nodeData.canvasPosition)
         })
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
             .onChanged { value in
