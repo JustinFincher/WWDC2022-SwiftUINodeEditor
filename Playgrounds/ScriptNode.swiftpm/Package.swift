@@ -37,7 +37,6 @@ let package = Package(
             name: "App",
             path: "App",
             resources: [
-                .process("Resources")
             ]
         )
     ]
