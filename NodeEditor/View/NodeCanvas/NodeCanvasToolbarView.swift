@@ -11,21 +11,24 @@ struct NodeCanvasToolbarView: View {
     
     
     @State private var showSettings = false
-    @State private var showNodeList = false
+//    @State private var showNodeList = false
+    @EnvironmentObject var environment : Environment
     
     var body: some View {
         ZStack (alignment: .bottom) {
             
             HStack(alignment: .center, spacing: 18) {
-
-                Button {
-                    showNodeList = true
-                } label: {
-                    Image(systemName: "square.3.stack.3d.top.filled")
-                        .padding(.all, 8)
-                }.popover(isPresented: $showNodeList) {
-                    NodeCanvasInspectionView()
-                }
+                
+                ToggleButtonView(icon: .init(systemName: "square.stack.3d.up.fill"), state: $environment.toggleNodeListPanel)
+                
+//                Button {
+//                    showNodeList = true
+//                } label: {
+//                    Image(systemName: "square.3.stack.3d.top.filled")
+//                        .padding(.all, 8)
+//                }.popover(isPresented: $showNodeList) {
+//                    NodeCanvasInspectionView()
+//                }
 
                 Button {
 
@@ -34,12 +37,7 @@ struct NodeCanvasToolbarView: View {
                         .padding(.all, 8)
                 }
 
-                Button {
-
-                } label: {
-                    Image(systemName: "rectangle.righthalf.inset.filled")
-                        .padding(.all, 8)
-                }
+                ToggleButtonView(icon: .init(systemName:"rectangle.righthalf.inset.filled"), state: $environment.toggleNodeInspectionPanel)
 
                 Divider()
 

@@ -6,8 +6,23 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
 class Environment : ObservableObject {
     
+    
+    @UserDefault(key: "toggleNodeListPanel", defaultValue: false)
+    var toggleNodeListPanel: Bool
+    @UserDefault(key: "toggleNodeInspectionPanel", defaultValue: false)
+    var toggleNodeInspectionPanel: Bool
+    
+    private var notificationSubscription: AnyCancellable?
+    init() {
+        notificationSubscription = NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification).sink { notif in
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+            }
+        }
+    }
 }

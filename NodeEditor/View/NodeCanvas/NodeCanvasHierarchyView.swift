@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NodePortInspectionView: View {
+struct NodePortHierarchyView: View {
 
     @StateObject var nodePort : NodePortData
     
@@ -38,7 +38,7 @@ struct NodePortInspectionView: View {
 }
 
 
-struct NodeInspectionView: View {
+struct NodeHierarchyView: View {
 
     @StateObject var node : NodeData
     
@@ -47,7 +47,7 @@ struct NodeInspectionView: View {
             Section("In Ports") {
                 ForEach(node.inPorts, id: \.self) {port in
                     NavigationLink {
-                        NodePortInspectionView(nodePort: port)
+                        NodePortHierarchyView(nodePort: port)
                     } label: {
                         Text("\(port.portID) \(port.name)")
                             .font(.body.monospaced())
@@ -59,7 +59,7 @@ struct NodeInspectionView: View {
             Section("Out Ports") {
                 ForEach(node.outPorts, id: \.self) {port in
                     NavigationLink {
-                        NodePortInspectionView(nodePort: port)
+                        NodePortHierarchyView(nodePort: port)
                     } label: {
                         Text("\(port.portID) \(port.name)")
                             .font(.body.monospaced())
@@ -72,16 +72,16 @@ struct NodeInspectionView: View {
     }
 }
 
-struct NodeCanvasInspectionView: View {
+struct NodeCanvasHierarchyView: View {
     
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(nodeCanvasData.nodes, id: \.self) { node in
+                ForEach(nodeCanvasData.nodes, id: \.self.nodeID) { node in
                     NavigationLink {
-                        NodeInspectionView(node: node)
+                        NodeHierarchyView(node: node)
                     } label: {
                         Text("\(node.nodeID) \(node.title)")
                             .font(.body.monospaced())
@@ -93,20 +93,14 @@ struct NodeCanvasInspectionView: View {
             .toolbar {
                 EditButton()
             }
-            .navigationTitle("Nodes In Canvas")
+            .navigationTitle("Hierarchy")
         }
-        .frame(minWidth: 200, idealWidth: 300, maxWidth: nil,
+        .frame(minWidth: 280, idealWidth: 320, maxWidth: nil,
                minHeight: 360, idealHeight: 540, maxHeight: nil,
                alignment: .top)
     }
     
     func move(from source: IndexSet, to destination: Int) {
         nodeCanvasData.nodes.move(fromOffsets: source, toOffset: destination)
-    }
-}
-
-struct NodeListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NodeCanvasInspectionView()
     }
 }
