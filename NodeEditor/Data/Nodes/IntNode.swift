@@ -9,15 +9,12 @@ import Foundation
 
 class IntNode : NodeData {
     
-    override func exposedToUser() -> Bool {
-        true
-    }
     
-    override func getDefaultTitle() -> String {
+    class override func getDefaultTitle() -> String {
         "Int"
     }
     
-    override func getDefaultDataOutPorts() -> [NodeDataPortData] {
+    class override func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
             NodeDataPortData(portID: 0, name: "Result", direction: .output)
         ]

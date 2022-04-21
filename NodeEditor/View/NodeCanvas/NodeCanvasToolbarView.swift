@@ -20,15 +20,6 @@ struct NodeCanvasToolbarView: View {
             HStack(alignment: .center, spacing: 18) {
                 
                 ToggleButtonView(icon: .init(systemName: "square.stack.3d.up.fill"), state: $environment.toggleNodeListPanel)
-                
-//                Button {
-//                    showNodeList = true
-//                } label: {
-//                    Image(systemName: "square.3.stack.3d.top.filled")
-//                        .padding(.all, 8)
-//                }.popover(isPresented: $showNodeList) {
-//                    NodeCanvasInspectionView()
-//                }
 
                 Button {
 

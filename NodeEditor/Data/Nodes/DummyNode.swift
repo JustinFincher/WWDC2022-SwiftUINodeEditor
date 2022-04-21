@@ -9,15 +9,12 @@ import Foundation
 
 class DummyNode : NodeData {
     
-    override func exposedToUser() -> Bool {
-        true
-    }
     
-    override func getDefaultTitle() -> String {
+    class override func getDefaultTitle() -> String {
         "Dummy"
     }
     
-    override func getDefaultDataOutPorts() -> [NodeDataPortData] {
+    class override func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
             NodeDataPortData(portID: 0, name: "Output 1", direction: .output),
             NodeDataPortData(portID: 1, name: "Output 2", direction: .output),
@@ -25,7 +22,7 @@ class DummyNode : NodeData {
         ]
     }
     
-    override func getDefaultDataInPorts() -> [NodeDataPortData] {
+    class override func getDefaultDataInPorts() -> [NodeDataPortData] {
         return [
             NodeDataPortData(portID: 0, name: "Input", direction: .input)
         ]

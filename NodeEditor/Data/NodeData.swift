@@ -8,19 +8,21 @@
 import Foundation
 import UIKit
 import Combine
-
+import SwiftUI
 
 protocol NodeProtocol : ObservableObject {
     func perform() -> Void
-    func exposedToUser() -> Bool
-    func getDefaultTitle() -> String
-    func getDefaultControlInPorts() -> [NodeControlPortData]
-    func getDefaultControlOutPorts() -> [NodeControlPortData]
-    func getDefaultDataInPorts() -> [NodeDataPortData]
-    func getDefaultDataOutPorts() -> [NodeDataPortData]
+    static func getDefaultExposedToUser() -> Bool
+    static func getDefaultTitle() -> String
+    static func getDefaultControlInPorts() -> [NodeControlPortData]
+    static func getDefaultControlOutPorts() -> [NodeControlPortData]
+    static func getDefaultDataInPorts() -> [NodeDataPortData]
+    static func getDefaultDataOutPorts() -> [NodeDataPortData]
+    static func getDefaultCustomRendering() -> AnyView?
 }
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
+    
     
     static func == (lhs: NodeData, rhs: NodeData) -> Bool {
         return lhs.canvasPosition == rhs.canvasPosition
@@ -43,31 +45,35 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         hasher.combine(outControlPorts)
     }
     
-    func getDefaultTitle() -> String {
+    class func getDefaultTitle() -> String {
         return ""
     }
     
-    func getDefaultDataInPorts() -> [NodeDataPortData] {
+    class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return []
     }
     
-    func getDefaultDataOutPorts() -> [NodeDataPortData] {
+    class func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return []
     }
     
-    func getDefaultControlInPorts() -> [NodeControlPortData] {
+    class func getDefaultControlInPorts() -> [NodeControlPortData] {
         return []
     }
     
-    func getDefaultControlOutPorts() -> [NodeControlPortData] {
+    class func getDefaultControlOutPorts() -> [NodeControlPortData] {
         return []
+    }
+    
+    class func getDefaultCustomRendering() -> AnyView? {
+        nil
     }
     
     func perform() {
         
     }
     
-    func exposedToUser() -> Bool {
+    class func getDefaultExposedToUser() -> Bool {
         true
     }
     
@@ -116,11 +122,11 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     required init(nodeID: Int) {
         self.nodeID = nodeID
-        self.title = getDefaultTitle()
-        self.inDataPorts = getDefaultDataInPorts()
-        self.outDataPorts = getDefaultDataOutPorts()
-        self.inControlPorts = getDefaultControlInPorts()
-        self.outControlPorts = getDefaultControlOutPorts()
+        self.title = type(of: self).getDefaultTitle()
+        self.inDataPorts = type(of: self).getDefaultDataInPorts()
+        self.outDataPorts = type(of: self).getDefaultDataOutPorts()
+        self.inControlPorts = type(of: self).getDefaultControlInPorts()
+        self.outControlPorts = type(of: self).getDefaultControlOutPorts()
         let _ = $childWillChange.sink { newVoid in
             self.objectWillChange.send()
         }

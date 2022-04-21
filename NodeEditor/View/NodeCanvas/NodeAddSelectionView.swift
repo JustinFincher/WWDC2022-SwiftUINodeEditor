@@ -27,6 +27,9 @@ struct NodeAddSelectionView: View {
     
     var nodeTypeList : [NodeData.Type] {
         subclasses(of: NodeData.self)
+            .filter { nodeType in
+                nodeType.self.getDefaultExposedToUser()
+            }
     }
     
     var nodeList : [NodeData] {
