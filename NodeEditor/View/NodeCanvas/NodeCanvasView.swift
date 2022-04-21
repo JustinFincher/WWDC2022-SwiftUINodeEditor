@@ -11,7 +11,7 @@ import UIKit
 struct NodeCanvasView: View {
     
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
-    @State var showAddNodeView : Bool = false
+    @State var showAddNodePopover : Bool = false
     @State var longPressLocation : CGPoint = .zero
     
     var body: some View {
@@ -27,11 +27,11 @@ struct NodeCanvasView: View {
                             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                                 .onChanged({ value in
                                     longPressLocation = value.location
-                                    showAddNodeView = true
+                                    showAddNodePopover = true
                                 })
                         )
                     
-                    NodeCanvasAddNodePointView(showPopover: $showAddNodeView)
+                    NodeCanvasAddNodePointView(popoverPosition: $longPressLocation, showPopover: $showAddNodePopover)
                         .position(longPressLocation)
                     
                     ForEach(nodeCanvasData.nodes) { nodeData in
@@ -95,11 +95,13 @@ struct NodeCanvasView: View {
                                           controlPoint2: controlPoint2)
                             var colors : [Color] = []
                             if nodePortConnectionData.getPendingPortDirection == .output {
-                                colors.append(Color.init(UIColor.systemGroupedBackground))
+                                colors.append(Color.clear)
+                                colors.append(nodePortConnectionData.color)
                                 colors.append(nodePortConnectionData.color)
                             } else if nodePortConnectionData.getPendingPortDirection == .input {
                                 colors.append(nodePortConnectionData.color)
-                                colors.append(Color.init(UIColor.systemGroupedBackground))
+                                colors.append(nodePortConnectionData.color)
+                                colors.append(Color.clear)
                             } else {
                                 colors.append(nodePortConnectionData.color)
                             }

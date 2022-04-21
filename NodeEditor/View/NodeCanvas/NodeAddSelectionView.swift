@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct NodeCanvasAddNodePointView : View {
+    @Binding var popoverPosition : CGPoint
     @Binding var showPopover : Bool
     
     var body: some View {
         Color.clear.frame(width: 1, height: 1, alignment: .center)
             .popover(isPresented: $showPopover, attachmentAnchor: .point(.zero)) {
-                NodeAddSelectionView()
+                NodeAddSelectionView(nodePosition: $popoverPosition)
             }
     }
 }
 
 struct NodeAddSelectionView: View {
+    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @Binding var nodePosition : CGPoint
     @State private var nodeType = 0
     
     var nodeTypeList : [NodeData.Type] {
@@ -36,13 +39,20 @@ struct NodeAddSelectionView: View {
         NavigationView {
             List{
                 ForEach(nodeList) { nodeData in
-                    HStack {
-                        Text("\(nodeData.title)")
-                            .font(.body.monospaced())
-                        Spacer()
-                        NodeView(demoMode: true, nodeData: nodeData)
-                            .padding()
+                    Button {
+                        nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
+                    } label: {
+                        HStack {
+                            Text("\(nodeData.title)")
+                                .font(.body.monospaced())
+                            Spacer()
+                            NodeView(demoMode: true, nodeData: nodeData)
+                                .padding()
+                        }
+                        .contentShape(Rectangle())
                     }
+                    .buttonStyle(PlainButtonStyle())
+
                 }
             }
             .listStyle(PlainListStyle())
