@@ -11,6 +11,7 @@ struct NodeCanvasNavigationView: View {
     @State var isShowingPopover = false
     var body: some View {
         NodeCanvasView()
+            .environmentObject(EnvironmentManager.shared.environment)
             .navigationViewStyle(.stack)
     }
 }
