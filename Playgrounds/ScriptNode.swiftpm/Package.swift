@@ -15,7 +15,7 @@ let package = Package(
     products: [
         .iOSApplication(
             name: "Node Script",
-            targets: ["AppModule"],
+            targets: ["App"],
             displayVersion: "1.0",
             bundleVersion: "1",
             iconAssetName: "AppIcon",
@@ -34,8 +34,10 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "AppModule",
-            path: "."
+            name: "App",
+            path: "App",
+            resources: [
+            ]
         )
     ]
 )

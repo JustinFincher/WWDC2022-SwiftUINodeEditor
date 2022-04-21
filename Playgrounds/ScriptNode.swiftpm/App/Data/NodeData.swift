@@ -12,27 +12,24 @@ import Combine
 
 protocol NodeProtocol : ObservableObject {
     func perform() -> Void
-    func exposeToUser() -> Bool
+    func exposedToUser() -> Bool
     func getDefaultTitle() -> String
-    func getDefaultInPorts() -> [NodePortData]
-    func getDefaultOutPorts() -> [NodePortData]
+    func getDefaultControlInPorts() -> [NodeControlPortData]
+    func getDefaultControlOutPorts() -> [NodeControlPortData]
+    func getDefaultDataInPorts() -> [NodeDataPortData]
+    func getDefaultDataOutPorts() -> [NodeDataPortData]
 }
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
-    func perform() {
-        
-    }
-    
-    func exposeToUser() -> Bool {
-        false
-    }
     
     static func == (lhs: NodeData, rhs: NodeData) -> Bool {
         return lhs.canvasPosition == rhs.canvasPosition
         && lhs.nodeID == rhs.nodeID
         && lhs.title == rhs.title
-        && lhs.inPorts == rhs.inPorts
-        && lhs.outPorts == rhs.outPorts
+        && lhs.inDataPorts == rhs.inDataPorts
+        && lhs.outDataPorts == rhs.outDataPorts
+        && lhs.inControlPorts == rhs.inControlPorts
+        && lhs.outControlPorts == rhs.outControlPorts
     }
     
     
@@ -40,27 +37,44 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         hasher.combine(canvasPosition)
         hasher.combine(nodeID)
         hasher.combine(title)
-        hasher.combine(inPorts)
-        hasher.combine(outPorts)
+        hasher.combine(inDataPorts)
+        hasher.combine(outDataPorts)
+        hasher.combine(inControlPorts)
+        hasher.combine(outControlPorts)
     }
     
     func getDefaultTitle() -> String {
         return ""
     }
     
-    func getDefaultInPorts() -> [NodePortData] {
+    func getDefaultDataInPorts() -> [NodeDataPortData] {
         return []
     }
     
-    func getDefaultOutPorts() -> [NodePortData] {
+    func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return []
     }
     
+    func getDefaultControlInPorts() -> [NodeControlPortData] {
+        return []
+    }
+    
+    func getDefaultControlOutPorts() -> [NodeControlPortData] {
+        return []
+    }
+    
+    func perform() {
+        
+    }
+    
+    func exposedToUser() -> Bool {
+        true
+    }
     
     @Published var canvasPosition = CGPoint.zero
     @Published var nodeID : Int
     @Published var title = ""
-    @Published var inPorts : [NodePortData] = [] {
+    @Published var inDataPorts : [NodeDataPortData] = [] {
         willSet {
             // TODO: should cancel objectWillChange on old value?
             newValue.forEach({ port in
@@ -68,7 +82,21 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
             })
         }
     }
-    @Published var outPorts : [NodePortData] = [] {
+    @Published var outDataPorts : [NodeDataPortData] = [] {
+        willSet {
+            newValue.forEach({ port in
+                port.objectWillChange.assign(to: &$childWillChange)
+            })
+        }
+    }
+    @Published var inControlPorts : [NodeControlPortData] = [] {
+        willSet {
+            newValue.forEach({ port in
+                port.objectWillChange.assign(to: &$childWillChange)
+            })
+        }
+    }
+    @Published var outControlPorts : [NodeControlPortData] = [] {
         willSet {
             newValue.forEach({ port in
                 port.objectWillChange.assign(to: &$childWillChange)
@@ -78,11 +106,21 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     @Published private var childWillChange: Void = ()
     
-    init(nodeID: Int) {
+    var inPorts : [NodePortData] {
+        return inDataPorts + inControlPorts
+    }
+    
+    var outPorts : [NodePortData] {
+        return outDataPorts + outControlPorts
+    }
+    
+    required init(nodeID: Int) {
         self.nodeID = nodeID
         self.title = getDefaultTitle()
-        self.inPorts = getDefaultInPorts()
-        self.outPorts = getDefaultOutPorts()
+        self.inDataPorts = getDefaultDataInPorts()
+        self.outDataPorts = getDefaultDataOutPorts()
+        self.inControlPorts = getDefaultControlInPorts()
+        self.outControlPorts = getDefaultControlOutPorts()
         let _ = $childWillChange.sink { newVoid in
             self.objectWillChange.send()
         }
@@ -102,11 +140,4 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         self.init(nodeID: nodeID, title: title)
         self.canvasPosition = canvasPosition
     }
-    
-    convenience init(nodeID: Int, title: String, canvasPosition: CGPoint, inPorts: [NodePortData], outPorts: [NodePortData]) {
-        self.init(nodeID: nodeID, title: title, canvasPosition: canvasPosition)
-        self.inPorts = inPorts
-        self.outPorts = outPorts
-    }
-    
 }

@@ -11,6 +11,8 @@ import UIKit
 struct NodeCanvasView: View {
     
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @State var showAddNodePopover : Bool = false
+    @State var longPressLocation : CGPoint = .zero
     
     var body: some View {
         ZStack {
@@ -19,15 +21,18 @@ struct NodeCanvasView: View {
                 ZStack {
                     
                     Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
+                        .contentShape(Rectangle())
+                        .allowsHitTesting(true)
                         .gesture(
                             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                                 .onChanged({ value in
-                                    
-                                })
-                                .onEnded({ value in
-                                    
+                                    longPressLocation = value.location
+                                    showAddNodePopover = true
                                 })
                         )
+                    
+                    NodeCanvasAddNodePointView(popoverPosition: $longPressLocation, showPopover: $showAddNodePopover)
+                        .position(longPressLocation)
                     
                     ForEach(nodeCanvasData.nodes) { nodeData in
                         NodeView(nodeData: nodeData)
@@ -36,9 +41,9 @@ struct NodeCanvasView: View {
                     Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
                         
                         // stable lines
-                        let stablePath = UIBezierPath()
+                        let stablePathForDataFlow = UIBezierPath()
                         nodeCanvasData.nodes.flatMap({ nodeData in
-                            nodeData.outPorts.flatMap { nodePortData in
+                            nodeData.outDataPorts.flatMap { nodePortData in
                                 nodePortData.connections
                             }
                         })
@@ -48,12 +53,32 @@ struct NodeCanvasView: View {
                             let distance = abs(startPos.x - endPos.x)
                             let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
                             let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
-                            stablePath.move(to: startPos)
-                            stablePath.addCurve(to: endPos,
+                            stablePathForDataFlow.move(to: startPos)
+                            stablePathForDataFlow.addCurve(to: endPos,
                                           controlPoint1: controlPoint1,
                                           controlPoint2: controlPoint2)
                         }
-                        context.stroke(.init(stablePath.cgPath), with: .color(.green), lineWidth: 4)
+                        context.stroke(.init(stablePathForDataFlow.cgPath), with: .color(.green), lineWidth: 4)
+                        
+                        let stablePathForControlFlow = UIBezierPath()
+                        nodeCanvasData.nodes.flatMap({ nodeData in
+                            nodeData.outControlPorts.flatMap { nodePortData in
+                                nodePortData.connections
+                            }
+                        })
+                        .forEach { nodePortConnectionData in
+                            let startPos = nodePortConnectionData.startPos
+                            let endPos = nodePortConnectionData.endPos
+                            let distance = abs(startPos.x - endPos.x)
+                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+                            stablePathForControlFlow.move(to: startPos)
+                            stablePathForControlFlow.addCurve(to: endPos,
+                                          controlPoint1: controlPoint1,
+                                          controlPoint2: controlPoint2)
+                        }
+                        context.stroke(.init(stablePathForControlFlow.cgPath), with: .color(.blue), lineWidth: 4)
+                        
                         
                         // pending lines
                         nodeCanvasData.pendingConnections
@@ -70,13 +95,15 @@ struct NodeCanvasView: View {
                                           controlPoint2: controlPoint2)
                             var colors : [Color] = []
                             if nodePortConnectionData.getPendingPortDirection == .output {
-                                colors.append(Color.yellow)
-                                colors.append(Color.green)
+                                colors.append(Color.clear)
+                                colors.append(nodePortConnectionData.color)
+                                colors.append(nodePortConnectionData.color)
                             } else if nodePortConnectionData.getPendingPortDirection == .input {
-                                colors.append(Color.green)
-                                colors.append(Color.yellow)
+                                colors.append(nodePortConnectionData.color)
+                                colors.append(nodePortConnectionData.color)
+                                colors.append(Color.clear)
                             } else {
-                                colors.append(Color.green)
+                                colors.append(nodePortConnectionData.color)
                             }
                             context.stroke(.init(unstablePath.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
                                                    

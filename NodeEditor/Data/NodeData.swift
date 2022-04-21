@@ -114,7 +114,7 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         return outDataPorts + outControlPorts
     }
     
-    init(nodeID: Int) {
+    required init(nodeID: Int) {
         self.nodeID = nodeID
         self.title = getDefaultTitle()
         self.inDataPorts = getDefaultDataInPorts()

@@ -36,18 +36,41 @@ class NodeCanvasData : ObservableObject {
         self.nodes = nodes
     }
     
+    func addNode(newNode : NodeData, position: CGPoint) {
+        newNode.nodeID = getNextNodeID()
+        newNode.canvasPosition = position
+        nodes.append(newNode)
+    }
+    
+    func addNode(newNodeType : NodeData.Type, position: CGPoint) {
+        var newNode = newNodeType.init(nodeID: getNextNodeID())
+        newNode.canvasPosition = position
+        nodes.append(newNode)
+    }
+    
+    func getNextNodeID () -> Int {
+        return (nodes.map { node in
+            node.nodeID
+        }.max() ?? -1) + 1
+    }
+    
     func withTestConfig() -> NodeCanvasData {
         self.nodes = [
-            IntNode(nodeID: 0, canvasPosition: .init(x: 130, y: 130)),
-            DummyNode(nodeID: 1, canvasPosition: .init(x: 400, y: 200)),
-            DummyNode(nodeID: 2, canvasPosition: .init(x: 800, y: 200)),
+            IntNode(nodeID: 0, canvasPosition: .init(x: 100, y: 450)),
+            IntNode(nodeID: 1, canvasPosition: .init(x: 100, y: 600)),
+            UpdateNode(nodeID: 2, canvasPosition: .init(x: 200, y: 300)),
             
-            StartNode(nodeID: 3, canvasPosition: .init(x: 300, y: 450)),
-            IfNode(nodeID: 4, canvasPosition: .init(x: 500, y: 450))
+            StartNode(nodeID: 3, canvasPosition: .init(x: 200, y: 150)),
+            IfNode(nodeID: 4, canvasPosition: .init(x: 500, y: 450)),
+            EqualNode(nodeID: 5, canvasPosition: .init(x: 300, y: 600)),
+            PrintNode(nodeID: 6, canvasPosition: .init(x: 700, y: 600))
         ]
         
-        self.nodes[0].outDataPorts[0].connectTo(anotherPort: self.nodes[1].inDataPorts[0])
-        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[2].inDataPorts[0])
+        self.nodes[0].outDataPorts[0].connectTo(anotherPort: self.nodes[5].inDataPorts[0])
+        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[5].inDataPorts[1])
+        self.nodes[5].outDataPorts[0].connectTo(anotherPort: self.nodes[4].inDataPorts[0])
+        self.nodes[3].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
+        self.nodes[4].outControlPorts[1].connectTo(anotherPort: self.nodes[6].inControlPorts[0])
         
         
         return self

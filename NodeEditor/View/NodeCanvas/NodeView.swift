@@ -8,8 +8,9 @@
 import SwiftUI
 import UIKit
 
-struct NodeView: View {
-    
+struct NodeView: View, Identifiable {
+    var id: UUID = UUID()
+    @State var demoMode = false
     @State var holding = false
     @ObservedObject var nodeData : NodeData
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
@@ -18,9 +19,15 @@ struct NodeView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text("\(nodeData.title)")
                     .font(.title3.monospaced())
+                
+                if !nodeData.inControlPorts.isEmpty || !nodeData.outControlPorts.isEmpty {
+                    Text("CONTROL FLOW")
+                        .foregroundColor(Color.blue.opacity(0.8))
+                        .font(.caption.bold().monospaced())
+                }
                 HStack(alignment: .top) {
                     if !nodeData.inControlPorts.isEmpty {
                         VStack(alignment: .leading) {
@@ -46,6 +53,11 @@ struct NodeView: View {
                 .background(Color.blue.opacity(0.3))
                 .mask(RoundedRectangle(cornerRadius: 6))
                 
+                if !nodeData.inDataPorts.isEmpty || !nodeData.outDataPorts.isEmpty {
+                    Text("DATA FLOW")
+                        .foregroundColor(Color.green.opacity(0.8))
+                        .font(.caption.bold().monospaced())
+                }
                 HStack(alignment: .top) {
                     if !nodeData.inDataPorts.isEmpty {
                         VStack(alignment: .leading) {
@@ -55,8 +67,6 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .background(Color.mint.opacity(0.3))
-                        .mask(RoundedRectangle(cornerRadius: 6))
                     }
                     
                     
@@ -68,10 +78,10 @@ struct NodeView: View {
                         }
                         .padding(.all, 4)
                         .layoutPriority(1)
-                        .background(Color.indigo.opacity(0.3))
-                        .mask(RoundedRectangle(cornerRadius: 6))
                     }
                 }
+                .background(Color.green.opacity(0.3))
+                .mask(RoundedRectangle(cornerRadius: 6))
             }
         }
         .padding(.all, 8)
@@ -88,10 +98,11 @@ struct NodeView: View {
         )
         .shadow(color: .black.opacity(holding ? 0.1 : 0.15), radius: holding ? 24 : 12, x: 0, y: 0)
         .scaleEffect(1 + (holding ? 0.1 : 0.0))
-//        .contextMenu {
-//            Text("Test")
-//        }
-        .position(nodeData.canvasPosition)
+        .allowsHitTesting(!demoMode)
+        .disabled(demoMode)
+        .conditionalModifier(!demoMode, transform: { view in
+                view.position(nodeData.canvasPosition)
+        })
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
             .onChanged { value in
                 if !holding {

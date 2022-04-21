@@ -21,7 +21,8 @@ struct NodePortView: View {
     }
     
     var circleView : some View {
-        Circle()
+        nodePortData.icon()
+            .foregroundColor(nodePortData.color())
             .scaleEffect(holdingKnot ? 1.5 : 1)
             .frame(width: 8, height: 8, alignment: .center)
             .padding(.all, 8)

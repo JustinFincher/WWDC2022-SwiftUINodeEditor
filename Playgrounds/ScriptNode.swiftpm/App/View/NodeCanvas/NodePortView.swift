@@ -17,11 +17,12 @@ struct NodePortView: View {
     var textView : some View {
         Text("\(nodePortData.name)")
             .lineLimit(1)
-            .font(.footnote.monospaced().weight(holdingKnot ? .heavy : .regular))
+            .font(.footnote.monospaced())
     }
     
     var circleView : some View {
-        Circle()
+        nodePortData.icon()
+            .foregroundColor(nodePortData.color())
             .scaleEffect(holdingKnot ? 1.5 : 1)
             .frame(width: 8, height: 8, alignment: .center)
             .padding(.all, 8)
@@ -118,6 +119,6 @@ struct NodePortView: View {
 
 struct NodePortView_Previews: PreviewProvider {
     static var previews: some View {
-        NodePortView(nodePortData: NodePortData(portID: 0, direction: .input))
+        NodePortView(nodePortData: NodeDataPortData(portID: 0, direction: .input))
     }
 }
