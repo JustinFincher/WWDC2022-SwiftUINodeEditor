@@ -9,6 +9,10 @@ import Foundation
 
 class IntNode : NodeData {
     
+    override func exposeToUser() -> Bool {
+        true
+    }
+    
     override func getDefaultTitle() -> String {
         "Int"
     }
