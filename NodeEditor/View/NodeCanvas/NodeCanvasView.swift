@@ -17,7 +17,7 @@ struct NodeCanvasView: View {
             
             ScrollView([.horizontal, .vertical]) {
                 ZStack {
-                    
+
                     Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
                         .gesture(
                             DragGesture(minimumDistance: 0, coordinateSpace: .local)

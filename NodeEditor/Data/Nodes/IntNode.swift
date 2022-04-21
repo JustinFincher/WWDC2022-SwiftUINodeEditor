@@ -9,7 +9,7 @@ import Foundation
 
 class IntNode : NodeData {
     
-    override func exposeToUser() -> Bool {
+    override func exposedToUser() -> Bool {
         true
     }
     
@@ -17,9 +17,9 @@ class IntNode : NodeData {
         "Int"
     }
     
-    override func getDefaultOutPorts() -> [NodePortData] {
+    override func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            NodePortData(portID: 0, name: "Result", direction: .output)
+            NodeDataPortData(portID: 0, name: "Result", direction: .output)
         ]
     }
 }

@@ -29,12 +29,15 @@
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
 		0D92A658281144E000EA9F1E /* StartNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D92A657281144E000EA9F1E /* StartNode.swift */; };
+		0D92A65A28114F4600EA9F1E /* IfNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D92A65928114F4600EA9F1E /* IfNode.swift */; };
+		0D92A65C2811527200EA9F1E /* PrintNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D92A65B2811527200EA9F1E /* PrintNode.swift */; };
+		0D92A65E2811530400EA9F1E /* UpdateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D92A65D2811530400EA9F1E /* UpdateNode.swift */; };
 		0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */; };
 		0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */; };
 		0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */; };
 		0DE88090281033A4008C70C0 /* NodeSpawnListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8808F281033A4008C70C0 /* NodeSpawnListView.swift */; };
 		0DE8809228103862008C70C0 /* NodePortConnectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8809128103862008C70C0 /* NodePortConnectionData.swift */; };
-		0DE8809428103896008C70C0 /* NodePortData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8809328103896008C70C0 /* NodePortData.swift */; };
+		0DE8809428103896008C70C0 /* NodeDataPortData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8809328103896008C70C0 /* NodeDataPortData.swift */; };
 		0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C5280EE1CF008D82DB /* IntNode.swift */; };
 		0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C8280EE549008D82DB /* DummyNode.swift */; };
 /* End PBXBuildFile section */
@@ -64,12 +67,15 @@
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D92A657281144E000EA9F1E /* StartNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNode.swift; sourceTree = "<group>"; };
+		0D92A65928114F4600EA9F1E /* IfNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfNode.swift; sourceTree = "<group>"; };
+		0D92A65B2811527200EA9F1E /* PrintNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintNode.swift; sourceTree = "<group>"; };
+		0D92A65D2811530400EA9F1E /* UpdateNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNode.swift; sourceTree = "<group>"; };
 		0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Math.swift"; sourceTree = "<group>"; };
 		0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasToolbarView.swift; sourceTree = "<group>"; };
 		0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasInspectionView.swift; sourceTree = "<group>"; };
 		0DE8808F281033A4008C70C0 /* NodeSpawnListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSpawnListView.swift; sourceTree = "<group>"; };
 		0DE8809128103862008C70C0 /* NodePortConnectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortConnectionData.swift; sourceTree = "<group>"; };
-		0DE8809328103896008C70C0 /* NodePortData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortData.swift; sourceTree = "<group>"; };
+		0DE8809328103896008C70C0 /* NodeDataPortData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataPortData.swift; sourceTree = "<group>"; };
 		0DEBE6C5280EE1CF008D82DB /* IntNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNode.swift; sourceTree = "<group>"; };
 		0DEBE6C8280EE549008D82DB /* DummyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,7 +129,7 @@
 				0D43AD9F280D4D4D00601308 /* Environment.swift */,
 				0D3B269B280ED29A0005280A /* NodeCanvasData.swift */,
 				0D43ADA5280D5DED00601308 /* NodeData.swift */,
-				0DE8809328103896008C70C0 /* NodePortData.swift */,
+				0DE8809328103896008C70C0 /* NodeDataPortData.swift */,
 				0DE8809128103862008C70C0 /* NodePortConnectionData.swift */,
 				0DEBE6C7280EE1D3008D82DB /* Nodes */,
 			);
@@ -215,6 +221,9 @@
 				0DEBE6C5280EE1CF008D82DB /* IntNode.swift */,
 				0DEBE6C8280EE549008D82DB /* DummyNode.swift */,
 				0D92A657281144E000EA9F1E /* StartNode.swift */,
+				0D92A65D2811530400EA9F1E /* UpdateNode.swift */,
+				0D92A65928114F4600EA9F1E /* IfNode.swift */,
+				0D92A65B2811527200EA9F1E /* PrintNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -290,13 +299,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */,
+				0D92A65E2811530400EA9F1E /* UpdateNode.swift in Sources */,
 				0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */,
 				0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */,
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
 				0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
-				0DE8809428103896008C70C0 /* NodePortData.swift in Sources */,
+				0D92A65C2811527200EA9F1E /* PrintNode.swift in Sources */,
+				0DE8809428103896008C70C0 /* NodeDataPortData.swift in Sources */,
 				0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */,
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */,
@@ -316,6 +327,7 @@
 				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,
 				0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */,
+				0D92A65A28114F4600EA9F1E /* IfNode.swift in Sources */,
 				0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,11 +40,14 @@ class NodeCanvasData : ObservableObject {
         self.nodes = [
             IntNode(nodeID: 0, canvasPosition: .init(x: 130, y: 130)),
             DummyNode(nodeID: 1, canvasPosition: .init(x: 400, y: 200)),
-            DummyNode(nodeID: 2, canvasPosition: .init(x: 400, y: 600)),
+            DummyNode(nodeID: 2, canvasPosition: .init(x: 800, y: 200)),
+            
+            StartNode(nodeID: 3, canvasPosition: .init(x: 300, y: 450)),
+            IfNode(nodeID: 4, canvasPosition: .init(x: 500, y: 450))
         ]
         
-        self.nodes[0].outPorts[0].connectTo(anotherPort: self.nodes[1].inPorts[0])
-        self.nodes[1].outPorts[0].connectTo(anotherPort: self.nodes[2].inPorts[0])
+        self.nodes[0].outDataPorts[0].connectTo(anotherPort: self.nodes[1].inDataPorts[0])
+        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[2].inDataPorts[0])
         
         
         return self
