@@ -36,16 +36,18 @@ class NodeCanvasData : ObservableObject {
         self.nodes = nodes
     }
     
-    func addNode(newNode : NodeData, position: CGPoint) {
+    func addNode(newNode : NodeData, position: CGPoint) -> NodeData {
         newNode.nodeID = getNextNodeID()
         newNode.canvasPosition = position
         nodes.append(newNode)
+        return newNode
     }
     
-    func addNode(newNodeType : NodeData.Type, position: CGPoint) {
+    func addNode(newNodeType : NodeData.Type, position: CGPoint) -> NodeData {
         var newNode = newNodeType.init(nodeID: getNextNodeID())
         newNode.canvasPosition = position
         nodes.append(newNode)
+        return newNode
     }
     
     func getNextNodeID () -> Int {
