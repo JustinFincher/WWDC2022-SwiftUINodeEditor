@@ -12,7 +12,7 @@ struct NodeCanvasView: View {
     
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     @State var showAddNodePopover : Bool = false
-    @State var lastLongPress : DragGesture.Value? = nil
+    @State var popoverPosition : CGPoint = .zero
     
     
     var body: some View {
@@ -21,32 +21,25 @@ struct NodeCanvasView: View {
                 ScrollView([.horizontal, .vertical]) {
                     ZStack {
                         
-//                        NodeCanvasAddNodePointView(popoverPosition: $longPressLocation, showPopover: $showAddNodePopover)
-//                                               .position(longPressLocation)
+                        NodeCanvasAddNodePointView(popoverPosition: $popoverPosition, showPopover: $showAddNodePopover)
+                            .position(popoverPosition)
                         
                         Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
                             .contentShape(Rectangle())
-//                            .onLongPressGesture(minimumDuration: 0.4, maximumDistance: 10, perform: {
-//                                print("perform")
-//                            }, onPressingChanged: { changed in
-//                                print("onPressingChanged")
-//                            })
-//                            .simultaneousGesture(
-//                                LongPressGesture(minimumDuration: 0.3, maximumDistance: 10)
-//                                    .onChanged({ changed in
-//                                        print("onChanged")
-//                                    }).onEnded({ changed in
-//                                        print("onEnded")
-//                                    })
-//                                DragGesture().onChanged({ value in
-//                                    let timeDistance = value.time.timeIntervalSince1970 - (lastLongPress?.time ?? .now).timeIntervalSince1970
-//                                    print("\(lastLongPress?.time) \(value.time.timeIntervalSince1970) - \((lastLongPress?.time ?? .now).timeIntervalSince1970) = \(timeDistance)")
-//                                    if showAddNodePopover == false && timeDistance > 0.5 {
-//                                        showAddNodePopover = true
-//                                        lastLongPress = value
-//                                    }
-//                                })
-//                            )
+                            .onTapGesture {
+                                // https://stackoverflow.com/questions/57700396/adding-a-drag-gesture-in-swiftui-to-a-view-inside-a-scrollview-blocks-the-scroll
+                            }
+                            .gesture(
+                                DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
+                                    .onChanged({ value in
+                                        if !showAddNodePopover {
+                                            showAddNodePopover = true
+                                            popoverPosition = value.location
+                                        }
+                                    })
+                                    .onEnded({ value in
+                                    })
+                            )
                         
                         ForEach(nodeCanvasData.nodes) { nodeData in
                             NodeView(nodeData: nodeData)

@@ -14,13 +14,14 @@ struct NodeCanvasAddNodePointView : View {
     var body: some View {
         Color.clear.frame(width: 1, height: 1, alignment: .center)
             .popover(isPresented: $showPopover, attachmentAnchor: .point(.zero)) {
-                NodeAddSelectionView(nodePosition: $popoverPosition)
+                NodeAddSelectionView(showPopover: $showPopover, nodePosition: $popoverPosition)
             }
     }
 }
 
 struct NodeAddSelectionView: View {
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @Binding var showPopover : Bool
     @Binding var nodePosition : CGPoint
     @State private var nodeType = 0
     
@@ -40,6 +41,7 @@ struct NodeAddSelectionView: View {
             List{
                 ForEach(nodeList) { nodeData in
                     Button {
+                        showPopover = false
                         nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
                     } label: {
                         HStack {
