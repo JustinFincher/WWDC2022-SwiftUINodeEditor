@@ -12,6 +12,7 @@ import SwiftUI
 
 protocol NodeProtocol : ObservableObject {
     func perform() -> Void
+    static func getDefaultPerformImplementation() -> (() -> ())
     static func getDefaultExposedToUser() -> Bool
     static func getDefaultTitle() -> String
     static func getDefaultControlInPorts() -> [NodeControlPortData]
@@ -69,8 +70,12 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         nil
     }
     
+    class func getDefaultPerformImplementation() -> (() -> ()) {
+        return {}
+    }
+    
     func perform() {
-        
+        type(of: self).getDefaultPerformImplementation()()
     }
     
     class func getDefaultExposedToUser() -> Bool {
