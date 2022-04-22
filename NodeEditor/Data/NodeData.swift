@@ -79,6 +79,9 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         }
     }
     
+    // only used when there is control flow
+    let performDataPortOutputResult : [Int : AnyObject?] = [:]
+    
     func perform() {
         print("Node \(self.nodeID) \(self.title) perform()")
         
@@ -87,6 +90,36 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         // default perform imp should fill data outputs
         // default perform imp should call perform() of out control ports
         type(of: self).getDefaultPerformImplementation()(self)
+    }
+    
+    
+    func getDataPortValue(direction : NodePortDirection, portID: Int) -> AnyObject? {
+        var nodePortData : NodeDataPortData?
+        if direction == .input {
+            nodePortData = inDataPorts.filter({ port in
+                port.portID == portID
+            }).first
+        } else {
+            nodePortData = outDataPorts.filter({ port in
+                port.portID == portID
+            }).first
+        }
+        if let nodePortData = nodePortData {
+            return getDataPortValue(nodePortData: nodePortData)
+        } else {
+            return nil
+        }
+    }
+    
+    func getDataPortValue(nodePortData : NodeDataPortData) -> AnyObject? {
+        if (nodePortData.direction == .input) {
+            // follow connection, get output of previous node
+            
+        } else {
+            
+        }
+        
+        return nil
     }
     
     class func getDefaultExposedToUser() -> Bool {
@@ -139,10 +172,22 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     required init(nodeID: Int) {
         self.nodeID = nodeID
         self.title = type(of: self).getDefaultTitle()
-        self.inDataPorts = type(of: self).getDefaultDataInPorts()
-        self.outDataPorts = type(of: self).getDefaultDataOutPorts()
-        self.inControlPorts = type(of: self).getDefaultControlInPorts()
-        self.outControlPorts = type(of: self).getDefaultControlOutPorts()
+        self.inDataPorts = type(of: self).getDefaultDataInPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.outDataPorts = type(of: self).getDefaultDataOutPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.inControlPorts = type(of: self).getDefaultControlInPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.outControlPorts = type(of: self).getDefaultControlOutPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
         let _ = $childWillChange.sink { newVoid in
             self.objectWillChange.send()
         }

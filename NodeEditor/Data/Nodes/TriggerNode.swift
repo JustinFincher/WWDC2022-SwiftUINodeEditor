@@ -22,12 +22,14 @@ class TriggerNode : NodeData {
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
         return { nodeData in
-            let outPort : NodeControlPortData = nodeData.outControlPorts[0]
-            guard let outPortConnection = outPort.connections.first,
-                  let inPort : NodeControlPortData = outPortConnection.endPort as? NodeControlPortData else {
+            guard let outPort : NodeControlPortData = nodeData.outControlPorts.count > 0 ? nodeData.outControlPorts[0] : nil,
+                  let outPortConnection = outPort.connections.first,
+                  let inPort : NodeControlPortData = outPortConnection.endPort as? NodeControlPortData,
+                  let nextNode : NodeData = inPort.nodeData else {
                 return
             }
             
+            nextNode.perform()
         }
     }
     

@@ -25,7 +25,6 @@ enum NodePortDirection : String {
 
 class NodePortData : NodePortProtocol {
     
-    
     @Published var portID : Int
     @Published var direction : NodePortDirection = .input
     @Published var name = ""
@@ -39,9 +38,17 @@ class NodePortData : NodePortProtocol {
     }
     @Published private var childWillChange: Void = ()
     
+    weak var nodeData : NodeData?
+    
     init(portID: Int, direction: NodePortDirection) {
         self.portID = portID
         self.direction = direction
+    }
+    
+    convenience init(portID: Int, name: String, direction: NodePortDirection, nodeData: NodeData) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        self.nodeData = nodeData
     }
     
     convenience init(portID: Int, name: String, direction: NodePortDirection) {
@@ -187,4 +194,5 @@ class NodeDataPortData : NodePortData {
             anotherPort.connections.append(nodePortConnection)
         }
     }
+
 }
