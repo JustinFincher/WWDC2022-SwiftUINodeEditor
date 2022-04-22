@@ -83,7 +83,7 @@ struct NodeView: View, Identifiable {
                 .background(Color.green.opacity(0.3))
                 .mask(RoundedRectangle(cornerRadius: 6))
                 
-                if let customView = type(of: nodeData).getDefaultCustomRendering() {
+                if let customView = type(of: nodeData).getDefaultCustomRendering(node: nodeData) {
                     Text("CUSTOM VIEW")
                         .foregroundColor(Color.orange.opacity(0.8))
                         .font(.caption.bold().monospaced())

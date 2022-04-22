@@ -10,7 +10,6 @@ import Foundation
 
 class TriggerNode : NodeData {
     
-    
     class override func getDefaultTitle() -> String {
         "Trigger"
     }
@@ -21,17 +20,30 @@ class TriggerNode : NodeData {
         ]
     }
     
-    override class func getDefaultCustomRendering() -> AnyView? {
+    override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
+        return { nodeData in
+            let outPort : NodeControlPortData = nodeData.outControlPorts[0]
+            guard let outPortConnection = outPort.connections.first,
+                  let inPort : NodeControlPortData = outPortConnection.endPort as? NodeControlPortData else {
+                return
+            }
+            
+        }
+    }
+    
+    override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         AnyView(
             ZStack {
                 Button {
-                    
+                    if let node = node as? TriggerNode {
+                        node.perform()
+                    }
                 } label: {
                     Text("Click To Trigger")
                         .font(.body.monospaced())
                 }
-
-            }.frame(minWidth: 100, minHeight: 100, alignment: .center)
+                .buttonStyle(BorderedButtonStyle())
+            }.frame(minWidth: 100, alignment: .center)
         )
     }
 }

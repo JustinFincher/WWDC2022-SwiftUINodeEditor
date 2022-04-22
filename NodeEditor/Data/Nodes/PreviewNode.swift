@@ -10,7 +10,6 @@ import Foundation
 
 class PreviewNode : NodeData {
     
-    
     class override func getDefaultTitle() -> String {
         "Preview"
     }
@@ -21,7 +20,7 @@ class PreviewNode : NodeData {
         ]
     }
     
-    override class func getDefaultCustomRendering() -> AnyView? {
+    override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         AnyView(
             ZStack {
               Text("Empty")

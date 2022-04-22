@@ -63,9 +63,9 @@ class NodeCanvasData : ObservableObject {
             UpdateNode(nodeID: 2, canvasPosition: .init(x: 200, y: 300)),
             
             StartNode(nodeID: 3, canvasPosition: .init(x: 200, y: 150)),
-            IfNode(nodeID: 4, canvasPosition: .init(x: 560, y: 450)),
-            EqualNode(nodeID: 5, canvasPosition: .init(x: 300, y: 600)),
-            PrintNode(nodeID: 6, canvasPosition: .init(x: 700, y: 600)),
+            IfNode(nodeID: 4, canvasPosition: .init(x: 600, y: 450)),
+            EqualNode(nodeID: 5, canvasPosition: .init(x: 360, y: 600)),
+            PrintNode(nodeID: 6, canvasPosition: .init(x: 790, y: 600)),
             TriggerNode(nodeID: 7, canvasPosition: .init(x: 450, y: 150))
         ]
         
@@ -74,6 +74,7 @@ class NodeCanvasData : ObservableObject {
         self.nodes[5].outDataPorts[0].connectTo(anotherPort: self.nodes[4].inDataPorts[0])
         self.nodes[3].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
         self.nodes[4].outControlPorts[1].connectTo(anotherPort: self.nodes[6].inControlPorts[0])
+        self.nodes[7].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
         
         
         return self

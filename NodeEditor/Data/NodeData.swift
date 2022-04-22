@@ -11,18 +11,21 @@ import Combine
 import SwiftUI
 
 protocol NodeProtocol : ObservableObject {
+    associatedtype BaseImpType where BaseImpType : NodeProtocol
     func perform() -> Void
-    static func getDefaultPerformImplementation() -> (() -> ())
+    static func getDefaultPerformImplementation() -> ((_ node: BaseImpType) -> ())
     static func getDefaultExposedToUser() -> Bool
     static func getDefaultTitle() -> String
     static func getDefaultControlInPorts() -> [NodeControlPortData]
     static func getDefaultControlOutPorts() -> [NodeControlPortData]
     static func getDefaultDataInPorts() -> [NodeDataPortData]
     static func getDefaultDataOutPorts() -> [NodeDataPortData]
-    static func getDefaultCustomRendering() -> AnyView?
+    static func getDefaultCustomRendering(node: BaseImpType) -> AnyView?
 }
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
+    
+    typealias BaseImpType = NodeData
     
     
     static func == (lhs: NodeData, rhs: NodeData) -> Bool {
@@ -66,16 +69,24 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         return []
     }
     
-    class func getDefaultCustomRendering() -> AnyView? {
+    class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         nil
     }
     
-    class func getDefaultPerformImplementation() -> (() -> ()) {
-        return {}
+    class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
+        return { nodeData in
+            
+        }
     }
     
     func perform() {
-        type(of: self).getDefaultPerformImplementation()()
+        print("Node \(self.nodeID) \(self.title) perform()")
+        
+        // first, prepare all data inputs
+        // then, feed data inputs to default perform imp
+        // default perform imp should fill data outputs
+        // default perform imp should call perform() of out control ports
+        type(of: self).getDefaultPerformImplementation()(self)
     }
     
     class func getDefaultExposedToUser() -> Bool {
