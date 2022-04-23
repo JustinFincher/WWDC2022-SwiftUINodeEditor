@@ -19,14 +19,17 @@ class AddNode : NodeData {
     }
     
     override func perform() {
-        guard let port1 = self.inDataPorts[safe: 0],
-           let port2 = self.inDataPorts[safe: 1] else {
+        guard let inDataPort1 = self.inDataPorts[safe: 0],
+           let inDataPort2 = self.inDataPorts[safe: 1],
+        let outControlPort1 = self.outControlPorts[safe: 0] else {
             return
         }
         
-        if let additionInt = port1.value as? Int, let oldValueInt = port2.value as? Int {
-            port1.value = oldValueInt + additionInt
+        if let additionInt = inDataPort1.value as? Int, let oldValueInt = inDataPort2.value as? Int {
+            inDataPort1.value = oldValueInt + additionInt
         }
+        
+        outControlPort1.connections[safe: 0]?.endPort?.nodeData?.perform()
     }
     
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {

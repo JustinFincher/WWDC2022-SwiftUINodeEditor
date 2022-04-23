@@ -92,6 +92,26 @@ class NodeCanvasData : ObservableObject {
     func withTestConfig3() -> NodeCanvasData {
         self.nodes = [
             TriggerNode(nodeID: 0, canvasPosition: .init(x: 180, y: 180)),
+//            BoolNode(nodeID: 1, canvasPosition: .init(x: 200, y: 400)),
+//            SetValueNode(nodeID: 2, canvasPosition: .init(x: 700, y: 480)),
+//            WhileNode(nodeID: 3, canvasPosition: .init(x: 500, y: 200)),
+//            PrintNode(nodeID: 4, canvasPosition: .init(x: 450, y: 650)),
+        ]
+//
+//        self.nodes[0].outControlPorts[0].connectTo(anotherPort: self.nodes[3].inControlPorts[0])
+//        self.nodes[3].outControlPorts[0].connectTo(anotherPort: self.nodes[2].inControlPorts[0])
+//        self.nodes[2].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
+//
+//        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[3].inDataPorts[0])
+//        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[2].inDataPorts[0])
+//        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[4].inDataPorts[0])
+        
+        return self
+    }
+    
+    func withTestConfig4() -> NodeCanvasData {
+        self.nodes = [
+            TriggerNode(nodeID: 0, canvasPosition: .init(x: 180, y: 180)),
             BoolNode(nodeID: 1, canvasPosition: .init(x: 200, y: 400)),
             SetValueNode(nodeID: 2, canvasPosition: .init(x: 700, y: 480)),
             WhileNode(nodeID: 3, canvasPosition: .init(x: 500, y: 200)),
