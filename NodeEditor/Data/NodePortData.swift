@@ -17,7 +17,7 @@ protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
     func icon() -> Image
     func color() -> Color
     func nodePortDescription() -> String
-    func connectionChangedHandler() -> Void
+    func syncPortFromConnection() -> Void
 }
 
 enum NodePortDirection : String {
@@ -39,7 +39,7 @@ class NodePortData : NodePortProtocol {
             })
         }
         didSet{
-            connectionChangedHandler()
+            syncPortFromConnection()
         }
     }
     @Published private var childWillChange: Void = ()
@@ -89,7 +89,7 @@ class NodePortData : NodePortProtocol {
         hasher.combine(connections)
     }
     
-    func connectionChangedHandler() {
+    func syncPortFromConnection() {
         
     }
     
@@ -215,8 +215,8 @@ class NodeDataPortData : NodePortData {
         }
     }
     
-    override func connectionChangedHandler() {
-        print("\(nodePortDescription()) connectionChangedHandler(empty: \(connections.isEmpty) direction: \(direction)")
+    override func syncPortFromConnection() {
+        print("\(nodePortDescription()) syncPortFromConnection(empty: \(connections.isEmpty) direction: \(direction)")
         // sync
         if !connections.isEmpty && direction == .input {
             // sync from output ports

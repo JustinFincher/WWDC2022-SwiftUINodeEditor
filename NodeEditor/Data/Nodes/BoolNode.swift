@@ -8,6 +8,10 @@
 import SwiftUI
 import Foundation
 
+class BooleanContainer {
+    
+}
+
 class BoolNode : NodeData {
     
     class override func getDefaultTitle() -> String {
@@ -23,7 +27,7 @@ class BoolNode : NodeData {
     override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         AnyView(
             ZStack {
-                Toggle("Initial Value", isOn: .init(get: {
+                Toggle("Value", isOn: .init(get: {
                     if let boolean = node.outDataPorts[safe: 0]?.nodePortValue as? Bool {
                         return boolean
                     } else {

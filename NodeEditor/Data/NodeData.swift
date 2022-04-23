@@ -86,7 +86,7 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     func syncDataPorts() {
         self.inDataPorts.forEach { inDataPort in
-            inDataPort.nodePortValue = inDataPort.connections.isEmpty ? nil : inDataPort.connections[0].startPort?.nodePortValue
+            inDataPort.syncPortFromConnection()
         }
     }
     

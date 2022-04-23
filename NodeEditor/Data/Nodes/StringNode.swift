@@ -23,7 +23,7 @@ class StringNode : NodeData {
     override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         AnyView(
             ZStack {
-                TextField("Initial Value", text: .init(get: {
+                TextField("Value", text: .init(get: {
                     if let string = node.outDataPorts[0].nodePortValue as? String {
                         return string
                     } else {

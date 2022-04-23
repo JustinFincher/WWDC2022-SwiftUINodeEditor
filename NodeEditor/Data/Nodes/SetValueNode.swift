@@ -13,6 +13,11 @@ class SetValueNode : NodeData {
     class override func getDefaultTitle() -> String {
         "SetValue"
     }
+    
+    override func perform() {
+        
+    }
+    
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return [
             NodeDataPortData(portID: 0, name: "Target", direction: .input),

@@ -89,6 +89,14 @@ struct NodeView: View, Identifiable {
                     .font(.caption.bold().monospaced())
                 customView
             }
+            
+            if environment.debugMode {
+                Text("DEBUG VIEW")
+                    .foregroundColor(Color.pink.opacity(0.8))
+                    .font(.caption.bold().monospaced())
+                Text("ID \(nodeData.nodeID)")
+                    .font(.footnote.monospaced())
+            }
         }
         .contentShape(RoundedRectangle(cornerRadius: 8))
         .conditionalModifier(!demoMode && environment.useContextMenuOnNodes, transform: { view in
