@@ -16,7 +16,7 @@ class GetTimeNode : NodeData {
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
         return { nodeData in
-            nodeData.outDataPorts[0].nodePortValue = Date.now
+            nodeData.outDataPorts[0].value = Date.now
         }
     }
     

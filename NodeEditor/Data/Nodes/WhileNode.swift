@@ -14,7 +14,7 @@ class WhileNode : NodeData {
     }
     
     class func getEvalRes(nodeData : NodeData) -> Bool {
-        if let value = nodeData.inDataPorts[safe: 0]?.nodePortValue as? Bool {
+        if let value = nodeData.inDataPorts[safe: 0]?.value as? Bool {
             return value == true
         } else {
             return false

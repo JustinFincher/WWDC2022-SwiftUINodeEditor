@@ -24,13 +24,13 @@ class StringNode : NodeData {
         AnyView(
             ZStack {
                 TextField("Value", text: .init(get: {
-                    if let string = node.outDataPorts[0].nodePortValue as? String {
+                    if let string = node.outDataPorts[0].value as? String {
                         return string
                     } else {
                         return ""
                     }
                 }, set: { newString in
-                    node.outDataPorts[0].nodePortValue = newString
+                    node.outDataPorts[0].value = newString
                 }))
                 .font(.body.monospaced())
                 .textFieldStyle(RoundedBorderTextFieldStyle())

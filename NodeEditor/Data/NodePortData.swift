@@ -17,7 +17,6 @@ protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
     func icon() -> Image
     func color() -> Color
     func nodePortDescription() -> String
-    func syncPortFromConnection() -> Void
 }
 
 enum NodePortDirection : String {
@@ -38,16 +37,8 @@ class NodePortData : NodePortProtocol {
                 connection.objectWillChange.assign(to: &$childWillChange)
             })
         }
-        didSet{
-            syncPortFromConnection()
-        }
     }
     @Published private var childWillChange: Void = ()
-    @Published var nodePortValue : Any? = nil {
-        willSet {
-            print("\(nodePortDescription()) value willSet \(String(describing: nodePortValue)) -> \(String(describing: newValue))")
-        }
-    }
     
     weak var nodeData : NodeData?
     
@@ -66,12 +57,6 @@ class NodePortData : NodePortProtocol {
         self.init(portID: portID, direction: direction)
         self.name = name
     }
-    
-    convenience init(portID: Int, name: String, direction: NodePortDirection, defaultValue : Any?) {
-        self.init(portID: portID, direction: direction)
-        self.name = name
-        self.nodePortValue = defaultValue
-    }
        
     static func == (lhs: NodePortData, rhs: NodePortData) -> Bool {
         return lhs.portID == rhs.portID
@@ -87,10 +72,6 @@ class NodePortData : NodePortProtocol {
         hasher.combine(name)
         hasher.combine(canvasRect)
         hasher.combine(connections)
-    }
-    
-    func syncPortFromConnection() {
-        
     }
     
     func icon() -> Image {
@@ -169,6 +150,39 @@ class NodeControlPortData : NodePortData {
 // Data flow
 class NodeDataPortData : NodePortData {
     
+    class func getDefaultValue() -> Any? {
+        return {}
+    }
+    
+    class func getDefaultValueType() -> Any {
+        return Void.self
+    }
+    
+    private var _value : Any?
+    var value : Any? {
+        get {
+            if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
+                return remote.value
+            } else {
+                return _value
+            }
+        }
+        set {
+            if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
+                remote.value = newValue
+            }
+            else {
+                _value = newValue
+            }
+            self.objectWillChange.send()
+        }
+    }
+    
+    required init(portID: Int, direction: NodePortDirection) {
+        _value = type(of: self).getDefaultValue()
+        super.init(portID: portID, direction: direction)
+    }
+    
     override func icon() -> Image {
         return Image(systemName: "circlebadge.fill")
     }
@@ -212,15 +226,6 @@ class NodeDataPortData : NodePortData {
                 nodePortConnection = NodePortConnectionData(startPort: anotherPort, endPort: self)
             }
             nodePortConnection.connect()
-        }
-    }
-    
-    override func syncPortFromConnection() {
-        print("\(nodePortDescription()) syncPortFromConnection(empty: \(connections.isEmpty) direction: \(direction)")
-        // sync
-        if !connections.isEmpty && direction == .input {
-            // sync from output ports
-            nodePortValue = connections[safe: 0]?.startPort?.nodePortValue
         }
     }
 

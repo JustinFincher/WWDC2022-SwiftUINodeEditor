@@ -15,7 +15,9 @@ class SetValueNode : NodeData {
     }
     
     override func perform() {
-        
+        if let newValue = self.inDataPorts[safe: 1]?.value {
+            self.inDataPorts[safe: 0]?.value = newValue
+        }
     }
     
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {
@@ -40,7 +42,7 @@ class SetValueNode : NodeData {
     override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         AnyView(
             VStack {
-                Text("\(node.inDataPorts[safe: 0]?.nodePortValue.debugDescription ?? "nil")")
+                Text("\(node.inDataPorts[safe: 0]?.value.debugDescription ?? "nil")")
             }.frame(minWidth: 100, maxWidth: 200, alignment: .center)
                 .font(.body.monospaced())
         )

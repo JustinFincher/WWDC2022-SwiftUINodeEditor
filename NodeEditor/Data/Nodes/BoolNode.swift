@@ -20,7 +20,7 @@ class BoolNode : NodeData {
     
     override class func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            NodeDataPortData(portID: 0, name: "Value", direction: .output, defaultValue: false)
+            NodeDataPortData(portID: 0, name: "Value", direction: .output)
         ]
     }
     
@@ -28,13 +28,13 @@ class BoolNode : NodeData {
         AnyView(
             ZStack {
                 Toggle("Value", isOn: .init(get: {
-                    if let boolean = node.outDataPorts[safe: 0]?.nodePortValue as? Bool {
+                    if let boolean = node.outDataPorts[safe: 0]?.value as? Bool {
                         return boolean
                     } else {
                         return false
                     }
                 }, set: { newValue in
-                    node.outDataPorts[safe: 0]?.nodePortValue = newValue
+                    node.outDataPorts[safe: 0]?.value = newValue
                 }))
                 .font(.body.monospaced())
             }.frame(minWidth: 100, maxWidth: 200, alignment: .center)

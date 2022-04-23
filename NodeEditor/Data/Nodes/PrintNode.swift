@@ -34,7 +34,7 @@ class PrintNode : NodeData {
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
         return { nodeData in
-            if let value = nodeData.inDataPorts[0].nodePortValue {
+            if let value = nodeData.inDataPorts[0].value {
                 print(value)
             }
         }

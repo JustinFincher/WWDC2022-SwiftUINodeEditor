@@ -84,17 +84,8 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         "Node \(type(of: self)) \(self.nodeID) (\(self.title))"
     }
     
-    func syncDataPorts() {
-        self.inDataPorts.forEach { inDataPort in
-            inDataPort.syncPortFromConnection()
-        }
-    }
-    
     func perform() {
         print("\(nodeDescription()) perform()")
-        // first, update all input data nodes from connections
-        syncDataPorts()
-        // second, call perform imp, where output data nodes are updated, and perform next control nodes
         type(of: self).getDefaultPerformImplementation()(self)
     }
     
@@ -118,7 +109,7 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     }
     
     func getDataPortValue(nodePortData : NodeDataPortData) -> Any? {
-        return nodePortData.nodePortValue
+        return nodePortData.value
     }
     
     class func getDefaultExposedToUser() -> Bool {

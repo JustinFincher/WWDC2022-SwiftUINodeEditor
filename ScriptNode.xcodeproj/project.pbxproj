@@ -31,6 +31,7 @@
 		0D8E36AF28137B4B00611D10 /* WhileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AE28137B4B00611D10 /* WhileNode.swift */; };
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36B32813837700611D10 /* BoolNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B22813837700611D10 /* BoolNode.swift */; };
+		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		0D8E36AE28137B4B00611D10 /* WhileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhileNode.swift; sourceTree = "<group>"; };
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36B22813837700611D10 /* BoolNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolNode.swift; sourceTree = "<group>"; };
+		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0D43ADA5280D5DED00601308 /* NodeData.swift */,
 				0DE8809328103896008C70C0 /* NodePortData.swift */,
 				0DE8809128103862008C70C0 /* NodePortConnectionData.swift */,
+				0D8E36BD281415CE00611D10 /* NodePorts */,
 				0DEBE6C7280EE1D3008D82DB /* Nodes */,
 			);
 			path = Data;
@@ -203,6 +206,14 @@
 				0D32FFBC281029300068C52F /* Control */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0D8E36BD281415CE00611D10 /* NodePorts */ = {
+			isa = PBXGroup;
+			children = (
+				0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */,
+			);
+			path = NodePorts;
 			sourceTree = "<group>";
 		};
 		0D8E6A55280AAC100071A4D5 = {
@@ -349,6 +360,7 @@
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
 				0D92A6602811659B00EA9F1E /* EqualNode.swift in Sources */,
+				0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */,
 				0D92A65C2811527200EA9F1E /* PrintNode.swift in Sources */,
 				0DE8809428103896008C70C0 /* NodePortData.swift in Sources */,
 				0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */,
