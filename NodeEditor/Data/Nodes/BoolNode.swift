@@ -14,6 +14,10 @@ class BooleanContainer {
 
 class BoolNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Variable"
+    }
+    
     class override func getDefaultTitle() -> String {
         "Boolean"
     }
@@ -37,7 +41,7 @@ class BoolNode : NodeData {
                     node.outDataPorts[safe: 0]?.value = newValue
                 }))
                 .font(.body.monospaced())
-            }.frame(minWidth: 100, maxWidth: 200, alignment: .center)
+            }.frame(minWidth: 80, maxWidth: 120, alignment: .center)
         )
     }
 }

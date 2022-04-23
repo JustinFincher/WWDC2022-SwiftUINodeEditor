@@ -9,6 +9,9 @@ import Foundation
 
 class PrintNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Debug"
+    }
     
     class override func getDefaultTitle() -> String {
         "Print"

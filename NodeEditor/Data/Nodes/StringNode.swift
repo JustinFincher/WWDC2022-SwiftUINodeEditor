@@ -10,6 +10,10 @@ import Foundation
 
 class StringNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Variable"
+    }
+    
     class override func getDefaultTitle() -> String {
         "String"
     }
@@ -32,10 +36,11 @@ class StringNode : NodeData {
                 }, set: { newString in
                     node.outDataPorts[0].value = newString
                 }))
+                .lineLimit(nil)
                 .font(.body.monospaced())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .contentShape(Rectangle())
-            }.frame(minWidth: 100, maxWidth: 200, alignment: .center)
+            }.frame(minWidth: 80, maxWidth: 120, alignment: .center)
         )
     }
 }

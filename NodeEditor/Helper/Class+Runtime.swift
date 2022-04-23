@@ -23,3 +23,13 @@ public func subclasses<T>(of theClass: T) -> [T] {
 public func address(of object: Any?) -> UnsafeMutableRawPointer{
     return Unmanaged.passUnretained(object as AnyObject).toOpaque()
 }
+
+
+//String+Identifiable
+
+extension String: Identifiable {
+    public typealias ID = Int
+    public var id: Int {
+        return hash
+    }
+}

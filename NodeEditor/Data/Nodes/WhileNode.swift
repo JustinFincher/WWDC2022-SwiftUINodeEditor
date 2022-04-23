@@ -9,6 +9,10 @@ import Foundation
 
 class WhileNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Control Flow"
+    }
+    
     class override func getDefaultTitle() -> String {
         "While"
     }

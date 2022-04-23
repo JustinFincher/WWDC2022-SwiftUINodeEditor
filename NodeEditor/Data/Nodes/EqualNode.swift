@@ -8,6 +8,9 @@
 import Foundation
 class EqualNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Operator"
+    }
     
     class override func getDefaultTitle() -> String {
         "Equal"

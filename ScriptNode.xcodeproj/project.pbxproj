@@ -32,6 +32,7 @@
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36B32813837700611D10 /* BoolNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B22813837700611D10 /* BoolNode.swift */; };
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
+		0D8E36BF28141BF900611D10 /* AddNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BE28141BF900611D10 /* AddNode.swift */; };
 		0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36B22813837700611D10 /* BoolNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolNode.swift; sourceTree = "<group>"; };
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
+		0D8E36BE28141BF900611D10 /* AddNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNode.swift; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				0D8E36A82813564500611D10 /* SceneNode.swift */,
 				0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */,
 				0D8E36AE28137B4B00611D10 /* WhileNode.swift */,
+				0D8E36BE28141BF900611D10 /* AddNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D92A6662812193D00EA9F1E /* PreviewNode.swift in Sources */,
 				0D8E36B32813837700611D10 /* BoolNode.swift in Sources */,
+				0D8E36BF28141BF900611D10 /* AddNode.swift in Sources */,
 				0D92A66C2812740800EA9F1E /* SetValueNode.swift in Sources */,
 				0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,

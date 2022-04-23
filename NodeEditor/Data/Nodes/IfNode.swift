@@ -9,6 +9,9 @@ import Foundation
 
 class IfNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Control Flow"
+    }
     
     class override func getDefaultTitle() -> String {
         "If"
@@ -28,9 +31,8 @@ class IfNode : NodeData {
     
     class override func getDefaultControlOutPorts() -> [NodeControlPortData] {
         return [
-            NodeControlPortData(portID: 0, name: "", direction: .output),
-            NodeControlPortData(portID: 1, name: "True", direction: .output),
-            NodeControlPortData(portID: 2, name: "False", direction: .output)
+            NodeControlPortData(portID: 0, name: "True", direction: .output),
+            NodeControlPortData(portID: 1, name: "False", direction: .output)
         ]
     }
     

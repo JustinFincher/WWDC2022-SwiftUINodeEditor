@@ -10,6 +10,10 @@ import Foundation
 
 class TriggerNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Event"
+    }
+    
     class override func getDefaultTitle() -> String {
         "Trigger"
     }

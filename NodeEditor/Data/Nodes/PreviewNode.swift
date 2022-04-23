@@ -10,6 +10,10 @@ import Foundation
 
 class PreviewNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Debug"
+    }
+    
     class override func getDefaultTitle() -> String {
         "Preview"
     }
@@ -17,6 +21,18 @@ class PreviewNode : NodeData {
     class override func getDefaultDataInPorts() -> [NodeDataPortData] {
         return [
             NodeDataPortData(portID: 0, name: "Object", direction: .input)
+        ]
+    }
+    
+    class override func getDefaultControlOutPorts() -> [NodeControlPortData] {
+        return [
+            NodeControlPortData(portID: 0, name: "", direction: .output)
+        ]
+    }
+    
+    override class func getDefaultControlInPorts() -> [NodeControlPortData] {
+        return [
+            NodeControlPortData(portID: 0, name: "", direction: .input)
         ]
     }
     
