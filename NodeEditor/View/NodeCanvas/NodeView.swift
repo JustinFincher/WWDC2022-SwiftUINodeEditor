@@ -116,7 +116,7 @@ struct NodeView: View, Identifiable {
         })
         .padding(.all, 8)
         .background(
-            Color.clear.background(Material.ultraThin)
+            Material.ultraThin
         )
         .mask {
             RoundedRectangle(cornerRadius: 8)
