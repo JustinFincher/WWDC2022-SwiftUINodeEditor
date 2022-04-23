@@ -56,27 +56,44 @@ class NodeCanvasData : ObservableObject {
         }.max() ?? -1) + 1
     }
     
-    func withTestConfig() -> NodeCanvasData {
+    func withTestConfig1() -> NodeCanvasData {
         self.nodes = [
-            IntNode(nodeID: 0, canvasPosition: .init(x: 100, y: 450)),
-            IntNode(nodeID: 1, canvasPosition: .init(x: 100, y: 600)),
-            UpdateNode(nodeID: 2, canvasPosition: .init(x: 200, y: 300)),
-            
-            StartNode(nodeID: 3, canvasPosition: .init(x: 200, y: 150)),
-            IfNode(nodeID: 4, canvasPosition: .init(x: 600, y: 450)),
-            EqualNode(nodeID: 5, canvasPosition: .init(x: 360, y: 600)),
-            PrintNode(nodeID: 6, canvasPosition: .init(x: 790, y: 600)),
-            TriggerNode(nodeID: 7, canvasPosition: .init(x: 450, y: 150))
+            UpdateNode(nodeID: 0, canvasPosition: .init(x: 200, y: 300)),
+            StartNode(nodeID: 1, canvasPosition: .init(x: 200, y: 150)),
+            PrintNode(nodeID: 2, canvasPosition: .init(x: 1000, y: 560)),
+            TriggerNode(nodeID: 3, canvasPosition: .init(x: 450, y: 150)),
+            StringNode(nodeID: 4, canvasPosition: .init(x: 740, y: 600))
         ]
         
-        self.nodes[0].outDataPorts[0].connectTo(anotherPort: self.nodes[5].inDataPorts[0])
-        self.nodes[1].outDataPorts[0].connectTo(anotherPort: self.nodes[5].inDataPorts[1])
-        self.nodes[5].outDataPorts[0].connectTo(anotherPort: self.nodes[4].inDataPorts[0])
-        self.nodes[3].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
-        self.nodes[4].outControlPorts[1].connectTo(anotherPort: self.nodes[6].inControlPorts[0])
-        self.nodes[7].outControlPorts[0].connectTo(anotherPort: self.nodes[4].inControlPorts[0])
+        
+        self.nodes[4].outDataPorts[0].connectTo(anotherPort: self.nodes[2].inDataPorts[0])
+        self.nodes[3].outControlPorts[0].connectTo(anotherPort: self.nodes[2].inControlPorts[0])
+        self.nodes[1].outControlPorts[0].connectTo(anotherPort: self.nodes[2].inControlPorts[0])
         
         
+        return self
+    }
+    
+    func withTestConfig2() -> NodeCanvasData {
+        self.nodes = [
+            StartNode(nodeID: 0, canvasPosition: .init(x: 150, y: 150)),
+            UpdateNode(nodeID: 1, canvasPosition: .init(x: 150, y: 300)),
+            SceneNode(nodeID: 2, canvasPosition: .init(x: 420, y: 180)),
+            PreviewNode(nodeID: 3, canvasPosition: .init(x: 800, y: 250))
+        ]
+        
+        self.nodes[0].outControlPorts[0].connectTo(anotherPort: self.nodes[2].inControlPorts[0])
+        self.nodes[2].outDataPorts[0].connectTo(anotherPort: self.nodes[3].inDataPorts[0])
+        
+        
+        return self
+    }
+    
+    func withTestConfig3() -> NodeCanvasData {
+        self.nodes = [
+            BoolNode(nodeID: 1, canvasPosition: .init(x: 300, y: 400)),
+            SetValueNode(nodeID: 2, canvasPosition: .init(x: 500, y: 200))
+        ]
         return self
     }
 }

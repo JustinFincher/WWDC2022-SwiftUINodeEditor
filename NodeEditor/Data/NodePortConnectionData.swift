@@ -42,6 +42,17 @@ class NodePortConnectionData : ObservableObject, Identifiable, Equatable, Hashab
         return endPort?.canvasRect.toCenter() ?? endPosIfPortNull
     }
     
+    
+    init(startPort: NodePortData?, endPort: NodePortData?) {
+        self.startPort = startPort
+        self.endPort = endPort
+    }
+    
+    func connect() {
+        startPort?.connections.append(self)
+        endPort?.connections.append(self)
+    }
+    
     // get the port that is not connected
     var getPendingPortDirection : NodePortDirection? {
         if startPort == nil {

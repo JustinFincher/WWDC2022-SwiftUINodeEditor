@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NodeCanvasNavigationView: View {
-    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData().withTestConfig()
+    @ObservedObject var nodeCanvasData : NodeCanvasData = NodeCanvasData().withTestConfig3()
     @EnvironmentObject var environment : Environment
     
     var body: some View {

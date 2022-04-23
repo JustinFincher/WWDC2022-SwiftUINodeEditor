@@ -25,6 +25,12 @@
 		0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD9F280D4D4D00601308 /* Environment.swift */; };
 		0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA3280D5D1400601308 /* NodeView.swift */; };
 		0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA5280D5DED00601308 /* NodeData.swift */; };
+		0D8E36A92813564500611D10 /* SceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36A82813564500611D10 /* SceneNode.swift */; };
+		0D8E36AB281359E400611D10 /* StringNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AA281359E400611D10 /* StringNode.swift */; };
+		0D8E36AD28137A5D00611D10 /* GetTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */; };
+		0D8E36AF28137B4B00611D10 /* WhileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AE28137B4B00611D10 /* WhileNode.swift */; };
+		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
+		0D8E36B32813837700611D10 /* BoolNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B22813837700611D10 /* BoolNode.swift */; };
 		0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -69,6 +75,12 @@
 		0D43AD9F280D4D4D00601308 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0D43ADA3280D5D1400601308 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		0D43ADA5280D5DED00601308 /* NodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeData.swift; sourceTree = "<group>"; };
+		0D8E36A82813564500611D10 /* SceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneNode.swift; sourceTree = "<group>"; };
+		0D8E36AA281359E400611D10 /* StringNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNode.swift; sourceTree = "<group>"; };
+		0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeNode.swift; sourceTree = "<group>"; };
+		0D8E36AE28137B4B00611D10 /* WhileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhileNode.swift; sourceTree = "<group>"; };
+		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
+		0D8E36B22813837700611D10 /* BoolNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolNode.swift; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +182,7 @@
 				0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */,
 				0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */,
 				0D92A66328117B0C00EA9F1E /* SwiftUI+Conditional.swift */,
+				0D8E36B0281380A100611D10 /* Collection+Nil.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -241,10 +254,15 @@
 				0D92A65928114F4600EA9F1E /* IfNode.swift */,
 				0D92A65B2811527200EA9F1E /* PrintNode.swift */,
 				0D92A65F2811659B00EA9F1E /* EqualNode.swift */,
+				0D8E36AA281359E400611D10 /* StringNode.swift */,
+				0D8E36B22813837700611D10 /* BoolNode.swift */,
 				0D92A6692812697D00EA9F1E /* RandomNode.swift */,
 				0D92A66728121B2100EA9F1E /* TriggerNode.swift */,
 				0D92A6652812193D00EA9F1E /* PreviewNode.swift */,
 				0D92A66B2812740800EA9F1E /* SetValueNode.swift */,
+				0D8E36A82813564500611D10 /* SceneNode.swift */,
+				0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */,
+				0D8E36AE28137B4B00611D10 /* WhileNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -327,6 +345,7 @@
 				0D92A66428117B0C00EA9F1E /* SwiftUI+Conditional.swift in Sources */,
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
 				0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */,
+				0D8E36AD28137A5D00611D10 /* GetTimeNode.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
 				0D92A6602811659B00EA9F1E /* EqualNode.swift in Sources */,
@@ -338,18 +357,23 @@
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0DE8809228103862008C70C0 /* NodePortConnectionData.swift in Sources */,
 				0DE88090281033A4008C70C0 /* NodeSpawnListView.swift in Sources */,
+				0D8E36A92813564500611D10 /* SceneNode.swift in Sources */,
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
 				0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */,
+				0D8E36AF28137B4B00611D10 /* WhileNode.swift in Sources */,
 				0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */,
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D92A6662812193D00EA9F1E /* PreviewNode.swift in Sources */,
+				0D8E36B32813837700611D10 /* BoolNode.swift in Sources */,
 				0D92A66C2812740800EA9F1E /* SetValueNode.swift in Sources */,
 				0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
+				0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */,
 				0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */,
 				0D92A6622811759000EA9F1E /* NodeAddSelectionView.swift in Sources */,
+				0D8E36AB281359E400611D10 /* StringNode.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
 				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,

@@ -44,13 +44,13 @@ struct NodePortView: View {
                             
                             if self.nodePortData.canConnect() {
                                 // can connect
-                                let newConnection = NodePortConnectionData()
+                                let newConnection : NodePortConnectionData
                                 
                                 // new connection with basic setup
                                 if self.nodePortData.direction == .output {
-                                    newConnection.startPort = self.nodePortData
+                                    newConnection = NodePortConnectionData(startPort: self.nodePortData, endPort: nil)
                                 } else {
-                                    newConnection.endPort = self.nodePortData
+                                    newConnection = NodePortConnectionData(startPort: nil, endPort: self.nodePortData)
                                 }
                                 nodeCanvasData.pendingConnections.append(newConnection)
                                 holdingConnection = newConnection

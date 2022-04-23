@@ -13,6 +13,7 @@ import SwiftUI
 protocol NodeProtocol : ObservableObject {
     associatedtype BaseImpType where BaseImpType : NodeProtocol
     func perform() -> Void
+    func nodeDescription() -> String
     static func getDefaultPerformImplementation() -> ((_ node: BaseImpType) -> ())
     static func getDefaultExposedToUser() -> Bool
     static func getDefaultTitle() -> String
@@ -79,21 +80,26 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         }
     }
     
-    // only used when there is control flow
-    let performDataPortOutputResult : [Int : AnyObject?] = [:]
+    func nodeDescription() -> String {
+        "Node \(type(of: self)) \(self.nodeID) (\(self.title))"
+    }
+    
+    func syncDataPorts() {
+        self.inDataPorts.forEach { inDataPort in
+            inDataPort.nodePortValue = inDataPort.connections.isEmpty ? nil : inDataPort.connections[0].startPort?.nodePortValue
+        }
+    }
     
     func perform() {
-        print("Node \(self.nodeID) \(self.title) perform()")
-        
-        // first, prepare all data inputs
-        // then, feed data inputs to default perform imp
-        // default perform imp should fill data outputs
-        // default perform imp should call perform() of out control ports
+        print("\(nodeDescription()) perform()")
+        // first, update all input data nodes from connections
+        syncDataPorts()
+        // second, call perform imp, where output data nodes are updated, and perform next control nodes
         type(of: self).getDefaultPerformImplementation()(self)
     }
     
     
-    func getDataPortValue(direction : NodePortDirection, portID: Int) -> AnyObject? {
+    func getDataPortValue(direction : NodePortDirection, portID: Int) -> Any? {
         var nodePortData : NodeDataPortData?
         if direction == .input {
             nodePortData = inDataPorts.filter({ port in
@@ -111,15 +117,8 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         }
     }
     
-    func getDataPortValue(nodePortData : NodeDataPortData) -> AnyObject? {
-        if (nodePortData.direction == .input) {
-            // follow connection, get output of previous node
-            
-        } else {
-            
-        }
-        
-        return nil
+    func getDataPortValue(nodePortData : NodeDataPortData) -> Any? {
+        return nodePortData.nodePortValue
     }
     
     class func getDefaultExposedToUser() -> Bool {
