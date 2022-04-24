@@ -20,7 +20,7 @@ class VectorNode : NodeData {
     
     class override func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            NodeDataPortData(portID: 0, direction: .output, name: "Result", defaultValue: CGVector.zero)
+            GKVectorNodeDataPort(portID: 0, name: "Result", direction: .output)
         ]
     }
     

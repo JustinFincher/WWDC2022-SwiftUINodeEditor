@@ -26,7 +26,7 @@ struct NodeCanvasNavigationView: View {
                         .layoutPriority(0)
                 }
                 NodeCanvasTitleIndicatorView(title: "Editor", indicating: indicating, childView: NodeCanvasView())
-                    .layoutPriority(2)
+                    .layoutPriority(1.2)
                 if environment.toggleLivePanel {
                     NodeCanvasTitleIndicatorView(title: "Live", indicating: indicating, childView:NodeCanvasLiveView())
                         .layoutPriority(1)

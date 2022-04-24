@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */; };
-		0D2382D72814CC4600EE7438 /* YelloBird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0D2382D62814CC4600EE7438 /* YelloBird.atlas */; };
 		0D2382D92814D09300EE7438 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D82814D09300EE7438 /* PageManager.swift */; };
 		0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */; };
 		0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB0281001400068C52F /* SettingsNavigationView.swift */; };
-		0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */; };
 		0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */; };
 		0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */; };
 		0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB82810261C0068C52F /* PreferenceManager.swift */; };
@@ -34,6 +32,7 @@
 		0D59A20C281525AF001342FE /* SpriteViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A20B281525AF001342FE /* SpriteViewWrapper.swift */; };
 		0D59A20F28153BD0001342FE /* NodePageDataChapterOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */; };
 		0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */; };
+		0D59A219281572C9001342FE /* GKVectorNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A218281572C9001342FE /* GKVectorNodeDataPort.swift */; };
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C02814AF4900611D10 /* GetTouchNode.swift */; };
@@ -42,9 +41,6 @@
 		0D8E36C92814C41C00611D10 /* NodeCanvasDocView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */; };
 		0D8E36CB2814C5E100611D10 /* NodePageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36CA2814C5E100611D10 /* NodePageData.swift */; };
 		0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36CD2814C7B600611D10 /* FlappyBird.sks */; };
-		0D8E36D82814C92400611D10 /* background-day.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36D72814C92400611D10 /* background-day.png */; };
-		0D8E36DB2814C9EF00611D10 /* base.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36D92814C9EF00611D10 /* base.png */; };
-		0D8E36DC2814C9EF00611D10 /* background-night.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36DA2814C9EF00611D10 /* background-night.png */; };
 		0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -62,11 +58,9 @@
 
 /* Begin PBXFileReference section */
 		0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioNode.swift; sourceTree = "<group>"; };
-		0D2382D62814CC4600EE7438 /* YelloBird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YelloBird.atlas; sourceTree = "<group>"; };
 		0D2382D82814D09300EE7438 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Hashable.swift"; sourceTree = "<group>"; };
 		0D32FFB0281001400068C52F /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
-		0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasHierarchyView.swift; sourceTree = "<group>"; };
 		0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasMinimapView.swift; sourceTree = "<group>"; };
 		0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SwiftUI.swift"; sourceTree = "<group>"; };
 		0D32FFB82810261C0068C52F /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
@@ -89,6 +83,7 @@
 		0D59A20B281525AF001342FE /* SpriteViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewWrapper.swift; sourceTree = "<group>"; };
 		0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterOne.swift; sourceTree = "<group>"; };
 		0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeNodeDataPort.swift; sourceTree = "<group>"; };
+		0D59A218281572C9001342FE /* GKVectorNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKVectorNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36C02814AF4900611D10 /* GetTouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTouchNode.swift; sourceTree = "<group>"; };
@@ -97,9 +92,6 @@
 		0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasDocView.swift; sourceTree = "<group>"; };
 		0D8E36CA2814C5E100611D10 /* NodePageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageData.swift; sourceTree = "<group>"; };
 		0D8E36CD2814C7B600611D10 /* FlappyBird.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FlappyBird.sks; sourceTree = "<group>"; };
-		0D8E36D72814C92400611D10 /* background-day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-day.png"; sourceTree = "<group>"; };
-		0D8E36D92814C9EF00611D10 /* base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = base.png; sourceTree = "<group>"; };
-		0D8E36DA2814C9EF00611D10 /* background-night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-night.png"; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
-				0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */,
 				0D8E36C42814BC4400611D10 /* NodeCanvasLiveView.swift */,
 				0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */,
 				0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */,
@@ -243,6 +234,7 @@
 			children = (
 				0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */,
 				0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */,
+				0D59A218281572C9001342FE /* GKVectorNodeDataPort.swift */,
 			);
 			path = NodePorts;
 			sourceTree = "<group>";
@@ -250,11 +242,7 @@
 		0D8E36CC2814C7A000611D10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0D2382D62814CC4600EE7438 /* YelloBird.atlas */,
 				0D8E36CD2814C7B600611D10 /* FlappyBird.sks */,
-				0D8E36D72814C92400611D10 /* background-day.png */,
-				0D8E36DA2814C9EF00611D10 /* background-night.png */,
-				0D8E36D92814C9EF00611D10 /* base.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -372,11 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D8E36D82814C92400611D10 /* background-day.png in Resources */,
-				0D8E36DB2814C9EF00611D10 /* base.png in Resources */,
-				0D8E36DC2814C9EF00611D10 /* background-night.png in Resources */,
 				0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */,
-				0D2382D72814CC4600EE7438 /* YelloBird.atlas in Resources */,
 				0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */,
 				0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */,
 			);
@@ -390,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E36C52814BC4400611D10 /* NodeCanvasLiveView.swift in Sources */,
+				0D59A219281572C9001342FE /* GKVectorNodeDataPort.swift in Sources */,
 				0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */,
 				0D59A2052814DC15001342FE /* BirdNode.swift in Sources */,
 				0D8E36C72814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift in Sources */,
@@ -431,7 +416,6 @@
 				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,
 				0D59A2092814DF7B001342FE /* VectorNode.swift in Sources */,
-				0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */,
 				0D59A20C281525AF001342FE /* SpriteViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

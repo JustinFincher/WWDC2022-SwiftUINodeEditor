@@ -16,6 +16,8 @@ struct SettingsNavigationView: View {
             List {
                 Toggle("Use Context Menu On Nodes", isOn: $environment.useContextMenuOnNodes)
                     .font(.body.monospaced())
+                Toggle("Provide Hint On Node Connections", isOn: $environment.provideConnectionHint)
+                    .font(.body.monospaced())
                 Toggle("Debug Mode", isOn: $environment.debugMode)
                     .font(.body.monospaced())
             }

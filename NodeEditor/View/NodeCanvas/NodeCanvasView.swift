@@ -10,6 +10,7 @@ import UIKit
 
 struct NodeCanvasView: View {
     
+    @EnvironmentObject var environment : Environment
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     @State var showAddNodePopover : Bool = false
     @State var popoverPosition : CGPoint = .zero
@@ -100,7 +101,55 @@ struct NodeCanvasView: View {
                                 unstablePath.addCurve(to: endPos,
                                               controlPoint1: controlPoint1,
                                               controlPoint2: controlPoint2)
-                                context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
+                                
+                                
+                                if environment.provideConnectionHint {
+                                    let pendingDirection = nodePortConnectionData.getPendingPortDirection
+                                    let existingPort = pendingDirection == .input ? nodePortConnectionData.startPort : nodePortConnectionData.endPort
+                                    let pendingPos = pendingDirection == .input ? endPos : startPos
+                                    var portBeneath : NodePortData?
+                                    nodeCanvasData.nodes.forEach { nodeData in
+                                        nodeData.inPorts.forEach { portData in
+                                            if portData.canvasRect.contains(pendingPos) {
+                                                portBeneath = portData
+                                            }
+                                        }
+                                        nodeData.outPorts.forEach { portData in
+                                            if portData.canvasRect.contains(pendingPos) {
+                                                portBeneath = portData
+                                            }
+                                        }
+                                    }
+                                    if let portBeneath = portBeneath, let existingPort = existingPort {
+                                        let bubblePath = Path { path in
+                                            path.move(to: pendingPos)
+                                            path.addLine(to: pendingPos + .init(x: 30, y: -30))
+                                            path.addLine(to: pendingPos + .init(x: 100, y: -30))
+                                            path.addLine(to: pendingPos + .init(x: 100, y: -100))
+                                            path.addLine(to: pendingPos + .init(x: -100, y: -100))
+                                            path.addLine(to: pendingPos + .init(x: -100, y: -30))
+                                            path.addLine(to: pendingPos + .init(x: -30, y: -30))
+                                        }
+                                        switch portBeneath.canConnectTo(anotherPort: existingPort) {
+                                        case .can:
+                                            context.fill(bubblePath, with: .color(existingPort.color()))
+                                            let textPadding = 8.0
+                                            context.draw(Text("Release To Connect").font(.footnote.monospaced()), in: .init(origin: .init(x: pendingPos.x - 100 + textPadding, y: pendingPos.y - 100 + textPadding), size: .init(width: 200 - textPadding * 2, height: 70 - textPadding * 2)))
+                                            context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
+                                            break
+                                        case .cannot(let reason):
+                                            context.fill(bubblePath, with: .color(.red))
+                                            let textPadding = 8.0
+                                            context.draw(Text("\(reason)").font(.footnote.monospaced()), in: .init(origin: .init(x: pendingPos.x - 100 + textPadding, y: pendingPos.y - 100 + textPadding), size: .init(width: 200 - textPadding * 2, height: 70 - textPadding * 2)))
+                                            context.stroke(.init(unstablePath.cgPath), with: .color(.red), lineWidth: 4)
+                                            break
+                                        }
+                                    } else {
+                                        context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
+                                    }
+                                } else {
+                                    context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
+                                }
                             }
                             
                         }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import SpriteKit
- 
+
 class NodePageDataChapterOne : NodePageData {
     
     override func reset() {
@@ -28,11 +28,15 @@ class NodePageDataChapterOne : NodePageData {
         )
         
         let newScene = SKScene(fileNamed: "FlappyBird") ?? SKScene()
-        let birdAtlas = SKTextureAtlas(named: "YelloBird.atlas")
+        
+        let birdAtlas = SKTextureAtlas(dictionary: ["downflap": UIImage(named: "yellowbird-downflap.png") as Any,
+                                                    "midflap": UIImage(named: "yellowbird-midflap.png") as Any,
+                                                    "upflap": UIImage(named: "yellowbird-upflap.png") as Any])
+        
         let birdFlyFrames: [SKTexture] = [
-          birdAtlas.textureNamed("yellowbird-downflap"),
-          birdAtlas.textureNamed("yellowbird-midflap"),
-          birdAtlas.textureNamed("yellowbird-upflap")
+            birdAtlas.textureNamed("downflap"),
+            birdAtlas.textureNamed("midflap"),
+            birdAtlas.textureNamed("upflap")
         ]
         bird = SKSpriteNode(texture: birdFlyFrames[0])
         bird.position = .zero
@@ -41,7 +45,7 @@ class NodePageDataChapterOne : NodePageData {
                              timePerFrame: 0.2,
                              resize: false,
                              restore: true)),
-            withKey:"birdFlyAtlas")
+                 withKey:"birdFlyAtlas")
         bird.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 20))
         bird.physicsBody?.mass = 0.2
         newScene.addChild(bird)

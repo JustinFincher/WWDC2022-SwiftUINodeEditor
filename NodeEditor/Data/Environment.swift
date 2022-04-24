@@ -12,7 +12,7 @@ import SwiftUI
 class Environment : ObservableObject {
     
     
-    @UserDefault(key: "useContextMenuOnNodes", defaultValue: false)
+    @UserDefault(key: "useContextMenuOnNodes", defaultValue: true)
     var useContextMenuOnNodes: Bool
     @UserDefault(key: "enableBlurEffectOnNodes", defaultValue: true)
     var enableBlurEffectOnNodes: Bool
@@ -20,10 +20,12 @@ class Environment : ObservableObject {
     var debugMode: Bool
     @UserDefault(key: "toggleNodeListPanel", defaultValue: false)
     var toggleNodeListPanel: Bool
-    @UserDefault(key: "toggleLivePanel", defaultValue: false)
+    @UserDefault(key: "toggleLivePanel", defaultValue: true)
     var toggleLivePanel: Bool
-    @UserDefault(key: "toggleDocPanel", defaultValue: false)
+    @UserDefault(key: "toggleDocPanel", defaultValue: true)
     var toggleDocPanel: Bool
+    @UserDefault(key: "provideConnectionHint", defaultValue: true)
+    var provideConnectionHint: Bool
     
     private var notificationSubscription: AnyCancellable?
     init() {

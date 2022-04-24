@@ -176,7 +176,7 @@ class NodeDataPortData : NodePortData {
         get {
             if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
                 return remote.value
-            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+            } else if let _valueGetter = _valueGetter, let _ = _valueSetter {
                 return _valueGetter() // for get from outside
             } else {
                 return _value
@@ -185,7 +185,7 @@ class NodeDataPortData : NodePortData {
         set {
             if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
                 remote.value = newValue
-            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+            } else if let _ = _valueGetter, let _valueSetter = _valueSetter {
                 _valueSetter(newValue) // for set from outside
             } else {
                 _value = newValue
