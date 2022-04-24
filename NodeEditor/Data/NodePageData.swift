@@ -40,7 +40,7 @@ class NodePageData : ObservableObject
                              resize: false,
                              restore: true)),
             withKey:"birdFlyAtlas")
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: 12)
+        bird.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 20))
         bird.physicsBody?.mass = 0.2
         liveScene.addChild(bird)
         

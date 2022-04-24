@@ -15,9 +15,9 @@ class BirdNode : NodeData {
     
     override class func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            NodeDataPortData(portID: 0, direction: .output, name: "",defaultValueGetter: {
+            NodeDataPortData(portID: 0, direction: .output, name: "", defaultValueGetter: {
                 return PageManager.shared.nodePageData.bird
-            })
+            }, defaultValueSetter: { _ in })
         ]
     }
     

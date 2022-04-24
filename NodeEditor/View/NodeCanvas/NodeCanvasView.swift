@@ -100,20 +100,7 @@ struct NodeCanvasView: View {
                                 unstablePath.addCurve(to: endPos,
                                               controlPoint1: controlPoint1,
                                               controlPoint2: controlPoint2)
-                                var colors : [Color] = []
-                                if nodePortConnectionData.getPendingPortDirection == .output {
-                                    colors.append(Color.clear)
-                                    colors.append(nodePortConnectionData.color)
-                                    colors.append(nodePortConnectionData.color)
-                                } else if nodePortConnectionData.getPendingPortDirection == .input {
-                                    colors.append(nodePortConnectionData.color)
-                                    colors.append(nodePortConnectionData.color)
-                                    colors.append(Color.clear)
-                                } else {
-                                    colors.append(nodePortConnectionData.color)
-                                }
-                                context.stroke(.init(unstablePath.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
-                                                       
+                                context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
                             }
                             
                         }

@@ -159,13 +159,14 @@ class NodeDataPortData : NodePortData {
     }
     
     private var _value : Any?
-    private var _valueGetter : (() -> Any?)
+    private var _valueGetter : (() -> Any?)?
+    private var _valueSetter : ((Any?) -> ())?
     var value : Any? {
         get {
             if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
                 return remote.value
-            } else if let gotValue = _valueGetter() {
-                return gotValue
+            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+                return _valueGetter() // for get from outside
             } else {
                 return _value
             }
@@ -173,8 +174,9 @@ class NodeDataPortData : NodePortData {
         set {
             if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
                 remote.value = newValue
-            }
-            else {
+            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+                _valueSetter(newValue) // for set from outside
+            } else {
                 _value = newValue
             }
             self.objectWillChange.send()
@@ -187,10 +189,11 @@ class NodeDataPortData : NodePortData {
         super.init(portID: portID, direction: direction)
     }
     
-    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValueGetter: @escaping (() -> Any?)) {
+    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValueGetter: @escaping (() -> Any?), defaultValueSetter: @escaping ((Any?) -> ())) {
         self.init(portID: portID, direction: direction)
         self.name = name
         _valueGetter = defaultValueGetter
+        _valueSetter = defaultValueSetter
     }
     convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValue: Any) {
         self.init(portID: portID, direction: direction)
