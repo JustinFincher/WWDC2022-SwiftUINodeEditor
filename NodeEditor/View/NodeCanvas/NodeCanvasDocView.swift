@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct NodeCanvasDocView: View {
+    @EnvironmentObject var nodePageData : NodePageData
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     var body: some View {
-        List {
-            Text("Doc")
-        }
+        nodePageData.docView
                .frame(minWidth: 250,
                       idealWidth: 350,
                       maxWidth: .infinity,

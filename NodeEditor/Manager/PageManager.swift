@@ -16,7 +16,7 @@ class PageManager : BaseManager {
         return instance
     }
     
-    @ObservedObject var nodePageData : NodePageData = NodePageData()
+    @ObservedObject var nodePageData : NodePageData = NodePageDataChapterOne()
     
     
     override func setup() {

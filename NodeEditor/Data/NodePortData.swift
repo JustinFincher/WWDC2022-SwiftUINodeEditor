@@ -94,6 +94,17 @@ class NodePortData : NodePortProtocol {
         
     }
     
+    func destroy() {
+        connections.forEach { connectionData in
+            nodeData?.canvas?.pendingConnections.removeAll(where: { pendingConnection in
+                pendingConnection == connectionData
+            })
+            connectionData.destroy()
+        }
+        connections.removeAll()
+        nodeData = nil
+    }
+    
     func nodePortDescription() -> String {
         return "Port \(type(of: self)) \(nodeData?.nodeID ?? -1)-\(direction)-\(portID) (\(name))"
     }
@@ -246,5 +257,6 @@ class NodeDataPortData : NodePortData {
             nodePortConnection.connect()
         }
     }
+    
 
 }

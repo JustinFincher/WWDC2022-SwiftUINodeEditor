@@ -94,6 +94,11 @@ class NodePortConnectionData : ObservableObject, Identifiable, Equatable, Hashab
         isolate(portDirection: .output)
     }
     
+    func destroy() {
+        isolate()
+        disconnect()
+    }
+    
     var color : Color {
         let port = [startPort, endPort].compactMap { nodePortData in
             nodePortData

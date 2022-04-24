@@ -9,28 +9,30 @@ import SwiftUI
 import Foundation
 import SpriteKit
 
-class ApplyForceNode : NodeData {
+class ApplyImpulseNode : NodeData {
     
     override class func getDefaultCategory() -> String {
-        "Operator"
+        "Physics"
     }
     
     class override func getDefaultTitle() -> String {
         "Apply Force"
     }
     
-    override func perform() {
-        guard let inDataPort1 = self.inDataPorts[safe: 0],
-           let inDataPort2 = self.inDataPorts[safe: 1],
-        let outControlPort1 = self.outControlPorts[safe: 0] else {
-            return
-        }
-        if let spriteNode = inDataPort1.value as? SKSpriteNode, let vector = inDataPort2.value as? CGVector {
-            print("applyImpulse")
-            spriteNode.physicsBody?.applyImpulse(vector)
-        }
+    override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
+        return { nodeData in
+            guard let inDataPort1 = nodeData.inDataPorts[safe: 0],
+               let inDataPort2 = nodeData.inDataPorts[safe: 1],
+            let outControlPort1 = nodeData.outControlPorts[safe: 0] else {
+                return
+            }
+            if let spriteNode = inDataPort1.value as? SKSpriteNode, let vector = inDataPort2.value as? CGVector {
+                print("applyImpulse")
+                spriteNode.physicsBody?.applyImpulse(vector)
+            }
 
-        outControlPort1.connections[safe: 0]?.endPort?.nodeData?.perform()
+            outControlPort1.connections[safe: 0]?.endPort?.nodeData?.perform()
+        }
     }
     
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {

@@ -13,6 +13,7 @@ struct NodeCanvasToolbarView: View {
     @State private var showSettings = false
     @EnvironmentObject var nodePageData : NodePageData
     @EnvironmentObject var environment : Environment
+    @State private var showResetAlert = false
     
     var body: some View {
         ZStack (alignment: .bottom) {
@@ -20,27 +21,46 @@ struct NodeCanvasToolbarView: View {
             HStack(alignment: .center, spacing: 18) {
                 
                 ToggleButtonView(icon: .init(systemName: "square.stack.3d.up.fill"), state: $environment.toggleNodeListPanel)
-
-                Button {
-                    nodePageData.playing.toggle()
-                } label: {
-                    Image(systemName: nodePageData.playing ? "pause.fill" : "play.fill")
-                        .padding(.all, 8)
-                }
+                
                 
                 Button {
-
+                    showResetAlert = true
                 } label: {
-                    Image(systemName: "stop.fill")
+                    Image(systemName: "clock.arrow.circlepath")
                         .padding(.all, 8)
                 }
-                .disabled(!nodePageData.playing)
-                
+                .alert("Reset?", isPresented: $showResetAlert, actions: {
+                    Button(role: .destructive) {
+                        nodePageData.reset()
+                    } label: {
+                        Text("Confirm")
+                    }
+                    Button(role: .cancel) {
+                        showResetAlert = false
+                    } label: {
+                        Text("Cancel")
+                    }
+                    
+                }, message: {
+                    Text("The live scene and the node graph will be reset to its initial state")
+                })
+//                Button {
+//                    if nodePageData.playing {
+//                        nodePageData.playing = false
+//                        nodePageData.reset()
+//                    } else {
+//                        nodePageData.playing = true
+//                    }
+//                } label: {
+//                    Image(systemName: nodePageData.playing ? "stop.fill" : "play.fill")
+//                        .padding(.all, 8)
+//                }
+//
                 ToggleButtonView(icon: .init(systemName:"rectangle.lefthalf.inset.filled"), state: $environment.toggleDocPanel)
                 ToggleButtonView(icon: .init(systemName:"rectangle.righthalf.inset.filled"), state: $environment.toggleLivePanel)
-
+                
                 Divider()
-
+                
                 Button {
                     showSettings = true
                 } label: {

@@ -27,6 +27,7 @@ protocol NodeProtocol : ObservableObject {
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
+    
     typealias BaseImpType = NodeData
     
     
@@ -155,6 +156,8 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     @Published private var childWillChange: Void = ()
     
+    weak var canvas : NodeCanvasData?
+    
     var inPorts : [NodePortData] {
         return inDataPorts + inControlPorts
     }
@@ -185,20 +188,41 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         let _ = $childWillChange.sink { newVoid in
             self.objectWillChange.send()
         }
+        
+        postInit()
     }
     
-    convenience init(nodeID: Int, canvasPosition: CGPoint) {
-        self.init(nodeID: nodeID)
+    func destroy() {
+        inPorts.forEach { portData in
+            portData.destroy()
+        }
+        outPorts.forEach { portData in
+            portData.destroy()
+        }
+        inDataPorts.removeAll()
+        inControlPorts.removeAll()
+        outControlPorts.removeAll()
+        outDataPorts.removeAll()
+        canvas = nil
+    }
+    
+    func withCanvas(canvasData: NodeCanvasData) -> Self
+    {
+        self.canvas = canvasData
+        return self
+    }
+    
+    func withCanvasPosition(canvasPosition: CGPoint) -> Self
+    {
         self.canvasPosition = canvasPosition
+        return self
     }
     
-    convenience init(nodeID: Int, title: String) {
-        self.init(nodeID: nodeID)
-        self.title = title
+    func postInit() {
+        
     }
     
-    convenience init(nodeID: Int, title: String, canvasPosition: CGPoint) {
-        self.init(nodeID: nodeID, title: title)
-        self.canvasPosition = canvasPosition
+    deinit {
+        print("\(nodeDescription()) deinit")
     }
 }

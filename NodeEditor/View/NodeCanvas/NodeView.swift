@@ -22,11 +22,13 @@ struct NodeView: View, Identifiable {
         VStack(alignment: .leading, spacing: 2) {
             Text("\(nodeData.title)")
                 .font(.title3.monospaced())
+                .allowsHitTesting(false)
             
             if !nodeData.inControlPorts.isEmpty || !nodeData.outControlPorts.isEmpty {
                 Text("CONTROL FLOW")
                     .foregroundColor(Color.blue.opacity(0.8))
                     .font(.caption.bold().monospaced())
+                    .allowsHitTesting(false)
             }
             HStack(alignment: .top) {
                 if !nodeData.inControlPorts.isEmpty {
@@ -57,6 +59,7 @@ struct NodeView: View, Identifiable {
                 Text("DATA FLOW")
                     .foregroundColor(Color.green.opacity(0.8))
                     .font(.caption.bold().monospaced())
+                    .allowsHitTesting(false)
             }
             HStack(alignment: .top) {
                 if !nodeData.inDataPorts.isEmpty {
@@ -87,6 +90,7 @@ struct NodeView: View, Identifiable {
                 Text("CUSTOM VIEW")
                     .foregroundColor(Color.orange.opacity(0.8))
                     .font(.caption.bold().monospaced())
+                    .allowsHitTesting(false)
                 customView
             }
             
@@ -94,15 +98,16 @@ struct NodeView: View, Identifiable {
                 Text("DEBUG VIEW")
                     .foregroundColor(Color.pink.opacity(0.8))
                     .font(.caption.bold().monospaced())
+                    .allowsHitTesting(false)
                 Text("ID \(nodeData.nodeID)")
                     .font(.footnote.monospaced())
+                    .allowsHitTesting(false)
             }
         }
-        .contentShape(RoundedRectangle(cornerRadius: 8))
         .conditionalModifier(!demoMode && environment.useContextMenuOnNodes, transform: { view in
             view.contextMenu {
-                Button {
-                    
+                Button(role: .destructive) {
+                    nodeCanvasData.deleteNode(node: nodeData)
                 } label: {
                     Label {
                         Text("Delete")
@@ -116,7 +121,23 @@ struct NodeView: View, Identifiable {
         })
         .padding(.all, 8)
         .background(
-            Material.ultraThin
+            Color.clear
+                .background(Material.ultraThin)
+                .contentShape(RoundedRectangle(cornerRadius: 8))
+                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
+                    .onChanged { value in
+                        if !holding {
+                            savedOffset = nodeData.canvasPosition
+                            holding = true
+                        }
+                        nodeData.canvasPosition = savedOffset + value.translation.toPoint()
+                    }
+                    .onEnded { value in
+                        nodeData.canvasPosition = savedOffset + value.translation.toPoint()
+                        savedOffset = nodeData.canvasPosition
+                        holding = false
+                    }
+                )
         )
         .mask {
             RoundedRectangle(cornerRadius: 8)
@@ -132,28 +153,8 @@ struct NodeView: View, Identifiable {
         .conditionalModifier(!demoMode, transform: { view in
             view.position(nodeData.canvasPosition)
         })
-        .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .named("canvas"))
-            .onChanged { value in
-                if !holding {
-                    savedOffset = nodeData.canvasPosition
-                    holding = true
-                }
-                nodeData.canvasPosition = savedOffset + value.translation.toPoint()
-            }
-            .onEnded { value in
-                nodeData.canvasPosition = savedOffset + value.translation.toPoint()
-                savedOffset = nodeData.canvasPosition
-                holding = false
-            }
-        )
         .animation(.easeInOut, value: holding)
         .animation(.easeInOut, value: nodeData.canvasPosition)
     }
     
-}
-
-struct NodeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NodeView(nodeData: NodeData(nodeID: 0, title: "Test"))
-    }
 }

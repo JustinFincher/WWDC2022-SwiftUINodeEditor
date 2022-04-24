@@ -9,6 +9,10 @@ import Foundation
 
 class BirdNode : NodeData {
     
+    override class func getDefaultCategory() -> String {
+        "Actor"
+    }
+    
     class override func getDefaultTitle() -> String {
         "Bird"
     }
@@ -20,7 +24,4 @@ class BirdNode : NodeData {
             }, defaultValueSetter: { _ in })
         ]
     }
-    
-    
-    
 }
