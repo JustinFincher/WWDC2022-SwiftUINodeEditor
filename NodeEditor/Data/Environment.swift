@@ -18,8 +18,6 @@ class Environment : ObservableObject {
     var enableBlurEffectOnNodes: Bool
     @UserDefault(key: "debugMode", defaultValue: false)
     var debugMode: Bool
-    @UserDefault(key: "toggleNodeListPanel", defaultValue: false)
-    var toggleNodeListPanel: Bool
     @UserDefault(key: "toggleLivePanel", defaultValue: true)
     var toggleLivePanel: Bool
     @UserDefault(key: "toggleDocPanel", defaultValue: true)

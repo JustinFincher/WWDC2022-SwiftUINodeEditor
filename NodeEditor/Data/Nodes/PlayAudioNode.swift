@@ -14,7 +14,7 @@ class PlayAudioNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "PlayAudio"
+        "PlayAudio 🎵"
     }
     
     override class func getDefaultControlInPorts() -> [NodeControlPortData] {

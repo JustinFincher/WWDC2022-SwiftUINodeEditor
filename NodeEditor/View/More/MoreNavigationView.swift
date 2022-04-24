@@ -16,15 +16,27 @@ struct MoreNavigationView: View {
             List {
                 Section(content: {
                     Toggle("Use Context Menu On Nodes", isOn: $environment.useContextMenuOnNodes)
-                        .font(.body.monospaced())
                     Toggle("Provide Hint On Node Connections", isOn: $environment.provideConnectionHint)
-                        .font(.body.monospaced())
                     Toggle("Debug Mode", isOn: $environment.debugMode)
-                        .font(.body.monospaced())
                 }, header: {
                     Text("Settings")
                 })
+                
+                Section {
+                    Link("Haotian Zheng's Website", destination: URL(string: "https://haotianzheng.com")!)
+                    Text("Haotian Zheng is ")
+                } header: {
+                    Text("About")
+                }
+                
+                Section {
+                    
+                } header: {
+                    Text("Submission")
+                }
+
             }
+            .font(.body.monospaced())
             .navigationTitle("More")
         }
         .frame(minWidth: 200, idealWidth: 300, maxWidth: nil,

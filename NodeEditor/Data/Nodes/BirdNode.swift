@@ -14,7 +14,7 @@ class BirdNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Bird"
+        "Bird 🐦"
     }
     
     override class func getDefaultDataOutPorts() -> [NodeDataPortData] {

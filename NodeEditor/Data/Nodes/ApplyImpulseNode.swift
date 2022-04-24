@@ -16,7 +16,7 @@ class ApplyImpulseNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Apply Force"
+        "Apply Force ☄️"
     }
     
     override class func getDefaultUsage() -> String {

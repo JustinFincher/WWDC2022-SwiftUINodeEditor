@@ -15,7 +15,7 @@ class VectorNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Vector"
+        "Vector 🏹"
     }
     
     override class func getDefaultUsage() -> String {

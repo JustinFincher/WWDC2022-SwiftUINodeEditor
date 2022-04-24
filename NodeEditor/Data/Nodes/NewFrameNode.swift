@@ -1,20 +1,20 @@
 //
-//  GetTouchNode.swift
+//  NewFrameNode.swift
 //  ScriptNode
 //
-//  Created by fincher on 4/23/22.
+//  Created by fincher on 4/24/22.
 //
 
 import Foundation
 import Combine
 
-class GetTouchNode : NodeData {
+class NewFrameNode : NodeData {
     
     var anyCancellable : AnyCancellable?
     
     override func postInit() {
         super.postInit()
-        anyCancellable = NotificationCenter.default.publisher(for: Notification.Name(rawValue: "liveViewTapped"))
+        anyCancellable = NotificationCenter.default.publisher(for: Notification.Name(rawValue: "newFrameRendered"))
             .sink { notification in
                 self.perform()
             }
@@ -25,7 +25,7 @@ class GetTouchNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Get Touch ☝️"
+        "Rendered Frame 🎞"
     }
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {

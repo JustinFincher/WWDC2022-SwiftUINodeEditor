@@ -15,7 +15,7 @@ class TriggerNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Trigger"
+        "Trigger 🕹"
     }
     
     override class func getDefaultControlOutPorts() -> [NodeControlPortData] {

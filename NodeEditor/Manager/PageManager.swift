@@ -18,6 +18,11 @@ class PageManager : BaseManager {
     
     @ObservedObject var nodePageData : NodePageData = NodePageDataChapterOne()
     
+    var pages : [NodePageData.Type] = [
+        NodePageDataChapterZero.self,
+        NodePageDataChapterOne.self
+    ]
+    
     
     override func setup() {
         
