@@ -20,8 +20,10 @@ class Environment : ObservableObject {
     var debugMode: Bool
     @UserDefault(key: "toggleNodeListPanel", defaultValue: false)
     var toggleNodeListPanel: Bool
-    @UserDefault(key: "toggleNodeInspectionPanel", defaultValue: false)
-    var toggleNodeInspectionPanel: Bool
+    @UserDefault(key: "toggleLivePanel", defaultValue: false)
+    var toggleLivePanel: Bool
+    @UserDefault(key: "toggleDocPanel", defaultValue: false)
+    var toggleDocPanel: Bool
     
     private var notificationSubscription: AnyCancellable?
     init() {

@@ -14,6 +14,12 @@ class GetTouchNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "GetTouch"
+        "Get Touch"
+    }
+    
+    override class func getDefaultControlOutPorts() -> [NodeControlPortData] {
+        return [
+            NodeControlPortData(portID: 0, name: "", direction: .output)
+        ]
     }
 }

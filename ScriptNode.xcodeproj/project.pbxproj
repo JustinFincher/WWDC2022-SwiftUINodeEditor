@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */; };
+		0D2382D72814CC4600EE7438 /* YelloBird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0D2382D62814CC4600EE7438 /* YelloBird.atlas */; };
+		0D2382D92814D09300EE7438 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D82814D09300EE7438 /* PageManager.swift */; };
 		0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */; };
 		0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB0281001400068C52F /* SettingsNavigationView.swift */; };
 		0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */; };
@@ -25,6 +28,9 @@
 		0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43AD9F280D4D4D00601308 /* Environment.swift */; };
 		0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA3280D5D1400601308 /* NodeView.swift */; };
 		0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D43ADA5280D5DED00601308 /* NodeData.swift */; };
+		0D59A2052814DC15001342FE /* BirdNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2042814DC15001342FE /* BirdNode.swift */; };
+		0D59A2072814DD75001342FE /* ApplyForceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2062814DD75001342FE /* ApplyForceNode.swift */; };
+		0D59A2092814DF7B001342FE /* VectorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2082814DF7B001342FE /* VectorNode.swift */; };
 		0D8E36A92813564500611D10 /* SceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36A82813564500611D10 /* SceneNode.swift */; };
 		0D8E36AB281359E400611D10 /* StringNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AA281359E400611D10 /* StringNode.swift */; };
 		0D8E36AD28137A5D00611D10 /* GetTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */; };
@@ -34,6 +40,14 @@
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E36BF28141BF900611D10 /* AddNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BE28141BF900611D10 /* AddNode.swift */; };
 		0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C02814AF4900611D10 /* GetTouchNode.swift */; };
+		0D8E36C52814BC4400611D10 /* NodeCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C42814BC4400611D10 /* NodeCanvasLiveView.swift */; };
+		0D8E36C72814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C62814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift */; };
+		0D8E36C92814C41C00611D10 /* NodeCanvasDocView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */; };
+		0D8E36CB2814C5E100611D10 /* NodePageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36CA2814C5E100611D10 /* NodePageData.swift */; };
+		0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36CD2814C7B600611D10 /* FlappyBird.sks */; };
+		0D8E36D82814C92400611D10 /* background-day.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36D72814C92400611D10 /* background-day.png */; };
+		0D8E36DB2814C9EF00611D10 /* base.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36D92814C9EF00611D10 /* base.png */; };
+		0D8E36DC2814C9EF00611D10 /* background-night.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E36DA2814C9EF00611D10 /* background-night.png */; };
 		0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */; };
 		0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A65280AAC140071A4D5 /* Assets.xcassets */; };
 		0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E6A68280AAC140071A4D5 /* Preview Assets.xcassets */; };
@@ -55,10 +69,12 @@
 		0DE8809228103862008C70C0 /* NodePortConnectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8809128103862008C70C0 /* NodePortConnectionData.swift */; };
 		0DE8809428103896008C70C0 /* NodePortData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8809328103896008C70C0 /* NodePortData.swift */; };
 		0DEBE6C6280EE1CF008D82DB /* IntNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C5280EE1CF008D82DB /* IntNode.swift */; };
-		0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBE6C8280EE549008D82DB /* DummyNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioNode.swift; sourceTree = "<group>"; };
+		0D2382D62814CC4600EE7438 /* YelloBird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YelloBird.atlas; sourceTree = "<group>"; };
+		0D2382D82814D09300EE7438 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Hashable.swift"; sourceTree = "<group>"; };
 		0D32FFB0281001400068C52F /* SettingsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationView.swift; sourceTree = "<group>"; };
 		0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasHierarchyView.swift; sourceTree = "<group>"; };
@@ -78,6 +94,9 @@
 		0D43AD9F280D4D4D00601308 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0D43ADA3280D5D1400601308 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		0D43ADA5280D5DED00601308 /* NodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeData.swift; sourceTree = "<group>"; };
+		0D59A2042814DC15001342FE /* BirdNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdNode.swift; sourceTree = "<group>"; };
+		0D59A2062814DD75001342FE /* ApplyForceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyForceNode.swift; sourceTree = "<group>"; };
+		0D59A2082814DF7B001342FE /* VectorNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorNode.swift; sourceTree = "<group>"; };
 		0D8E36A82813564500611D10 /* SceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneNode.swift; sourceTree = "<group>"; };
 		0D8E36AA281359E400611D10 /* StringNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNode.swift; sourceTree = "<group>"; };
 		0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeNode.swift; sourceTree = "<group>"; };
@@ -87,6 +106,14 @@
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36BE28141BF900611D10 /* AddNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNode.swift; sourceTree = "<group>"; };
 		0D8E36C02814AF4900611D10 /* GetTouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTouchNode.swift; sourceTree = "<group>"; };
+		0D8E36C42814BC4400611D10 /* NodeCanvasLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasLiveView.swift; sourceTree = "<group>"; };
+		0D8E36C62814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasTitleIndicatorView.swift; sourceTree = "<group>"; };
+		0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCanvasDocView.swift; sourceTree = "<group>"; };
+		0D8E36CA2814C5E100611D10 /* NodePageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageData.swift; sourceTree = "<group>"; };
+		0D8E36CD2814C7B600611D10 /* FlappyBird.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FlappyBird.sks; sourceTree = "<group>"; };
+		0D8E36D72814C92400611D10 /* background-day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-day.png"; sourceTree = "<group>"; };
+		0D8E36D92814C9EF00611D10 /* base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = base.png; sourceTree = "<group>"; };
+		0D8E36DA2814C9EF00611D10 /* background-night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-night.png"; sourceTree = "<group>"; };
 		0D8E6A5E280AAC100071A4D5 /* WWDC2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E6A61280AAC100071A4D5 /* NodeEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeEditorApp.swift; sourceTree = "<group>"; };
 		0D8E6A65280AAC140071A4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +136,6 @@
 		0DE8809128103862008C70C0 /* NodePortConnectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortConnectionData.swift; sourceTree = "<group>"; };
 		0DE8809328103896008C70C0 /* NodePortData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePortData.swift; sourceTree = "<group>"; };
 		0DEBE6C5280EE1CF008D82DB /* IntNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNode.swift; sourceTree = "<group>"; };
-		0DEBE6C8280EE549008D82DB /* DummyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +162,8 @@
 			children = (
 				0D43AD90280CDC4400601308 /* NodeCanvasNavigationView.swift */,
 				0D32FFB228100C660068C52F /* NodeCanvasHierarchyView.swift */,
+				0D8E36C42814BC4400611D10 /* NodeCanvasLiveView.swift */,
+				0D8E36C82814C41C00611D10 /* NodeCanvasDocView.swift */,
 				0DE8808D28102C78008C70C0 /* NodeCanvasInspectionView.swift */,
 				0D43AD8D280CDAF900601308 /* NodeCanvasView.swift */,
 				0D32FFB4281024940068C52F /* NodeCanvasMinimapView.swift */,
@@ -144,6 +172,7 @@
 				0DE8808F281033A4008C70C0 /* NodeSpawnListView.swift */,
 				0DB6B081280EC738005D7080 /* NodeCanvasToolbarView.swift */,
 				0D92A6612811759000EA9F1E /* NodeAddSelectionView.swift */,
+				0D8E36C62814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift */,
 			);
 			path = NodeCanvas;
 			sourceTree = "<group>";
@@ -160,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				0D43AD9F280D4D4D00601308 /* Environment.swift */,
+				0D8E36CA2814C5E100611D10 /* NodePageData.swift */,
 				0D3B269B280ED29A0005280A /* NodeCanvasData.swift */,
 				0D43ADA5280D5DED00601308 /* NodeData.swift */,
 				0DE8809328103896008C70C0 /* NodePortData.swift */,
@@ -176,6 +206,7 @@
 				0D43AD97280CE2CE00601308 /* BaseManager.swift */,
 				0D43AD99280CE2E400601308 /* EnvironmentManager.swift */,
 				0D32FFB82810261C0068C52F /* PreferenceManager.swift */,
+				0D2382D82814D09300EE7438 /* PageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -220,6 +251,18 @@
 			path = NodePorts;
 			sourceTree = "<group>";
 		};
+		0D8E36CC2814C7A000611D10 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0D2382D62814CC4600EE7438 /* YelloBird.atlas */,
+				0D8E36CD2814C7B600611D10 /* FlappyBird.sks */,
+				0D8E36D72814C92400611D10 /* background-day.png */,
+				0D8E36DA2814C9EF00611D10 /* background-night.png */,
+				0D8E36D92814C9EF00611D10 /* base.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0D8E6A55280AAC100071A4D5 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +287,7 @@
 				0D43AD92280CE26C00601308 /* Data */,
 				0D43AD96280CE2AD00601308 /* View */,
 				0D43AD94280CE28C00601308 /* Helper */,
+				0D8E36CC2814C7A000611D10 /* Resources */,
 				0D43AD8F280CDBC900601308 /* NodeEditor.entitlements */,
 				0D8E6A65280AAC140071A4D5 /* Assets.xcassets */,
 				0D8E6A67280AAC140071A4D5 /* Preview Content */,
@@ -263,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0DEBE6C5280EE1CF008D82DB /* IntNode.swift */,
-				0DEBE6C8280EE549008D82DB /* DummyNode.swift */,
+				0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */,
 				0D92A657281144E000EA9F1E /* StartNode.swift */,
 				0D92A65D2811530400EA9F1E /* UpdateNode.swift */,
 				0D92A65928114F4600EA9F1E /* IfNode.swift */,
@@ -279,7 +323,10 @@
 				0D8E36AC28137A5D00611D10 /* GetTimeNode.swift */,
 				0D8E36AE28137B4B00611D10 /* WhileNode.swift */,
 				0D8E36BE28141BF900611D10 /* AddNode.swift */,
+				0D59A2082814DF7B001342FE /* VectorNode.swift */,
+				0D59A2062814DD75001342FE /* ApplyForceNode.swift */,
 				0D8E36C02814AF4900611D10 /* GetTouchNode.swift */,
+				0D59A2042814DC15001342FE /* BirdNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -342,8 +389,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8E36D82814C92400611D10 /* background-day.png in Resources */,
+				0D8E36DB2814C9EF00611D10 /* base.png in Resources */,
+				0D8E36DC2814C9EF00611D10 /* background-night.png in Resources */,
 				0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */,
+				0D2382D72814CC4600EE7438 /* YelloBird.atlas in Resources */,
 				0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */,
+				0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +406,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8E36C52814BC4400611D10 /* NodeCanvasLiveView.swift in Sources */,
 				0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */,
+				0D59A2052814DC15001342FE /* BirdNode.swift in Sources */,
+				0D8E36C72814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift in Sources */,
 				0D92A65E2811530400EA9F1E /* UpdateNode.swift in Sources */,
 				0D92A66828121B2100EA9F1E /* TriggerNode.swift in Sources */,
 				0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */,
@@ -363,6 +418,7 @@
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
 				0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */,
 				0D8E36AD28137A5D00611D10 /* GetTimeNode.swift in Sources */,
+				0D59A2072814DD75001342FE /* ApplyForceNode.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
 				0D92A6602811659B00EA9F1E /* EqualNode.swift in Sources */,
@@ -373,6 +429,7 @@
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
 				0D32FFB1281001400068C52F /* SettingsNavigationView.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
+				0D8E36CB2814C5E100611D10 /* NodePageData.swift in Sources */,
 				0DE8809228103862008C70C0 /* NodePortConnectionData.swift in Sources */,
 				0DE88090281033A4008C70C0 /* NodeSpawnListView.swift in Sources */,
 				0D8E36A92813564500611D10 /* SceneNode.swift in Sources */,
@@ -383,6 +440,7 @@
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D92A6662812193D00EA9F1E /* PreviewNode.swift in Sources */,
 				0D8E36B32813837700611D10 /* BoolNode.swift in Sources */,
+				0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */,
 				0D8E36BF28141BF900611D10 /* AddNode.swift in Sources */,
 				0D92A66C2812740800EA9F1E /* SetValueNode.swift in Sources */,
 				0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */,
@@ -391,15 +449,17 @@
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
 				0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */,
+				0D2382D92814D09300EE7438 /* PageManager.swift in Sources */,
+				0D8E36C92814C41C00611D10 /* NodeCanvasDocView.swift in Sources */,
 				0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */,
 				0D92A6622811759000EA9F1E /* NodeAddSelectionView.swift in Sources */,
 				0D8E36AB281359E400611D10 /* StringNode.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
 				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,
+				0D59A2092814DF7B001342FE /* VectorNode.swift in Sources */,
 				0D32FFB328100C660068C52F /* NodeCanvasHierarchyView.swift in Sources */,
 				0D92A65A28114F4600EA9F1E /* IfNode.swift in Sources */,
-				0DEBE6C9280EE549008D82DB /* DummyNode.swift in Sources */,
 				0D92A66A2812697D00EA9F1E /* RandomNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

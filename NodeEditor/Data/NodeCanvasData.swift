@@ -44,7 +44,7 @@ class NodeCanvasData : ObservableObject {
     }
     
     func addNode(newNodeType : NodeData.Type, position: CGPoint) -> NodeData {
-        var newNode = newNodeType.init(nodeID: getNextNodeID())
+        let newNode = newNodeType.init(nodeID: getNextNodeID())
         newNode.canvasPosition = position
         nodes.append(newNode)
         return newNode
@@ -92,10 +92,9 @@ class NodeCanvasData : ObservableObject {
     func withTestConfig3() -> NodeCanvasData {
         self.nodes = [
             TriggerNode(nodeID: 0, canvasPosition: .init(x: 180, y: 180)),
-//            BoolNode(nodeID: 1, canvasPosition: .init(x: 200, y: 400)),
-//            SetValueNode(nodeID: 2, canvasPosition: .init(x: 700, y: 480)),
-//            WhileNode(nodeID: 3, canvasPosition: .init(x: 500, y: 200)),
-//            PrintNode(nodeID: 4, canvasPosition: .init(x: 450, y: 650)),
+            BirdNode(nodeID: 1, canvasPosition: .init(x: 300, y: 180)),
+            ApplyForceNode(nodeID: 2, canvasPosition: .init(x: 400, y: 180)),
+            VectorNode(nodeID: 3, canvasPosition: .init(x: 400, y: 300))
         ]
 //
 //        self.nodes[0].outControlPorts[0].connectTo(anotherPort: self.nodes[3].inControlPorts[0])

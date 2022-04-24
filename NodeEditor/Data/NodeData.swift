@@ -94,7 +94,6 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         type(of: self).getDefaultPerformImplementation()(self)
     }
     
-    
     func getDataPortValue(direction : NodePortDirection, portID: Int) -> Any? {
         var nodePortData : NodeDataPortData?
         if direction == .input {

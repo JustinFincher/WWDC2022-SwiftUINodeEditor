@@ -144,6 +144,10 @@ struct NodeCanvasView: View {
         }
         
         .background(Color(UIColor.systemGroupedBackground))
+        .frame(minWidth: 300,
+               idealWidth: 500,
+               maxWidth: .infinity,
+           alignment: .top)
     }
 }
 

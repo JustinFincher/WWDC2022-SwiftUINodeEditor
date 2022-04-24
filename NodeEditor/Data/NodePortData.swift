@@ -159,10 +159,13 @@ class NodeDataPortData : NodePortData {
     }
     
     private var _value : Any?
+    private var _valueGetter : (() -> Any?)
     var value : Any? {
         get {
             if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
                 return remote.value
+            } else if let gotValue = _valueGetter() {
+                return gotValue
             } else {
                 return _value
             }
@@ -180,7 +183,19 @@ class NodeDataPortData : NodePortData {
     
     required init(portID: Int, direction: NodePortDirection) {
         _value = type(of: self).getDefaultValue()
+        _valueGetter = { return nil }
         super.init(portID: portID, direction: direction)
+    }
+    
+    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValueGetter: @escaping (() -> Any?)) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        _valueGetter = defaultValueGetter
+    }
+    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValue: Any) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        _value = defaultValue
     }
     
     override func icon() -> Image {
