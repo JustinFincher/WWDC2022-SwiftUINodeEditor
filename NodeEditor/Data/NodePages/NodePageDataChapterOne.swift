@@ -32,10 +32,10 @@ class NodePageDataChapterOne : NodePageData {
         super.reset()
         nodeCanvasData = NodeCanvasData()
         nodeCanvasData.nodes = [
-            GetTouchNode(nodeID: 0).withCanvasPosition(canvasPosition: .init(x: 120, y: 180)),
-            BirdNode(nodeID: 1).withCanvasPosition(canvasPosition: .init(x: 80, y: 360)),
-            ApplyImpulseNode(nodeID: 2).withCanvasPosition(canvasPosition: .init(x: 400, y: 200)),
-            VectorNode(nodeID: 3).withCanvasPosition(canvasPosition: .init(x: 250, y: 480))
+            GetTouchNode(nodeID: 0).withCanvasPosition(canvasPosition: .init(x: 120, y: 180)).withCanvas(canvasData: nodeCanvasData),
+            BirdNode(nodeID: 1).withCanvasPosition(canvasPosition: .init(x: 80, y: 360)).withCanvas(canvasData: nodeCanvasData),
+            ApplyImpulseNode(nodeID: 2).withCanvasPosition(canvasPosition: .init(x: 400, y: 200)).withCanvas(canvasData: nodeCanvasData),
+            VectorNode(nodeID: 3).withCanvasPosition(canvasPosition: .init(x: 250, y: 480)).withCanvas(canvasData: nodeCanvasData)
         ]
         
         docView = AnyView(
