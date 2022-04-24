@@ -57,6 +57,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
                     }
                     
                     Button {
+                        nodePageData.switchTo(index: 2)
                     } label: {
                         Label("Next Chapter", systemImage: "arrow.right")
                             .font(.body.monospaced())
@@ -94,6 +95,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
                              restore: true)),
                  withKey:"birdFlyAtlas")
         nodePageData.bird.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 20))
+        nodePageData.bird.physicsBody?.allowsRotation = false
         nodePageData.bird.physicsBody?.mass = 0.2
         
         
@@ -147,6 +149,8 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
     }
     
     func destroy(nodePageData : NodePageData) {
+        nodePageData.pipe.removeFromParent()
+        nodePageData.bird.removeFromParent()
         nodePageData.liveScene.removeAllChildren()
         nodePageData.nodeCanvasData.destroy()
     }

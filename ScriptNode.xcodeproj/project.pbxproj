@@ -38,6 +38,7 @@
 		0D59A21F28158DF9001342FE /* NewFrameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A21E28158DF9001342FE /* NewFrameNode.swift */; };
 		0D59A22128158F78001342FE /* NodePageDataChapterZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A22028158F78001342FE /* NodePageDataChapterZero.swift */; };
 		0D59A2232815926D001342FE /* NodePageDataChapterTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2222815926D001342FE /* NodePageDataChapterTwo.swift */; };
+		0D59A22A2815B808001342FE /* PipeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2292815B808001342FE /* PipeNode.swift */; };
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C02814AF4900611D10 /* GetTouchNode.swift */; };
@@ -93,6 +94,7 @@
 		0D59A21E28158DF9001342FE /* NewFrameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFrameNode.swift; sourceTree = "<group>"; };
 		0D59A22028158F78001342FE /* NodePageDataChapterZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterZero.swift; sourceTree = "<group>"; };
 		0D59A2222815926D001342FE /* NodePageDataChapterTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterTwo.swift; sourceTree = "<group>"; };
+		0D59A2292815B808001342FE /* PipeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeNode.swift; sourceTree = "<group>"; };
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36C02814AF4900611D10 /* GetTouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTouchNode.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				0D8E36C02814AF4900611D10 /* GetTouchNode.swift */,
 				0D59A21E28158DF9001342FE /* NewFrameNode.swift */,
 				0D59A2042814DC15001342FE /* BirdNode.swift */,
+				0D59A2292815B808001342FE /* PipeNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				0D59A2072814DD75001342FE /* ApplyImpulseNode.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */,
+				0D59A22A2815B808001342FE /* PipeNode.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
 				0D59A21D2815812F001342FE /* String+Identifiable.swift in Sources */,
 				0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */,

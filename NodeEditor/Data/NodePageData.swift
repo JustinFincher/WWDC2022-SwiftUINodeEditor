@@ -25,6 +25,7 @@ class NodePageData : ObservableObject
     @Published var liveScene : SKScene
     @Published var playing : Bool = true
     var bird : SKSpriteNode = SKSpriteNode()
+    var pipe : SKNode = SKNode()
     
     var modifier : NodePageDataProvider = NodePageDataProviderChapterOne()
     
@@ -55,6 +56,9 @@ class NodePageData : ObservableObject
             break
         case 1:
             modifier = NodePageDataProviderChapterOne()
+            break
+        case 2:
+            modifier = NodePageDataProviderChapterTwo()
             break
         default:
             break
