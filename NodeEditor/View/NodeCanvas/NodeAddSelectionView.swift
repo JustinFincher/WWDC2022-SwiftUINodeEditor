@@ -20,7 +20,7 @@ struct NodeCanvasAddNodePointView : View {
 }
 
 struct NodeAddSelectionView: View {
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @EnvironmentObject var pageManager : PageManager
     @Binding var showPopover : Bool
     @Binding var nodePosition : CGPoint
     @State private var nodeCategory : String = ""
@@ -53,7 +53,7 @@ struct NodeAddSelectionView: View {
                 ForEach(nodeListFor(category: nodeCategory)) { nodeData in
                     Button {
                         showPopover = false
-                        _ = nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
+                        _ = pageManager.nodePageData.nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
                     } label: {
                         HStack {
                             Text("\(nodeData.title)")

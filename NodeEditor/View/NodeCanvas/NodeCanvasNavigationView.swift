@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct NodeCanvasNavigationView: View {
-    @EnvironmentObject var nodePageData : NodePageData
+    @EnvironmentObject var pageManager : PageManager
     @EnvironmentObject var environment : Environment
     var indicating : Binding<Bool> = .init {
         let environment = EnvironmentManager.shared.environment

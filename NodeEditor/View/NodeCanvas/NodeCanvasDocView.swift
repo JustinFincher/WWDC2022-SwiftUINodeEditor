@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NodeCanvasDocView: View {
     @EnvironmentObject var pageManager : PageManager
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     var body: some View {
         pageManager.nodePageData.docView()

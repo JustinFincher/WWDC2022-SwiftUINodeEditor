@@ -17,7 +17,6 @@ class NodePageDataChapterZero : NodePageData {
     override func reset() {
         super.reset()
         print("NodePageDataChapterZero.reset")
-        nodeCanvasData = NodeCanvasData()
         nodeCanvasData.nodes = [
             
         ]

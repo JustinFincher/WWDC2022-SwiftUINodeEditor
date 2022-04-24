@@ -39,4 +39,9 @@ class GetTouchNode : NodeData {
             NodeControlPortData(portID: 0, name: "", direction: .output)
         ]
     }
+    
+    override func destroy() {
+        super.destroy()
+        anyCancellable?.cancel()
+    }
 }

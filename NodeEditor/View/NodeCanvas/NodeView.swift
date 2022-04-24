@@ -13,7 +13,7 @@ struct NodeView: View, Identifiable {
     @State var demoMode = false
     @State var holding = false
     @ObservedObject var nodeData : NodeData
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @EnvironmentObject var pageManager : PageManager
     @EnvironmentObject var environment : Environment
     
     @State private var savedOffset: CGPoint = .zero
@@ -134,7 +134,7 @@ struct NodeView: View, Identifiable {
                     Divider()
                 }
                 Button(role: .destructive) {
-                    nodeCanvasData.deleteNode(node: nodeData)
+                    pageManager.nodePageData.nodeCanvasData.deleteNode(node: nodeData)
                 } label: {
                     Label {
                         Text("Delete")

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NodeCanvasMinimapView: View {
     
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @EnvironmentObject var pageManager : PageManager
     
     var body: some View {
         
         ZStack(alignment: .topTrailing) {
             VStack {
                 Color.clear
-                    .aspectRatio(nodeCanvasData.canvasSize, contentMode: .fit)
+                    .aspectRatio(pageManager.nodePageData.nodeCanvasData.canvasSize, contentMode: .fit)
                 Divider()
                 Text("MINIMAP")
                     .font(.caption2.monospaced())

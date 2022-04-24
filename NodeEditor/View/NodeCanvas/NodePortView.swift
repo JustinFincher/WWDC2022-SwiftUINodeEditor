@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NodePortView: View {
     
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @EnvironmentObject var pageManager : PageManager
     @ObservedObject var nodePortData : NodePortData
     @State var holdingKnot : Bool = false
     @State var holdingConnection : NodePortConnectionData? = nil
@@ -52,13 +52,13 @@ struct NodePortView: View {
                                 } else {
                                     newConnection = NodePortConnectionData(startPort: nil, endPort: self.nodePortData)
                                 }
-                                nodeCanvasData.pendingConnections.append(newConnection)
+                                pageManager.nodePageData.nodeCanvasData.pendingConnections.append(newConnection)
                                 holdingConnection = newConnection
                             } else if let existingConnection = nodePortData.connections.first {
                                 // cannot connect, but if there is an existing line, disconnect that line
                                 existingConnection.isolate()
                                 existingConnection.disconnect(portDirection: nodePortData.direction)
-                                nodeCanvasData.pendingConnections.append(existingConnection)
+                                pageManager.nodePageData.nodeCanvasData.pendingConnections.append(existingConnection)
                                 holdingConnection = existingConnection
                             }
                         }
@@ -77,7 +77,7 @@ struct NodePortView: View {
                         holdingKnot = false
                         
                         if let pendingDirection = holdingConnection?.getPendingPortDirection,
-                           let portToConnectTo = nodeCanvasData.nodes.flatMap({ nodeData in
+                           let portToConnectTo = pageManager.nodePageData.nodeCanvasData.nodes.flatMap({ nodeData in
                                pendingDirection == .input ? nodeData.inPorts : nodeData.outPorts
                            }).filter({ nodePortData in
                                if case .can = nodePortData.canConnectTo(anotherPort: self.nodePortData) {
@@ -97,7 +97,7 @@ struct NodePortView: View {
                         }
                         
                         // remove pending connection
-                        nodeCanvasData.pendingConnections.removeAll { connection in
+                        pageManager.nodePageData.nodeCanvasData.pendingConnections.removeAll { connection in
                             connection == holdingConnection
                         }
                         holdingConnection = nil
