@@ -10,5 +10,3 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-class NodePageDataChapterTwo : NodePageData {
-}

@@ -9,20 +9,21 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-class NodePageDataChapterZero : NodePageData {
-    override func reset() {
-        super.reset()
-        nodeCanvasData = NodeCanvasData()
-        nodeCanvasData.nodes = [
+class NodePageDataProviderChapterZero : NodePageDataProvider
+{
+    func modifyCanvas(nodePageData : NodePageData) {
+        nodePageData.nodeCanvasData.nodes = [
             
         ]
-        
-        docView = AnyView(
+    }
+    
+    func modifyDocView(nodePageData : NodePageData) {
+        nodePageData.docView = AnyView(
             List {
                 Section {
                     Text("👾 How to make games with script node editor")
                         .font(.headline.monospaced())
-                    Text("🐦 Chapter 1 - Flappy Bird")
+                    Text("🐦 Chapter 0 - Node Editor?")
                         .font(.subheadline.monospaced())
                 } header: {
                     VStack(alignment: .leading) {
@@ -30,24 +31,13 @@ class NodePageDataChapterZero : NodePageData {
                         Text("TITLE")
                     }
                 }
-
                 
                 Section {
+                    
                     Button {
-                        self.cheat()
+                        nodePageData.switchTo(index: 1)
                     } label: {
-                        Label("See final results 🥳", systemImage: "checkmark")
-                            .font(.body.monospaced())
-                    }
-                } header: {
-                    Text("")
-                }
-
-                
-                Section {
-                    Button {
-                    } label: {
-                        Label("Next Chapter", systemImage: "checkmark")
+                        Label("Next Chapter", systemImage: "arrow.right")
                             .font(.body.monospaced())
                     }
                 } header: {
@@ -57,8 +47,23 @@ class NodePageDataChapterZero : NodePageData {
 
             }
         )
-        
+    }
+    
+    func modifyLiveScene(nodePageData : NodePageData) {
         let newScene = SKScene(fileNamed: "FlappyBird") ?? SKScene(size: .init(width: 375, height: 667))
+        
+        let birdAtlas = SKTextureAtlas(dictionary: ["downflap": UIImage(named: "yellowbird-downflap.png") as Any,
+                                                    "midflap": UIImage(named: "yellowbird-midflap.png") as Any,
+                                                    "upflap": UIImage(named: "yellowbird-upflap.png") as Any])
+        
+        let birdFlyFrames: [SKTexture] = [
+            birdAtlas.textureNamed("downflap"),
+            birdAtlas.textureNamed("midflap"),
+            birdAtlas.textureNamed("upflap")
+        ]
+        birdFlyFrames.forEach { texture in
+            texture.filteringMode = .nearest
+        }
         
         let cityTexture = SKTexture(imageNamed: "background-day")
         cityTexture.filteringMode = .nearest
@@ -78,12 +83,19 @@ class NodePageDataChapterZero : NodePageData {
         groundNode.physicsBody?.isDynamic = false
         groundNode.physicsBody?.allowsRotation = false
         
-        
-        
         newScene.addChild(cityNode)
         newScene.addChild(groundNode)
         newScene.scaleMode = .aspectFill
         
-        liveScene = newScene
+        nodePageData.liveScene = newScene
+    }
+    
+    func cheat(nodePageData : NodePageData) {
+        
+    }
+    
+    func destroy(nodePageData : NodePageData) {
+        nodePageData.liveScene.removeAllChildren()
+        nodePageData.nodeCanvasData.destroy()
     }
 }
