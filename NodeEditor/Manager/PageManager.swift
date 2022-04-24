@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class PageManager : BaseManager {
+class PageManager : BaseManager, ObservableObject {
     
     static let instance = PageManager()
     
@@ -16,13 +16,19 @@ class PageManager : BaseManager {
         return instance
     }
     
-    @ObservedObject var nodePageData : NodePageData = NodePageDataChapterOne()
+    @Published var nodePageData : NodePageData = NodePageDataChapterOne()
     
-    var pages : [NodePageData.Type] = [
-        NodePageDataChapterZero.self,
-        NodePageDataChapterOne.self
+    @State var pages : [NodePageDataProxy] = [
+        NodePageDataProxy(index: 0, type: NodePageDataChapterZero.self),
+        NodePageDataProxy(index: 1, type: NodePageDataChapterOne.self),
+        NodePageDataProxy(index: 2, type: NodePageDataChapterTwo.self)
     ]
     
+    func switchTo(type : NodePageData.Type) {
+        nodePageData.nodeCanvasData.destroy()
+        nodePageData = type.init()
+        objectWillChange.send()
+    }
     
     override func setup() {
         

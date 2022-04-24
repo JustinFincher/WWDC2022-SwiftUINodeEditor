@@ -11,7 +11,7 @@ import UIKit
 struct NodeCanvasView: View {
     
     @EnvironmentObject var environment : Environment
-    @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @EnvironmentObject var pageManager : PageManager
     @State var showAddNodePopover : Bool = false
     @State var popoverPosition : CGPoint = .zero
     
@@ -25,7 +25,7 @@ struct NodeCanvasView: View {
                         NodeCanvasAddNodePointView(popoverPosition: $popoverPosition, showPopover: $showAddNodePopover)
                             .position(popoverPosition)
                         
-                        Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
+                        Color.clear.frame(width: pageManager.nodePageData.nodeCanvasData.canvasSize.width, height: pageManager.nodePageData.nodeCanvasData.canvasSize.height, alignment: .center)
                             .contentShape(Rectangle())
                             .onTapGesture {
                                 // https://stackoverflow.com/questions/57700396/adding-a-drag-gesture-in-swiftui-to-a-view-inside-a-scrollview-blocks-the-scroll
@@ -42,7 +42,7 @@ struct NodeCanvasView: View {
                                     })
                             )
                         
-                        ForEach(nodeCanvasData.nodes) { nodeData in
+                        ForEach(pageManager.nodePageData.nodeCanvasData.nodes) { nodeData in
                             NodeView(nodeData: nodeData)
                         }
                         
@@ -50,7 +50,7 @@ struct NodeCanvasView: View {
                             
                             // stable lines
                             let stablePathForDataFlow = UIBezierPath()
-                            nodeCanvasData.nodes.flatMap({ nodeData in
+                            pageManager.nodePageData.nodeCanvasData.nodes.flatMap({ nodeData in
                                 nodeData.outDataPorts.flatMap { nodePortData in
                                     nodePortData.connections
                                 }
@@ -69,7 +69,7 @@ struct NodeCanvasView: View {
                             context.stroke(.init(stablePathForDataFlow.cgPath), with: .color(.green), lineWidth: 4)
                             
                             let stablePathForControlFlow = UIBezierPath()
-                            nodeCanvasData.nodes.flatMap({ nodeData in
+                            pageManager.nodePageData.nodeCanvasData.nodes.flatMap({ nodeData in
                                 nodeData.outControlPorts.flatMap { nodePortData in
                                     nodePortData.connections
                                 }
@@ -89,7 +89,7 @@ struct NodeCanvasView: View {
                             
                             
                             // pending lines
-                            nodeCanvasData.pendingConnections
+                            pageManager.nodePageData.nodeCanvasData.pendingConnections
                             .forEach { nodePortConnectionData in
                                 let unstablePath = UIBezierPath()
                                 let startPos = nodePortConnectionData.startPos
@@ -108,7 +108,7 @@ struct NodeCanvasView: View {
                                     let existingPort = pendingDirection == .input ? nodePortConnectionData.startPort : nodePortConnectionData.endPort
                                     let pendingPos = pendingDirection == .input ? endPos : startPos
                                     var portBeneath : NodePortData?
-                                    nodeCanvasData.nodes.forEach { nodeData in
+                                    pageManager.nodePageData.nodeCanvasData.nodes.forEach { nodeData in
                                         nodeData.inPorts.forEach { portData in
                                             if portData.canvasRect.contains(pendingPos) {
                                                 portBeneath = portData
@@ -164,10 +164,10 @@ struct NodeCanvasView: View {
                                 Text("Canvas Size \(proxy.size.width) × \(proxy.size.height)")
                                     .font(.subheadline.monospaced())
                                     .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
-                                Text("Node Count \(nodeCanvasData.nodes.count)")
+                                Text("Node Count \(pageManager.nodePageData.nodeCanvasData.nodes.count)")
                                     .font(.subheadline.monospaced())
                                     .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
-                                Text("Pending Connection Count \(nodeCanvasData.pendingConnections.count)")
+                                Text("Pending Connection Count \(pageManager.nodePageData.nodeCanvasData.pendingConnections.count)")
                                     .font(.subheadline.monospaced())
                                     .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
                             }

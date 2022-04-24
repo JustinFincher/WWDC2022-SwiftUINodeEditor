@@ -13,7 +13,7 @@ struct NodeCanvasToolbarView: View {
     @State private var showSettings = false
     @State private var showResetAlert = false
     @State private var showReadingProgress = false
-    @EnvironmentObject var nodePageData : NodePageData
+    @EnvironmentObject var pageManager : PageManager
     @EnvironmentObject var environment : Environment
     
     var body: some View {
@@ -29,12 +29,12 @@ struct NodeCanvasToolbarView: View {
                             Text("Currently Reading \(Image(systemName: "chevron.up"))")
                                 .font(.subheadline.monospaced())
                         }
-                        Text("Chapter 1")
+                        Text("\(type(of: pageManager.nodePageData).getTitle())")
                             .font(.caption.monospaced())
                     }.padding(.horizontal, 8)
                 }
                 .popover(isPresented: $showReadingProgress) {
-                    Text("")
+                    ChapterSelectionView()
                 }
                 
                 Divider()
@@ -47,7 +47,7 @@ struct NodeCanvasToolbarView: View {
                 }
                 .alert("Reset?", isPresented: $showResetAlert, actions: {
                     Button(role: .destructive) {
-                        nodePageData.reset()
+                        pageManager.nodePageData.reset()
                     } label: {
                         Text("Confirm")
                     }

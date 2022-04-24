@@ -9,7 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct NodeCanvasNavigationView: View {
-    @ObservedObject var nodePageData : NodePageData = PageManager.shared.nodePageData
+    @EnvironmentObject var nodePageData : NodePageData
     @EnvironmentObject var environment : Environment
     var indicating : Binding<Bool> = .init {
         let environment = EnvironmentManager.shared.environment
@@ -37,8 +37,6 @@ struct NodeCanvasNavigationView: View {
         }
         .animation(.easeInOut, value: environment.toggleDocPanel)
         .animation(.easeInOut, value: environment.toggleLivePanel)
-        .environmentObject(nodePageData)
-        .environmentObject(nodePageData.nodeCanvasData)
         .navigationViewStyle(.stack)
     }
 }
