@@ -16,6 +16,7 @@ protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
     func connectTo(anotherPort :Self)
     func icon() -> Image
     func color() -> Color
+    func nodePortDescription() -> String
 }
 
 enum NodePortDirection : String {
@@ -25,13 +26,13 @@ enum NodePortDirection : String {
 
 class NodePortData : NodePortProtocol {
     
-    
     @Published var portID : Int
     @Published var direction : NodePortDirection = .input
     @Published var name = ""
     @Published var canvasRect = CGRect.zero
     @Published var connections : [NodePortConnectionData] = [] {
         willSet {
+            print("\(nodePortDescription()) connections willSet \(connections) -> \(newValue)")
             newValue.forEach({ connection in
                 connection.objectWillChange.assign(to: &$childWillChange)
             })
@@ -39,9 +40,17 @@ class NodePortData : NodePortProtocol {
     }
     @Published private var childWillChange: Void = ()
     
-    init(portID: Int, direction: NodePortDirection) {
+    weak var nodeData : NodeData?
+    
+    required init(portID: Int, direction: NodePortDirection) {
         self.portID = portID
         self.direction = direction
+    }
+    
+    convenience init(portID: Int, name: String, direction: NodePortDirection, nodeData: NodeData) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        self.nodeData = nodeData
     }
     
     convenience init(portID: Int, name: String, direction: NodePortDirection) {
@@ -84,6 +93,22 @@ class NodePortData : NodePortProtocol {
     func connectTo(anotherPort: NodePortData) {
         
     }
+    
+    func destroy() {
+        connections.forEach { connectionData in
+            nodeData?.canvas?.pendingConnections.removeAll(where: { pendingConnection in
+                pendingConnection == connectionData
+            })
+            connectionData.destroy()
+        }
+        connections.removeAll()
+        nodeData = nil
+    }
+    
+    func nodePortDescription() -> String {
+        return "Port \(type(of: self)) \(nodeData?.nodeID ?? -1)-\(direction)-\(portID) (\(name))"
+    }
+
 }
 
 // Control flow
@@ -121,16 +146,13 @@ class NodeControlPortData : NodePortData {
             return
         }
         if let anotherPort = anotherPort as? NodeControlPortData {
-            let nodePortConnection = NodePortConnectionData()
+            let nodePortConnection : NodePortConnectionData
             if direction == .output {
-                nodePortConnection.startPort = self
-                nodePortConnection.endPort = anotherPort
+                nodePortConnection = NodePortConnectionData(startPort: self, endPort: anotherPort)
             } else {
-                nodePortConnection.endPort = self
-                nodePortConnection.startPort = anotherPort
+                nodePortConnection = NodePortConnectionData(startPort: anotherPort, endPort: self)
             }
-            self.connections.append(nodePortConnection)
-            anotherPort.connections.append(nodePortConnection)
+            nodePortConnection.connect()
         }
     }
 }
@@ -138,6 +160,57 @@ class NodeControlPortData : NodePortData {
 
 // Data flow
 class NodeDataPortData : NodePortData {
+    
+    class func getDefaultValue() -> Any? {
+        return {}
+    }
+    
+    class func getDefaultValueType() -> Any {
+        return Void.self
+    }
+    
+    private var _value : Any?
+    private var _valueGetter : (() -> Any?)?
+    private var _valueSetter : ((Any?) -> ())?
+    var value : Any? {
+        get {
+            if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
+                return remote.value
+            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+                return _valueGetter() // for get from outside
+            } else {
+                return _value
+            }
+        }
+        set {
+            if self.direction == .input, let remote = self.connections[safe: 0]?.startPort as? NodeDataPortData {
+                remote.value = newValue
+            } else if let _valueGetter = _valueGetter, let _valueSetter = _valueSetter {
+                _valueSetter(newValue) // for set from outside
+            } else {
+                _value = newValue
+            }
+            self.objectWillChange.send()
+        }
+    }
+    
+    required init(portID: Int, direction: NodePortDirection) {
+        _value = type(of: self).getDefaultValue()
+        _valueGetter = { return nil }
+        super.init(portID: portID, direction: direction)
+    }
+    
+    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValueGetter: @escaping (() -> Any?), defaultValueSetter: @escaping ((Any?) -> ())) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        _valueGetter = defaultValueGetter
+        _valueSetter = defaultValueSetter
+    }
+    convenience init(portID: Int, direction: NodePortDirection, name: String, defaultValue: Any) {
+        self.init(portID: portID, direction: direction)
+        self.name = name
+        _value = defaultValue
+    }
     
     override func icon() -> Image {
         return Image(systemName: "circlebadge.fill")
@@ -175,16 +248,15 @@ class NodeDataPortData : NodePortData {
             return
         }
         if let anotherPort = anotherPort as? NodeDataPortData {
-            let nodePortConnection = NodePortConnectionData()
+            let nodePortConnection : NodePortConnectionData
             if direction == .output {
-                nodePortConnection.startPort = self
-                nodePortConnection.endPort = anotherPort
+                nodePortConnection = NodePortConnectionData(startPort: self, endPort: anotherPort)
             } else {
-                nodePortConnection.endPort = self
-                nodePortConnection.startPort = anotherPort
+                nodePortConnection = NodePortConnectionData(startPort: anotherPort, endPort: self)
             }
-            self.connections.append(nodePortConnection)
-            anotherPort.connections.append(nodePortConnection)
+            nodePortConnection.connect()
         }
     }
+    
+
 }

@@ -12,128 +12,129 @@ struct NodeCanvasView: View {
     
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
     @State var showAddNodePopover : Bool = false
-    @State var longPressLocation : CGPoint = .zero
+    @State var popoverPosition : CGPoint = .zero
+    
     
     var body: some View {
         ZStack {
-            
-            ScrollView([.horizontal, .vertical]) {
-                ZStack {
-                    
-                    Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
-                        .contentShape(Rectangle())
-                        .allowsHitTesting(true)
-                        .gesture(
-                            DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                                .onChanged({ value in
-                                    longPressLocation = value.location
-                                    showAddNodePopover = true
-                                })
-                        )
-                    
-                    NodeCanvasAddNodePointView(popoverPosition: $longPressLocation, showPopover: $showAddNodePopover)
-                        .position(longPressLocation)
-                    
-                    ForEach(nodeCanvasData.nodes) { nodeData in
-                        NodeView(nodeData: nodeData)
-                    }
-                    
-                    Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
+            ScrollViewReader { scrollViewProxy in
+                ScrollView([.horizontal, .vertical]) {
+                    ZStack {
                         
-                        // stable lines
-                        let stablePathForDataFlow = UIBezierPath()
-                        nodeCanvasData.nodes.flatMap({ nodeData in
-                            nodeData.outDataPorts.flatMap { nodePortData in
-                                nodePortData.connections
+                        NodeCanvasAddNodePointView(popoverPosition: $popoverPosition, showPopover: $showAddNodePopover)
+                            .position(popoverPosition)
+                        
+                        Color.clear.frame(width: nodeCanvasData.canvasSize.width, height: nodeCanvasData.canvasSize.height, alignment: .center)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                // https://stackoverflow.com/questions/57700396/adding-a-drag-gesture-in-swiftui-to-a-view-inside-a-scrollview-blocks-the-scroll
                             }
-                        })
-                        .forEach { nodePortConnectionData in
-                            let startPos = nodePortConnectionData.startPos
-                            let endPos = nodePortConnectionData.endPos
-                            let distance = abs(startPos.x - endPos.x)
-                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
-                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
-                            stablePathForDataFlow.move(to: startPos)
-                            stablePathForDataFlow.addCurve(to: endPos,
-                                          controlPoint1: controlPoint1,
-                                          controlPoint2: controlPoint2)
-                        }
-                        context.stroke(.init(stablePathForDataFlow.cgPath), with: .color(.green), lineWidth: 4)
+                            .gesture(
+                                DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
+                                    .onChanged({ value in
+                                        if !showAddNodePopover {
+                                            showAddNodePopover = true
+                                            popoverPosition = value.location
+                                        }
+                                    })
+                                    .onEnded({ value in
+                                    })
+                            )
                         
-                        let stablePathForControlFlow = UIBezierPath()
-                        nodeCanvasData.nodes.flatMap({ nodeData in
-                            nodeData.outControlPorts.flatMap { nodePortData in
-                                nodePortData.connections
+                        ForEach(nodeCanvasData.nodes) { nodeData in
+                            NodeView(nodeData: nodeData)
+                        }
+                        
+                        Canvas(opaque: false, colorMode: .extendedLinear, rendersAsynchronously: true) { context, size in
+                            
+                            // stable lines
+                            let stablePathForDataFlow = UIBezierPath()
+                            nodeCanvasData.nodes.flatMap({ nodeData in
+                                nodeData.outDataPorts.flatMap { nodePortData in
+                                    nodePortData.connections
+                                }
+                            })
+                            .forEach { nodePortConnectionData in
+                                let startPos = nodePortConnectionData.startPos
+                                let endPos = nodePortConnectionData.endPos
+                                let distance = abs(startPos.x - endPos.x)
+                                let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                                let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+                                stablePathForDataFlow.move(to: startPos)
+                                stablePathForDataFlow.addCurve(to: endPos,
+                                              controlPoint1: controlPoint1,
+                                              controlPoint2: controlPoint2)
                             }
-                        })
-                        .forEach { nodePortConnectionData in
-                            let startPos = nodePortConnectionData.startPos
-                            let endPos = nodePortConnectionData.endPos
-                            let distance = abs(startPos.x - endPos.x)
-                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
-                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
-                            stablePathForControlFlow.move(to: startPos)
-                            stablePathForControlFlow.addCurve(to: endPos,
-                                          controlPoint1: controlPoint1,
-                                          controlPoint2: controlPoint2)
-                        }
-                        context.stroke(.init(stablePathForControlFlow.cgPath), with: .color(.blue), lineWidth: 4)
-                        
-                        
-                        // pending lines
-                        nodeCanvasData.pendingConnections
-                        .forEach { nodePortConnectionData in
-                            let unstablePath = UIBezierPath()
-                            let startPos = nodePortConnectionData.startPos
-                            let endPos = nodePortConnectionData.endPos
-                            let distance = abs(startPos.x - endPos.x)
-                            let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
-                            let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
-                            unstablePath.move(to: startPos)
-                            unstablePath.addCurve(to: endPos,
-                                          controlPoint1: controlPoint1,
-                                          controlPoint2: controlPoint2)
-                            var colors : [Color] = []
-                            if nodePortConnectionData.getPendingPortDirection == .output {
-                                colors.append(Color.clear)
-                                colors.append(nodePortConnectionData.color)
-                                colors.append(nodePortConnectionData.color)
-                            } else if nodePortConnectionData.getPendingPortDirection == .input {
-                                colors.append(nodePortConnectionData.color)
-                                colors.append(nodePortConnectionData.color)
-                                colors.append(Color.clear)
-                            } else {
-                                colors.append(nodePortConnectionData.color)
+                            context.stroke(.init(stablePathForDataFlow.cgPath), with: .color(.green), lineWidth: 4)
+                            
+                            let stablePathForControlFlow = UIBezierPath()
+                            nodeCanvasData.nodes.flatMap({ nodeData in
+                                nodeData.outControlPorts.flatMap { nodePortData in
+                                    nodePortData.connections
+                                }
+                            })
+                            .forEach { nodePortConnectionData in
+                                let startPos = nodePortConnectionData.startPos
+                                let endPos = nodePortConnectionData.endPos
+                                let distance = abs(startPos.x - endPos.x)
+                                let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                                let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+                                stablePathForControlFlow.move(to: startPos)
+                                stablePathForControlFlow.addCurve(to: endPos,
+                                              controlPoint1: controlPoint1,
+                                              controlPoint2: controlPoint2)
                             }
-                            context.stroke(.init(unstablePath.cgPath), with: .linearGradient(.init(colors: colors), startPoint: startPos, endPoint: endPos), lineWidth: 4)
-                                                   
+                            context.stroke(.init(stablePathForControlFlow.cgPath), with: .color(.blue), lineWidth: 4)
+                            
+                            
+                            // pending lines
+                            nodeCanvasData.pendingConnections
+                            .forEach { nodePortConnectionData in
+                                let unstablePath = UIBezierPath()
+                                let startPos = nodePortConnectionData.startPos
+                                let endPos = nodePortConnectionData.endPos
+                                let distance = abs(startPos.x - endPos.x)
+                                let controlPoint1 = startPos + CGPoint.init(x: distance, y: 0)
+                                let controlPoint2 = endPos - CGPoint.init(x: distance, y: 0)
+                                unstablePath.move(to: startPos)
+                                unstablePath.addCurve(to: endPos,
+                                              controlPoint1: controlPoint1,
+                                              controlPoint2: controlPoint2)
+                                context.stroke(.init(unstablePath.cgPath), with: .color(nodePortConnectionData.color), lineWidth: 4)
+                            }
+                            
                         }
+                        .allowsHitTesting(false)
                         
                     }
-                    .allowsHitTesting(false)
-                    
+                    .coordinateSpace(name: "canvas")
+                    .clipped()
+                    .background(GeometryReader(content: { proxy in
+
+                            VStack(alignment: .leading) {
+                                Text("Canvas Size \(proxy.size.width) × \(proxy.size.height)")
+                                    .font(.subheadline.monospaced())
+                                    .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
+                                Text("Node Count \(nodeCanvasData.nodes.count)")
+                                    .font(.subheadline.monospaced())
+                                    .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
+                                Text("Pending Connection Count \(nodeCanvasData.pendingConnections.count)")
+                                    .font(.subheadline.monospaced())
+                                    .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
+                            }
+                            .padding()
+                    }))
                 }
-                .coordinateSpace(name: "canvas")
-                .clipped()
-                .background(GeometryReader(content: { proxy in
-                    VStack(alignment: .leading) {
-                        Text("Canvas Size \(proxy.size.width) × \(proxy.size.height)")
-                            .font(.subheadline.monospaced())
-                            .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
-                        Text("Node Count \(nodeCanvasData.nodes.count)")
-                            .font(.subheadline.monospaced())
-                            .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
-                        Text("Pending Connection Count \(nodeCanvasData.pendingConnections.count)")
-                            .font(.subheadline.monospaced())
-                            .foregroundColor(.init(uiColor: UIColor.secondaryLabel))
-                    }
-                    .padding()
-                }))
             }
             
 //            NodeCanvasMinimapView()
         }
+        
         .background(Color(UIColor.systemGroupedBackground))
+        .frame(minWidth: 300,
+               idealWidth: 500,
+               maxWidth: .infinity,
+           alignment: .top)
     }
 }
 

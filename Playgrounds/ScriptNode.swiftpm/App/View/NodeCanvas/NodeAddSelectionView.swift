@@ -14,33 +14,46 @@ struct NodeCanvasAddNodePointView : View {
     var body: some View {
         Color.clear.frame(width: 1, height: 1, alignment: .center)
             .popover(isPresented: $showPopover, attachmentAnchor: .point(.zero)) {
-                NodeAddSelectionView(nodePosition: $popoverPosition)
+                NodeAddSelectionView(showPopover: $showPopover, nodePosition: $popoverPosition)
             }
     }
 }
 
 struct NodeAddSelectionView: View {
     @EnvironmentObject var nodeCanvasData : NodeCanvasData
+    @Binding var showPopover : Bool
     @Binding var nodePosition : CGPoint
-    @State private var nodeType = 0
+    @State private var nodeCategory : String = ""
     
-    var nodeTypeList : [NodeData.Type] {
-        subclasses(of: NodeData.self)
-    }
-    
-    var nodeList : [NodeData] {
-        nodeTypeList.enumerated().map { (index, nodeType) in
+    var nodeCategoryToTypeDict : [String: [NodeData]] {
+        let categoryToType = Dictionary(grouping: subclasses(of: NodeData.self)
+            .filter { nodeType in
+                nodeType.self.getDefaultExposedToUser()
+            }, by: { $0.getDefaultCategory() })
+        
+        let categoryToInstance = Dictionary(uniqueKeysWithValues:
+                                                categoryToType.map { key, value in (key, value.enumerated().map({ (index, nodeType) in
             nodeType.init(nodeID: index)
-        }
+        })) })
+        
+        return categoryToInstance
     }
-
+    
+    var nodeCategoryList : [String] {
+        nodeCategoryToTypeDict.keys.sorted()
+    }
+    
+    func nodeListFor(category: String) -> [NodeData] {
+        return nodeCategoryToTypeDict[category] ?? []
+    }
     
     var body: some View {
         NavigationView {
             List{
-                ForEach(nodeList) { nodeData in
+                ForEach(nodeListFor(category: nodeCategory)) { nodeData in
                     Button {
-                        nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
+                        showPopover = false
+                        _ = nodeCanvasData.addNode(newNodeType: type(of: nodeData), position: nodePosition)
                     } label: {
                         HStack {
                             Text("\(nodeData.title)")
@@ -58,14 +71,15 @@ struct NodeAddSelectionView: View {
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Picker("Node Type", selection: $nodeType) {
-                        Text("Control Nodes").tag(0)
-                        Text("Data Nodes").tag(1)
+                    Picker("Category", selection: $nodeCategory) {
+                        ForEach(nodeCategoryList) { category in
+                            Text(category).tag(category)
+                        }
                     }
                     .pickerStyle(.segmented)
                 }
             }
-            .navigationTitle("Add Node")
+            .navigationTitle("\(nodeCategory)")
         }
         .frame(minWidth: 300, idealWidth: 380, maxWidth: nil,
                minHeight: 360, idealHeight: 540, maxHeight: nil,

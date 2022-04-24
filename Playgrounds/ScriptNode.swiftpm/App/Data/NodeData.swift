@@ -8,19 +8,28 @@
 import Foundation
 import UIKit
 import Combine
-
+import SwiftUI
 
 protocol NodeProtocol : ObservableObject {
+    associatedtype BaseImpType where BaseImpType : NodeProtocol
     func perform() -> Void
-    func exposedToUser() -> Bool
-    func getDefaultTitle() -> String
-    func getDefaultControlInPorts() -> [NodeControlPortData]
-    func getDefaultControlOutPorts() -> [NodeControlPortData]
-    func getDefaultDataInPorts() -> [NodeDataPortData]
-    func getDefaultDataOutPorts() -> [NodeDataPortData]
+    func nodeDescription() -> String
+    static func getDefaultPerformImplementation() -> ((_ node: BaseImpType) -> ())
+    static func getDefaultExposedToUser() -> Bool
+    static func getDefaultTitle() -> String
+    static func getDefaultCategory() -> String
+    static func getDefaultControlInPorts() -> [NodeControlPortData]
+    static func getDefaultControlOutPorts() -> [NodeControlPortData]
+    static func getDefaultDataInPorts() -> [NodeDataPortData]
+    static func getDefaultDataOutPorts() -> [NodeDataPortData]
+    static func getDefaultCustomRendering(node: BaseImpType) -> AnyView?
 }
 
 class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
+    
+    
+    typealias BaseImpType = NodeData
+    
     
     static func == (lhs: NodeData, rhs: NodeData) -> Bool {
         return lhs.canvasPosition == rhs.canvasPosition
@@ -43,31 +52,72 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         hasher.combine(outControlPorts)
     }
     
-    func getDefaultTitle() -> String {
+    class func getDefaultCategory() -> String {
         return ""
     }
     
-    func getDefaultDataInPorts() -> [NodeDataPortData] {
+    class func getDefaultTitle() -> String {
+        return ""
+    }
+    
+    class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return []
     }
     
-    func getDefaultDataOutPorts() -> [NodeDataPortData] {
+    class func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return []
     }
     
-    func getDefaultControlInPorts() -> [NodeControlPortData] {
+    class func getDefaultControlInPorts() -> [NodeControlPortData] {
         return []
     }
     
-    func getDefaultControlOutPorts() -> [NodeControlPortData] {
+    class func getDefaultControlOutPorts() -> [NodeControlPortData] {
         return []
+    }
+    
+    class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
+        nil
+    }
+    
+    class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
+        return { nodeData in
+            
+        }
+    }
+    
+    func nodeDescription() -> String {
+        "Node \(type(of: self)) \(self.nodeID) (\(self.title))"
     }
     
     func perform() {
-        
+        print("\(nodeDescription()) perform()")
+        type(of: self).getDefaultPerformImplementation()(self)
     }
     
-    func exposedToUser() -> Bool {
+    func getDataPortValue(direction : NodePortDirection, portID: Int) -> Any? {
+        var nodePortData : NodeDataPortData?
+        if direction == .input {
+            nodePortData = inDataPorts.filter({ port in
+                port.portID == portID
+            }).first
+        } else {
+            nodePortData = outDataPorts.filter({ port in
+                port.portID == portID
+            }).first
+        }
+        if let nodePortData = nodePortData {
+            return getDataPortValue(nodePortData: nodePortData)
+        } else {
+            return nil
+        }
+    }
+    
+    func getDataPortValue(nodePortData : NodeDataPortData) -> Any? {
+        return nodePortData.value
+    }
+    
+    class func getDefaultExposedToUser() -> Bool {
         true
     }
     
@@ -106,6 +156,8 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     @Published private var childWillChange: Void = ()
     
+    weak var canvas : NodeCanvasData?
+    
     var inPorts : [NodePortData] {
         return inDataPorts + inControlPorts
     }
@@ -116,28 +168,61 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     
     required init(nodeID: Int) {
         self.nodeID = nodeID
-        self.title = getDefaultTitle()
-        self.inDataPorts = getDefaultDataInPorts()
-        self.outDataPorts = getDefaultDataOutPorts()
-        self.inControlPorts = getDefaultControlInPorts()
-        self.outControlPorts = getDefaultControlOutPorts()
+        self.title = type(of: self).getDefaultTitle()
+        self.inDataPorts = type(of: self).getDefaultDataInPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.outDataPorts = type(of: self).getDefaultDataOutPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.inControlPorts = type(of: self).getDefaultControlInPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
+        self.outControlPorts = type(of: self).getDefaultControlOutPorts().map({ nodePortData in
+            nodePortData.nodeData = self
+            return nodePortData
+        })
         let _ = $childWillChange.sink { newVoid in
             self.objectWillChange.send()
         }
+        
+        postInit()
     }
     
-    convenience init(nodeID: Int, canvasPosition: CGPoint) {
-        self.init(nodeID: nodeID)
+    func destroy() {
+        inPorts.forEach { portData in
+            portData.destroy()
+        }
+        outPorts.forEach { portData in
+            portData.destroy()
+        }
+        inDataPorts.removeAll()
+        inControlPorts.removeAll()
+        outControlPorts.removeAll()
+        outDataPorts.removeAll()
+        canvas = nil
+    }
+    
+    func withCanvas(canvasData: NodeCanvasData) -> Self
+    {
+        self.canvas = canvasData
+        return self
+    }
+    
+    func withCanvasPosition(canvasPosition: CGPoint) -> Self
+    {
         self.canvasPosition = canvasPosition
+        return self
     }
     
-    convenience init(nodeID: Int, title: String) {
-        self.init(nodeID: nodeID)
-        self.title = title
+    func postInit() {
+        
     }
     
-    convenience init(nodeID: Int, title: String, canvasPosition: CGPoint) {
-        self.init(nodeID: nodeID, title: title)
-        self.canvasPosition = canvasPosition
+    deinit {
+        print("\(nodeDescription()) deinit")
     }
 }

@@ -26,7 +26,7 @@ struct NodeCanvasToolbarView: View {
                 Button {
                     showResetAlert = true
                 } label: {
-                    Image(systemName: "clock.arrow.circlepath")
+                    Image(systemName: "memories")
                         .padding(.all, 8)
                 }
                 .alert("Reset?", isPresented: $showResetAlert, actions: {

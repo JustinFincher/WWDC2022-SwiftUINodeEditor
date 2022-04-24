@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct SettingsNavigationView: View {
+    
+    @EnvironmentObject var environment : Environment
+    
     var body: some View {
         NavigationView {
             List {
-                Text("Test")
+                Toggle("Use Context Menu On Nodes", isOn: $environment.useContextMenuOnNodes)
+                    .font(.body.monospaced())
+                Toggle("Debug Mode", isOn: $environment.debugMode)
+                    .font(.body.monospaced())
             }
             .navigationTitle("Settings")
         }

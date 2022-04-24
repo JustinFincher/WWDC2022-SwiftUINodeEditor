@@ -9,11 +9,15 @@ import Foundation
 
 class StartNode : NodeData {
     
-    override func getDefaultTitle() -> String {
+    class override func getDefaultExposedToUser() -> Bool {
+        false
+    }
+    
+    class override func getDefaultTitle() -> String {
         "Start"
     }
     
-    override func getDefaultControlOutPorts() -> [NodeControlPortData] {
+    class override func getDefaultControlOutPorts() -> [NodeControlPortData] {
         return [
             NodeControlPortData(portID: 0, name: "", direction: .output)
         ]
