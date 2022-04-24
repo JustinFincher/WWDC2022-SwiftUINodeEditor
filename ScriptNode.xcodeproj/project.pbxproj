@@ -33,6 +33,8 @@
 		0D59A20F28153BD0001342FE /* NodePageDataChapterOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */; };
 		0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */; };
 		0D59A219281572C9001342FE /* GKVectorNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A218281572C9001342FE /* GKVectorNodeDataPort.swift */; };
+		0D59A21B28158120001342FE /* Any+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A21A28158120001342FE /* Any+Equatable.swift */; };
+		0D59A21D2815812F001342FE /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A21C2815812F001342FE /* String+Identifiable.swift */; };
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C02814AF4900611D10 /* GetTouchNode.swift */; };
@@ -84,6 +86,8 @@
 		0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterOne.swift; sourceTree = "<group>"; };
 		0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeNodeDataPort.swift; sourceTree = "<group>"; };
 		0D59A218281572C9001342FE /* GKVectorNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKVectorNodeDataPort.swift; sourceTree = "<group>"; };
+		0D59A21A28158120001342FE /* Any+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Equatable.swift"; sourceTree = "<group>"; };
+		0D59A21C2815812F001342FE /* String+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Identifiable.swift"; sourceTree = "<group>"; };
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36C02814AF4900611D10 /* GetTouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTouchNode.swift; sourceTree = "<group>"; };
@@ -185,11 +189,13 @@
 			children = (
 				0D43AD9B280CE2F300601308 /* Bundle+Version.swift */,
 				0D43AD9C280CE2F300601308 /* Class+Runtime.swift */,
+				0D59A21C2815812F001342FE /* String+Identifiable.swift */,
 				0DB6B07F280E53F0005D7080 /* CoreGraphics+Math.swift */,
 				0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */,
 				0D32FFB6281026020068C52F /* UserDefaults+SwiftUI.swift */,
 				0D92A66328117B0C00EA9F1E /* SwiftUI+Conditional.swift */,
 				0D8E36B0281380A100611D10 /* Collection+Nil.swift */,
+				0D59A21A28158120001342FE /* Any+Equatable.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
 				0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
+				0D59A21D2815812F001342FE /* String+Identifiable.swift in Sources */,
 				0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */,
 				0DE8809428103896008C70C0 /* NodePortData.swift in Sources */,
 				0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */,
@@ -401,6 +408,7 @@
 				0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */,
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
 				0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */,
+				0D59A21B28158120001342FE /* Any+Equatable.swift in Sources */,
 				0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */,
 				0DE8808E28102C78008C70C0 /* NodeCanvasInspectionView.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,

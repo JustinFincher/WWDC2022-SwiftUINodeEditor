@@ -25,11 +25,4 @@ public func address(of object: Any?) -> UnsafeMutableRawPointer{
 }
 
 
-//String+Identifiable
 
-extension String: Identifiable {
-    public typealias ID = Int
-    public var id: Int {
-        return hash
-    }
-}

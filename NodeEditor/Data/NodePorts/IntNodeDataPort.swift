@@ -12,7 +12,7 @@ class IntNodeDataPort: NodeDataPortData {
         return 0
     }
     
-    override class func getDefaultValueType() -> Any {
+    override class func getDefaultValueType() -> Any.Type {
         Int.self
     }
 }

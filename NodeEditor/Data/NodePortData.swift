@@ -188,7 +188,7 @@ class NodeDataPortData : NodePortData {
         return {}
     }
     
-    class func getDefaultValueType() -> Any {
+    class func getDefaultValueType() -> Any.Type {
         return Void.self
     }
     
@@ -270,6 +270,9 @@ class NodeDataPortData : NodePortData {
             // cannot connect same node
             if (self.nodeData == anotherPort.nodeData) {
                 return .cannot("cannot connect ports on the same node")
+            }
+            if type(of: self).getDefaultValueType() != type(of: anotherPort).getDefaultValueType() {
+                return .cannot("cannot connect different type (\(type(of: self).getDefaultValueType()), \(type(of: anotherPort).getDefaultValueType()))")
             }
             return .can
         }

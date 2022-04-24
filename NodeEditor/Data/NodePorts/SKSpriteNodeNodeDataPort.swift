@@ -13,7 +13,7 @@ class SKSpriteNodeNodeDataPort: NodeDataPortData {
         return SKSpriteNode()
     }
     
-    override class func getDefaultValueType() -> Any {
+    override class func getDefaultValueType() -> Any.Type {
         SKSpriteNode.self
     }
 }

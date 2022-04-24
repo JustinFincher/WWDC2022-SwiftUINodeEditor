@@ -15,7 +15,7 @@ class GKVectorNodeDataPort: NodeDataPortData {
         return CGVector.zero
     }
     
-    override class func getDefaultValueType() -> Any {
+    override class func getDefaultValueType() -> Any.Type {
         CGVector.self
     }
 }
