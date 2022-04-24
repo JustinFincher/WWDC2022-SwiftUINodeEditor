@@ -104,21 +104,6 @@ struct NodeView: View, Identifiable {
                     .allowsHitTesting(false)
             }
         }
-        .conditionalModifier(!demoMode && environment.useContextMenuOnNodes, transform: { view in
-            view.contextMenu {
-                Button(role: .destructive) {
-                    nodeCanvasData.deleteNode(node: nodeData)
-                } label: {
-                    Label {
-                        Text("Delete")
-                    } icon: {
-                        Image(systemName: "xmark")
-                    }
-
-                }
-
-            }
-        })
         .padding(.all, 8)
         .background(
             Color.clear
@@ -142,6 +127,25 @@ struct NodeView: View, Identifiable {
         .mask {
             RoundedRectangle(cornerRadius: 8)
         }
+        .conditionalModifier(!demoMode && environment.useContextMenuOnNodes, transform: { view in
+            view.contextMenu {
+                if let usage = type(of: nodeData).getDefaultUsage(), !usage.isEmpty {
+                    Text("\(type(of: nodeData).getDefaultUsage())")
+                    Divider()
+                }
+                Button(role: .destructive) {
+                    nodeCanvasData.deleteNode(node: nodeData)
+                } label: {
+                    Label {
+                        Text("Delete")
+                    } icon: {
+                        Image(systemName: "xmark")
+                    }
+
+                }
+
+            }
+        })
         .overlay(
             RoundedRectangle(cornerRadius: 8)
                 .strokeBorder(Color.orange, lineWidth: holding ? 4 : 0)

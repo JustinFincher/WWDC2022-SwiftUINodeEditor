@@ -68,7 +68,7 @@ struct NodeCanvasToolbarView: View {
                         .padding(.all, 8)
                 }
                 .popover(isPresented: $showSettings) {
-                    SettingsNavigationView()
+                    MoreNavigationView()
                 }
             }
             .padding()

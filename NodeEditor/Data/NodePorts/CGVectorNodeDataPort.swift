@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 
-class GKVectorNodeDataPort: NodeDataPortData {
+class CGVectorNodeDataPort: NodeDataPortData {
     
     override class func getDefaultValue() -> Any? {
         return CGVector.zero

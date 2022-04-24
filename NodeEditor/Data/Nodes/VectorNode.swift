@@ -18,9 +18,13 @@ class VectorNode : NodeData {
         "Vector"
     }
     
+    override class func getDefaultUsage() -> String {
+        "Vector provides a (x,y) value for the direction and length"
+    }
+    
     class override func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            GKVectorNodeDataPort(portID: 0, name: "Result", direction: .output)
+            CGVectorNodeDataPort(portID: 0, name: "Result", direction: .output)
         ]
     }
     

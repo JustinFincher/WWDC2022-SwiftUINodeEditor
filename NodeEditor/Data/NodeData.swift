@@ -17,6 +17,7 @@ protocol NodeProtocol : ObservableObject {
     static func getDefaultPerformImplementation() -> ((_ node: BaseImpType) -> ())
     static func getDefaultExposedToUser() -> Bool
     static func getDefaultTitle() -> String
+    static func getDefaultUsage() -> String
     static func getDefaultCategory() -> String
     static func getDefaultControlInPorts() -> [NodeControlPortData]
     static func getDefaultControlOutPorts() -> [NodeControlPortData]
@@ -57,6 +58,10 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     }
     
     class func getDefaultTitle() -> String {
+        return ""
+    }
+    
+    class func getDefaultUsage() -> String {
         return ""
     }
     

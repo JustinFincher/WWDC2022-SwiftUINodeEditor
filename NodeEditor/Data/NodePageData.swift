@@ -30,4 +30,8 @@ class NodePageData : ObservableObject
         nodeCanvasData.destroy()
 
     }
+    
+    func cheat() {
+        
+    }
 }

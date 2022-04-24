@@ -11,19 +11,55 @@ import SpriteKit
 
 class NodePageDataChapterOne : NodePageData {
     
+    override func cheat() {
+        reset()
+        
+        if let port1 = nodeCanvasData.nodes[safe: 0]?.outControlPorts[safe: 0], let port2 = nodeCanvasData.nodes[safe: 2]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodeCanvasData.nodes[safe: 1]?.outDataPorts[safe: 0], let port2 = nodeCanvasData.nodes[safe: 2]?.inDataPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodeCanvasData.nodes[safe: 3]?.outDataPorts[safe: 0], let port2 = nodeCanvasData.nodes[safe: 2]?.inDataPorts[safe: 1] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodeCanvasData.nodes[safe: 3]?.outDataPorts[safe: 0] as? CGVectorNodeDataPort {
+            port1.value = CGVector(dx: 0, dy: 80)
+        }
+    }
+    
     override func reset() {
         super.reset()
         nodeCanvasData = NodeCanvasData()
         nodeCanvasData.nodes = [
-            GetTouchNode(nodeID: 0).withCanvasPosition(canvasPosition: .init(x: 180, y: 180)),
-            BirdNode(nodeID: 1).withCanvasPosition(canvasPosition: .init(x: 180, y: 360)),
-            ApplyImpulseNode(nodeID: 2).withCanvasPosition(canvasPosition: .init(x: 600, y: 200)),
-            VectorNode(nodeID: 3).withCanvasPosition(canvasPosition: .init(x: 400, y: 400))
+            GetTouchNode(nodeID: 0).withCanvasPosition(canvasPosition: .init(x: 90, y: 180)),
+            BirdNode(nodeID: 1).withCanvasPosition(canvasPosition: .init(x: 80, y: 360)),
+            ApplyImpulseNode(nodeID: 2).withCanvasPosition(canvasPosition: .init(x: 400, y: 200)),
+            VectorNode(nodeID: 3).withCanvasPosition(canvasPosition: .init(x: 250, y: 480))
         ]
         
         docView = AnyView(
             List {
-                Text("Doc")
+                Section {
+                    Text("👾 How to make games with script node editor")
+                        .font(.headline.monospaced())
+                    Text("🐦 Chapter 1 - Flappy Bird")
+                        .font(.subheadline.monospaced())
+                } header: {
+                    VStack(alignment: .leading) {
+                        Color.clear.frame(height: 40)
+                        Text("TITLE")
+                    }
+                }
+
+                
+                Button {
+                    self.cheat()
+                } label: {
+                    Label("See final results 🥳", systemImage: "checkmark")
+                        .font(.body.monospaced())
+                }
+
             }
         )
         
