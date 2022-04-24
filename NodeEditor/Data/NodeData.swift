@@ -190,9 +190,6 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
             nodePortData.nodeData = self
             return nodePortData
         })
-        let _ = $childWillChange.sink { newVoid in
-            self.objectWillChange.send()
-        }
         
         postInit()
     }

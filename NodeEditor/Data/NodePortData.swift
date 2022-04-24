@@ -213,6 +213,7 @@ class NodeDataPortData : NodePortData {
             } else {
                 _value = newValue
             }
+            
             self.objectWillChange.send()
         }
     }
