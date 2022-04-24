@@ -10,48 +10,53 @@ import SwiftUI
 import SpriteKit
 
 class NodePageDataChapterZero : NodePageData {
-    override class func getTitle() -> String {
-        "Chapter 0 - Node Editor? 🖇"
-    }
-    
     override func reset() {
         super.reset()
-        print("NodePageDataChapterZero.reset")
         nodeCanvasData = NodeCanvasData()
         nodeCanvasData.nodes = [
             
         ]
         
-        docView = {
-            AnyView(
-                List {
-                    Section {
-                        Text("👾 How to make games with script node editor")
-                            .font(.headline.monospaced())
-                        Text("🖇 Chapter 0 - Node Editor?")
-                            .font(.subheadline.monospaced())
-                    } header: {
-                        VStack(alignment: .leading) {
-                            Color.clear.frame(height: 40)
-                            Text("TITLE")
-                        }
+        docView = AnyView(
+            List {
+                Section {
+                    Text("👾 How to make games with script node editor")
+                        .font(.headline.monospaced())
+                    Text("🐦 Chapter 1 - Flappy Bird")
+                        .font(.subheadline.monospaced())
+                } header: {
+                    VStack(alignment: .leading) {
+                        Color.clear.frame(height: 40)
+                        Text("TITLE")
                     }
-
-                    
-                    Section {
-                        Button {
-                        } label: {
-                            Label("Next Chapter", systemImage: "checkmark")
-                                .font(.body.monospaced())
-                        }
-                    } header: {
-                        Text("CONTEXT")
-                    }
-
-
                 }
-            )
-        }
+
+                
+                Section {
+                    Button {
+                        self.cheat()
+                    } label: {
+                        Label("See final results 🥳", systemImage: "checkmark")
+                            .font(.body.monospaced())
+                    }
+                } header: {
+                    Text("")
+                }
+
+                
+                Section {
+                    Button {
+                    } label: {
+                        Label("Next Chapter", systemImage: "checkmark")
+                            .font(.body.monospaced())
+                    }
+                } header: {
+                    Text("CONTEXT")
+                }
+
+
+            }
+        )
         
         let newScene = SKScene(fileNamed: "FlappyBird") ?? SKScene(size: .init(width: 375, height: 667))
         

@@ -9,13 +9,14 @@ import SwiftUI
 import SpriteKit
 
 struct NodeCanvasLiveView: View {
-    @EnvironmentObject var pageManager : PageManager
+    @EnvironmentObject var nodePageData : NodePageData
+    @EnvironmentObject var nodeCanvasData : NodeCanvasData
     
     var body: some View {
-        SpriteViewWrapper(scene: $pageManager.nodePageData.liveScene, paused: .init(get: {
-            !pageManager.nodePageData.playing
+        SpriteViewWrapper(scene: $nodePageData.liveScene, paused: .init(get: {
+            !nodePageData.playing
         }, set: { newValue in
-            pageManager.nodePageData.playing = !newValue
+            nodePageData.playing = !newValue
         }))
         .onTapGesture {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liveViewTapped"), object: nil)

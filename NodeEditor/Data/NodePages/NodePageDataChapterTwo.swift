@@ -11,8 +11,4 @@ import SwiftUI
 import SpriteKit
 
 class NodePageDataChapterTwo : NodePageData {
-    
-    override class func getTitle() -> String {
-        return "Chapter 2 - Playable Flappy Bird 🏙"
-    }
 }
