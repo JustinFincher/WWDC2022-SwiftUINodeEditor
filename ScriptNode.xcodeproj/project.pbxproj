@@ -45,7 +45,6 @@
 		0D59A2342815BF63001342FE /* AddFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2332815BF63001342FE /* AddFloatNode.swift */; };
 		0D59A2362815BFD7001342FE /* LoopFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2352815BFD7001342FE /* LoopFloatNode.swift */; };
 		0D59A2382815C3B0001342FE /* RenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2372815C3B0001342FE /* RenderManager.swift */; };
-		0D59A23E2815E9EA001342FE /* crow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D59A23D2815E9EA001342FE /* crow.mp3 */; };
 		0D59A2402815F823001342FE /* PrintNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A23F2815F823001342FE /* PrintNode.swift */; };
 		0D59A24228160A80001342FE /* NodePageDataChapterThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A24128160A80001342FE /* NodePageDataChapterThree.swift */; };
 		0D59A24428161402001342FE /* SetFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A24328161402001342FE /* SetFloatNode.swift */; };
@@ -112,7 +111,6 @@
 		0D59A2332815BF63001342FE /* AddFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFloatNode.swift; sourceTree = "<group>"; };
 		0D59A2352815BFD7001342FE /* LoopFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopFloatNode.swift; sourceTree = "<group>"; };
 		0D59A2372815C3B0001342FE /* RenderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderManager.swift; sourceTree = "<group>"; };
-		0D59A23D2815E9EA001342FE /* crow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crow.mp3; sourceTree = "<group>"; };
 		0D59A23F2815F823001342FE /* PrintNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintNode.swift; sourceTree = "<group>"; };
 		0D59A24128160A80001342FE /* NodePageDataChapterThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterThree.swift; sourceTree = "<group>"; };
 		0D59A24328161402001342FE /* SetFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFloatNode.swift; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		0D8E36CC2814C7A000611D10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0D59A23D2815E9EA001342FE /* crow.mp3 */,
 				0D8E36CD2814C7B600611D10 /* FlappyBird.sks */,
 			);
 			path = Resources;
@@ -409,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */,
-				0D59A23E2815E9EA001342FE /* crow.mp3 in Resources */,
 				0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */,
 				0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */,
 			);
