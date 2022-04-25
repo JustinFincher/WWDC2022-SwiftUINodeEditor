@@ -25,7 +25,7 @@ class GetTouchNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Get Touch"
+        "Get Touch ☝️"
     }
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
@@ -38,5 +38,10 @@ class GetTouchNode : NodeData {
         return [
             NodeControlPortData(portID: 0, name: "", direction: .output)
         ]
+    }
+    
+    override func destroy() {
+        super.destroy()
+        anyCancellable?.cancel()
     }
 }

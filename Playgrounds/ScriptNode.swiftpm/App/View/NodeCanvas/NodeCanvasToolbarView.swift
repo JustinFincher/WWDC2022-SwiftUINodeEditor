@@ -11,17 +11,33 @@ struct NodeCanvasToolbarView: View {
     
     
     @State private var showSettings = false
+    @State private var showResetAlert = false
+    @State private var showReadingProgress = false
     @EnvironmentObject var nodePageData : NodePageData
     @EnvironmentObject var environment : Environment
-    @State private var showResetAlert = false
     
     var body: some View {
         ZStack (alignment: .bottom) {
             
             HStack(alignment: .center, spacing: 18) {
                 
-                ToggleButtonView(icon: .init(systemName: "square.stack.3d.up.fill"), state: $environment.toggleNodeListPanel)
+                Button {
+                    showReadingProgress = true
+                } label: {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Currently Reading \(Image(systemName: "chevron.up"))")
+                                .font(.subheadline.monospaced())
+                        }
+                        Text("Chapter 1")
+                            .font(.caption.monospaced())
+                    }.padding(.horizontal, 8)
+                }
+                .popover(isPresented: $showReadingProgress) {
+                    Text("")
+                }
                 
+                Divider()
                 
                 Button {
                     showResetAlert = true
@@ -68,7 +84,7 @@ struct NodeCanvasToolbarView: View {
                         .padding(.all, 8)
                 }
                 .popover(isPresented: $showSettings) {
-                    SettingsNavigationView()
+                    MoreNavigationView()
                 }
             }
             .padding()

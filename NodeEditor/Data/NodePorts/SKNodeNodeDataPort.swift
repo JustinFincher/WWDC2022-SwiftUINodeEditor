@@ -8,12 +8,12 @@
 import Foundation
 import SpriteKit
 
-class SKSpriteNodeNodeDataPort: NodeDataPortData {
+class SKNodeNodeDataPort: NodeDataPortData {
     override class func getDefaultValue() -> Any? {
-        return SKSpriteNode()
+        return SKNode()
     }
     
-    override class func getDefaultValueType() -> Any {
-        SKSpriteNode.self
+    override class func getDefaultValueType() -> Any.Type {
+        SKNode.self
     }
 }

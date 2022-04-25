@@ -13,8 +13,15 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
 {
     func modifyCanvas(nodePageData : NodePageData) {
         nodePageData.nodeCanvasData.nodes = [
-            
+            TriggerNode(nodeID: 0).withCanvasPosition(canvasPosition: .init(x: 188, y: 228)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            PrintNode(nodeID: 1).withCanvasPosition(canvasPosition: .init(x: 286, y: 530)).withCanvas(canvasData: nodePageData.nodeCanvasData),
         ]
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 0]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 1]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let node1 = nodePageData.nodeCanvasData.nodes[safe: 1] as? PrintNode {
+            node1.content = "Hello World!"
+        }
     }
     
     func modifyDocView(nodePageData : NodePageData) {
@@ -22,23 +29,52 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
             List {
                 Section {
                     Text("👾 How to make games with script node editor")
-                        .font(.headline.monospaced())
-                    Text("🐦 Chapter 0 - Node Editor?")
+                        .font(.title2.monospaced())
+                    Text("🖇 Chapter 0 - Node Editor?")
                         .font(.subheadline.monospaced())
                 } header: {
                     VStack(alignment: .leading) {
-                        Color.clear.frame(height: 40)
+                        Color.clear.frame(height: 20)
                         Text("TITLE")
                     }
                 }
                 
                 Section {
+                    Text("🤯 Node Editor is a common UI pattern used in visual programming, game dev, and low-code programming environments.")
+                        .font(.footnote.monospaced())
                     
+                    Text("💡 A node represents a piece of logic block that can be chained together with other nodes via connection lines. The whole node graph, if composed in a well-orgainzed fashion, can greatly visualize the underlying logic. If feels right at home when you combine it with an iPad Pro.")
+                        .font(.footnote.monospaced())
+                } header: {
+                    Text("A CRASH COURSE")
+                }
+                
+                Section {
+                    Text("📱 I have implemented a simple node editor as your can see at the right hand side. Try drag the two nodes around, connect and disconnect the in/out ports on nodes, and click on the 'click to trigger' button to see if the console prints the value defined by the print node!")
+                        .font(.footnote.monospaced())
+                    
+                } header: {
+                    Text("DO IT YOURSELF")
+                }
+
+                
+                Section {
+                    Text("🔍 You can long press on the blank area of canvas to add new nodes to the graph, some of these new nodes will be very important in the next chapter!")
+                        .font(.footnote.monospaced())
+                    Text("🎮 For now, just play around with the node editor I built and get familiar with it, then, click the 'Next Chapter' button below to learn how to build a little game.")
+                        .font(.footnote.monospaced())
+                    
+                } header: {
+                    Text("LOOK AROUND")
+                }
+
+                
+                Section {
                     Button {
                         nodePageData.switchTo(index: 1)
                     } label: {
                         Label("Next Chapter", systemImage: "arrow.right")
-                            .font(.body.monospaced())
+                            .font(.body.bold().monospaced())
                     }
                 } header: {
                     Text("CONTEXT")
@@ -69,14 +105,12 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
         cityTexture.filteringMode = .nearest
         let cityNode = SKSpriteNode(texture: cityTexture)
         cityNode.position = .init(x: 0, y: 50.5)
-        cityNode.setScale(1.5)
         
         
         let groundTexture = SKTexture(imageNamed: "base")
         groundTexture.filteringMode = .nearest
         let groundNode = SKSpriteNode(texture: groundTexture)
-        groundNode.setScale(1.5)
-        groundNode.position = .init(x: 0, y: -280)
+        groundNode.position = .init(x: 0, y: -240)
         groundNode.physicsBody = SKPhysicsBody(rectangleOf: groundNode.size)
         groundNode.physicsBody?.pinned = true
         groundNode.physicsBody?.affectedByGravity = false
@@ -88,6 +122,7 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
         newScene.scaleMode = .aspectFill
         
         nodePageData.liveScene = newScene
+        EnvironmentManager.shared.environment.toggleLivePanel = false
     }
     
     func cheat(nodePageData : NodePageData) {

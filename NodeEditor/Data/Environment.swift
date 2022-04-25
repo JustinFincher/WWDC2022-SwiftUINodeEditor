@@ -14,7 +14,7 @@ class Environment : ObservableObject {
     
     @UserDefault(key: "useContextMenuOnNodes", defaultValue: true)
     var useContextMenuOnNodes: Bool
-    @UserDefault(key: "enableBlurEffectOnNodes", defaultValue: true)
+    @UserDefault(key: "enableBlurEffectOnNodes", defaultValue: false)
     var enableBlurEffectOnNodes: Bool
     @UserDefault(key: "debugMode", defaultValue: false)
     var debugMode: Bool

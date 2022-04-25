@@ -21,23 +21,23 @@ struct NodeCanvasToolbarView: View {
             
             HStack(alignment: .center, spacing: 18) {
                 
-                Button {
-                    showReadingProgress = true
-                } label: {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Currently Reading \(Image(systemName: "chevron.up"))")
-                                .font(.subheadline.monospaced())
-                        }
-                        Text("Chapter 1")
-                            .font(.caption.monospaced())
-                    }.padding(.horizontal, 8)
-                }
-                .popover(isPresented: $showReadingProgress) {
-                    Text("")
-                }
+//                Button {
+//                    showReadingProgress = true
+//                } label: {
+//                    VStack(alignment: .leading) {
+//                        HStack {
+//                            Text("Currently Reading \(Image(systemName: "chevron.up"))")
+//                                .font(.subheadline.monospaced())
+//                        }
+//                        Text("Chapter 1")
+//                            .font(.caption.monospaced())
+//                    }.padding(.horizontal, 8)
+//                }
+//                .popover(isPresented: $showReadingProgress) {
+//                    Text("")
+//                }
                 
-                Divider()
+//                Divider()
                 
                 Button {
                     showResetAlert = true
@@ -58,7 +58,7 @@ struct NodeCanvasToolbarView: View {
                     }
                     
                 }, message: {
-                    Text("The live scene and the node graph will be reset to its initial state")
+                    Text("The live scene and the editor node graph will be reset to its initial state")
                 })
 //                Button {
 //                    if nodePageData.playing {

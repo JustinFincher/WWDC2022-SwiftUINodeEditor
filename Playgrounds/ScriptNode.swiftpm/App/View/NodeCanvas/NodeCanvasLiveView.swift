@@ -21,8 +21,8 @@ struct NodeCanvasLiveView: View {
         .onTapGesture {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liveViewTapped"), object: nil)
         }
-            .frame(minWidth: 350,
-                   idealWidth: 400,
+            .frame(minWidth: 280,
+                   idealWidth: 360,
                    maxWidth: .infinity,
                alignment: .top)
         

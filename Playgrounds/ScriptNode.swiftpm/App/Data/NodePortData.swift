@@ -10,9 +10,14 @@ import UIKit
 import Combine
 import SwiftUI
 
+enum NodePortConnectionAbility {
+    case can
+    case cannot(String)
+}
+
 protocol NodePortProtocol : ObservableObject, Identifiable, Hashable {
-    func canConnect() -> Bool
-    func canConnectTo(anotherPort : Self) -> Bool
+    func canConnect() -> NodePortConnectionAbility
+    func canConnectTo(anotherPort : Self) -> NodePortConnectionAbility
     func connectTo(anotherPort :Self)
     func icon() -> Image
     func color() -> Color
@@ -82,12 +87,12 @@ class NodePortData : NodePortProtocol {
         Color.black
     }
     
-    func canConnect() -> Bool {
-        false
+    func canConnect() -> NodePortConnectionAbility {
+        .cannot("")
     }
     
-    func canConnectTo(anotherPort: NodePortData) -> Bool {
-        false
+    func canConnectTo(anotherPort: NodePortData) -> NodePortConnectionAbility {
+        .cannot("")
     }
     
     func connectTo(anotherPort: NodePortData) {
@@ -122,27 +127,45 @@ class NodeControlPortData : NodePortData {
         Color.blue
     }
     
-    override func canConnect() -> Bool {
+    override func canConnect() -> NodePortConnectionAbility {
         if (self.direction == .output && !self.connections.isEmpty) {
-            return false
+            return .cannot("port already occupied")
         }
-        return true
+        return .can
     }
     
-    override func canConnectTo(anotherPort: NodePortData) -> Bool {
+    override func canConnectTo(anotherPort: NodePortData) -> NodePortConnectionAbility {
+        switch canConnect() {
+        case .cannot(let reason):
+            return .cannot(reason)
+        case .can:
+            break
+        }
         if let anotherPort = anotherPort as? NodeControlPortData {
+            
+                // cannot connect same port
+                if (self == anotherPort) {
+                    return .cannot("cannot connect itself")
+                }
             // cannot connect same direction
             if (self.direction == anotherPort.direction) {
-                return false
+                return .cannot("cannot connect ports on the same side, has to be one out, one in")
             }
-            // TODO: cannot connect port on same node
-            return true
+            // cannot connect same node
+            if (self.nodeData == anotherPort.nodeData) {
+                return .cannot("cannot connect ports on the same node")
+            }
+            return .can
         }
-        return false
+        return .cannot("control port has to be connected to control port (arrows)")
     }
     
     override func connectTo(anotherPort: NodePortData) {
-        if (!canConnectTo(anotherPort: anotherPort)) {
+        switch canConnectTo(anotherPort: anotherPort) {
+        case .can:
+            break
+        case .cannot(let reason):
+            print("\(reason)")
             return
         }
         if let anotherPort = anotherPort as? NodeControlPortData {
@@ -165,7 +188,7 @@ class NodeDataPortData : NodePortData {
         return {}
     }
     
-    class func getDefaultValueType() -> Any {
+    class func getDefaultValueType() -> Any.Type {
         return Void.self
     }
     
@@ -190,6 +213,7 @@ class NodeDataPortData : NodePortData {
             } else {
                 _value = newValue
             }
+            
             self.objectWillChange.send()
         }
     }
@@ -220,31 +244,48 @@ class NodeDataPortData : NodePortData {
         Color.green
     }
     
-    override func canConnect() -> Bool {
+    override func canConnect() -> NodePortConnectionAbility {
+        // input node can only connect at most 1
         if (self.direction == .input && !self.connections.isEmpty) {
-            return false
+            return .cannot("port already occupied")
         }
-        return true
+        return .can
     }
     
-    override func canConnectTo(anotherPort: NodePortData) -> Bool {
+    override func canConnectTo(anotherPort: NodePortData) -> NodePortConnectionAbility {
+        switch canConnect() {
+        case .cannot(let reason):
+            return .cannot(reason)
+        case .can:
+            break
+        }
         if let anotherPort = anotherPort as? NodeDataPortData {
-            // input node can only connect at most 1
-            if (self.direction == .input && !self.connections.isEmpty) {
-                return false
+            // cannot connect same port
+            if (self == anotherPort) {
+                return .cannot("cannot connect itself")
             }
             // cannot connect same direction
             if (self.direction == anotherPort.direction) {
-                return false
+                return .cannot("cannot connect ports on the same side, has to be one out, one in")
             }
-            // TODO: cannot connect port on same node
-            return true
+            // cannot connect same node
+            if (self.nodeData == anotherPort.nodeData) {
+                return .cannot("cannot connect ports on the same node")
+            }
+            if type(of: self).getDefaultValueType() != type(of: anotherPort).getDefaultValueType() {
+                return .cannot("cannot connect different type (\(type(of: self).getDefaultValueType()), \(type(of: anotherPort).getDefaultValueType()))")
+            }
+            return .can
         }
-        return false
+        return .cannot("data port has to be connected to data port (circles)")
     }
     
     override func connectTo(anotherPort: NodePortData) {
-        if (!canConnectTo(anotherPort: anotherPort)) {
+        switch canConnectTo(anotherPort: anotherPort) {
+        case .can:
+            break
+        case .cannot(let reason):
+            print("\(reason)")
             return
         }
         if let anotherPort = anotherPort as? NodeDataPortData {

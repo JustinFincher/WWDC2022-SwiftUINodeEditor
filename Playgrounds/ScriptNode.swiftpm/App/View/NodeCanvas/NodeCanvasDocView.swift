@@ -13,8 +13,8 @@ struct NodeCanvasDocView: View {
     
     var body: some View {
         nodePageData.docView
-               .frame(minWidth: 250,
-                      idealWidth: 350,
+               .frame(minWidth: 220,
+                      idealWidth: 320,
                       maxWidth: .infinity,
                alignment: .top)
         

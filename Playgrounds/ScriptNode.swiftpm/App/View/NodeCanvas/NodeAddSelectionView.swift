@@ -68,6 +68,9 @@ struct NodeAddSelectionView: View {
 
                 }
             }
+            .onAppear(perform: {
+                nodeCategory = nodeCategoryList[safe: 0] ?? ""
+            })
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItem(placement: .principal) {

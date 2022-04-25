@@ -16,7 +16,11 @@ class ApplyImpulseNode : NodeData {
     }
     
     class override func getDefaultTitle() -> String {
-        "Apply Force"
+        "Apply Force ☄️"
+    }
+    
+    override class func getDefaultUsage() -> String {
+        "Apply Force node adds impulse force to object"
     }
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
@@ -37,8 +41,8 @@ class ApplyImpulseNode : NodeData {
     
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return [
-            SKSpriteNodeNodeDataPort(portID: 0, name: "Object", direction: .input),
-            NodeDataPortData(portID: 1, name: "Vector", direction: .input)
+            SKNodeNodeDataPort(portID: 0, name: "Object", direction: .input),
+            CGVectorNodeDataPort(portID: 1, name: "Vector", direction: .input)
         ]
     }
     

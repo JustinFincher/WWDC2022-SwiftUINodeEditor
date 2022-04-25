@@ -1,19 +1,19 @@
 //
-//  SKSpriteNodeNodeDataPort.swift
+//  CGFloatNodeDataPort.swift
 //  ScriptNode
 //
 //  Created by fincher on 4/24/22.
 //
 
 import Foundation
-import SpriteKit
+import CoreGraphics
 
-class SKSpriteNodeNodeDataPort: NodeDataPortData {
+class CGFloatNodeDataPort: NodeDataPortData {
     override class func getDefaultValue() -> Any? {
-        return SKSpriteNode()
+        return CGFloat(0.0)
     }
     
     override class func getDefaultValueType() -> Any.Type {
-        SKSpriteNode.self
+        CGFloat.self
     }
 }

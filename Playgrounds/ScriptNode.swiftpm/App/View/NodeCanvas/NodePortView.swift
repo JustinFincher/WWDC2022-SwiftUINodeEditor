@@ -42,7 +42,7 @@ struct NodePortView: View {
                         if !holdingKnot {
                             holdingKnot = true
                             
-                            if self.nodePortData.canConnect() {
+                            if case .can = nodePortData.canConnect() {
                                 // can connect
                                 let newConnection : NodePortConnectionData
                                 
@@ -80,7 +80,10 @@ struct NodePortView: View {
                            let portToConnectTo = nodeCanvasData.nodes.flatMap({ nodeData in
                                pendingDirection == .input ? nodeData.inPorts : nodeData.outPorts
                            }).filter({ nodePortData in
-                               nodePortData.canConnectTo(anotherPort: self.nodePortData)
+                               if case .can = nodePortData.canConnectTo(anotherPort: self.nodePortData) {
+                                   return true
+                               }
+                               return false
                            }).filter({ nodePortData in
                                nodePortData.canvasRect.contains(value.location)
                            }).first {

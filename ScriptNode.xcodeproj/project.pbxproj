@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */; };
 		0D2382D92814D09300EE7438 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2382D82814D09300EE7438 /* PageManager.swift */; };
 		0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */; };
 		0D32FFB1281001400068C52F /* MoreNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32FFB0281001400068C52F /* MoreNavigationView.swift */; };
@@ -31,7 +30,7 @@
 		0D59A2092814DF7B001342FE /* VectorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2082814DF7B001342FE /* VectorNode.swift */; };
 		0D59A20C281525AF001342FE /* SpriteViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A20B281525AF001342FE /* SpriteViewWrapper.swift */; };
 		0D59A20F28153BD0001342FE /* NodePageDataChapterOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */; };
-		0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */; };
+		0D59A211281562F4001342FE /* SKNodeNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A210281562F4001342FE /* SKNodeNodeDataPort.swift */; };
 		0D59A219281572C9001342FE /* CGVectorNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A218281572C9001342FE /* CGVectorNodeDataPort.swift */; };
 		0D59A21B28158120001342FE /* Any+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A21A28158120001342FE /* Any+Equatable.swift */; };
 		0D59A21D2815812F001342FE /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A21C2815812F001342FE /* String+Identifiable.swift */; };
@@ -39,6 +38,18 @@
 		0D59A22128158F78001342FE /* NodePageDataChapterZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A22028158F78001342FE /* NodePageDataChapterZero.swift */; };
 		0D59A2232815926D001342FE /* NodePageDataChapterTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2222815926D001342FE /* NodePageDataChapterTwo.swift */; };
 		0D59A22A2815B808001342FE /* PipeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2292815B808001342FE /* PipeNode.swift */; };
+		0D59A22C2815B88B001342FE /* ComparsionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A22B2815B88B001342FE /* ComparsionNode.swift */; };
+		0D59A22E2815B89F001342FE /* GetPositionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A22D2815B89F001342FE /* GetPositionNode.swift */; };
+		0D59A2302815B8A7001342FE /* SetPositionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A22F2815B8A7001342FE /* SetPositionNode.swift */; };
+		0D59A2322815BDBB001342FE /* CGFloatNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2312815BDBB001342FE /* CGFloatNodeDataPort.swift */; };
+		0D59A2342815BF63001342FE /* AddFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2332815BF63001342FE /* AddFloatNode.swift */; };
+		0D59A2362815BFD7001342FE /* LoopFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2352815BFD7001342FE /* LoopFloatNode.swift */; };
+		0D59A2382815C3B0001342FE /* RenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A2372815C3B0001342FE /* RenderManager.swift */; };
+		0D59A23E2815E9EA001342FE /* crow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D59A23D2815E9EA001342FE /* crow.mp3 */; };
+		0D59A2402815F823001342FE /* PrintNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A23F2815F823001342FE /* PrintNode.swift */; };
+		0D59A24228160A80001342FE /* NodePageDataChapterThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A24128160A80001342FE /* NodePageDataChapterThree.swift */; };
+		0D59A24428161402001342FE /* SetFloatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A24328161402001342FE /* SetFloatNode.swift */; };
+		0D59A246281614AE001342FE /* RandomNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59A245281614AE001342FE /* RandomNode.swift */; };
 		0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36B0281380A100611D10 /* Collection+Nil.swift */; };
 		0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */; };
 		0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E36C02814AF4900611D10 /* GetTouchNode.swift */; };
@@ -62,7 +73,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioNode.swift; sourceTree = "<group>"; };
 		0D2382D82814D09300EE7438 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		0D32FFAE280FFB5F0068C52F /* CoreGraphics+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Hashable.swift"; sourceTree = "<group>"; };
 		0D32FFB0281001400068C52F /* MoreNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavigationView.swift; sourceTree = "<group>"; };
@@ -87,7 +97,7 @@
 		0D59A2082814DF7B001342FE /* VectorNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorNode.swift; sourceTree = "<group>"; };
 		0D59A20B281525AF001342FE /* SpriteViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewWrapper.swift; sourceTree = "<group>"; };
 		0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterOne.swift; sourceTree = "<group>"; };
-		0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeNodeDataPort.swift; sourceTree = "<group>"; };
+		0D59A210281562F4001342FE /* SKNodeNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNodeNodeDataPort.swift; sourceTree = "<group>"; };
 		0D59A218281572C9001342FE /* CGVectorNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVectorNodeDataPort.swift; sourceTree = "<group>"; };
 		0D59A21A28158120001342FE /* Any+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Equatable.swift"; sourceTree = "<group>"; };
 		0D59A21C2815812F001342FE /* String+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Identifiable.swift"; sourceTree = "<group>"; };
@@ -95,6 +105,18 @@
 		0D59A22028158F78001342FE /* NodePageDataChapterZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterZero.swift; sourceTree = "<group>"; };
 		0D59A2222815926D001342FE /* NodePageDataChapterTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterTwo.swift; sourceTree = "<group>"; };
 		0D59A2292815B808001342FE /* PipeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeNode.swift; sourceTree = "<group>"; };
+		0D59A22B2815B88B001342FE /* ComparsionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparsionNode.swift; sourceTree = "<group>"; };
+		0D59A22D2815B89F001342FE /* GetPositionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPositionNode.swift; sourceTree = "<group>"; };
+		0D59A22F2815B8A7001342FE /* SetPositionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPositionNode.swift; sourceTree = "<group>"; };
+		0D59A2312815BDBB001342FE /* CGFloatNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatNodeDataPort.swift; sourceTree = "<group>"; };
+		0D59A2332815BF63001342FE /* AddFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFloatNode.swift; sourceTree = "<group>"; };
+		0D59A2352815BFD7001342FE /* LoopFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopFloatNode.swift; sourceTree = "<group>"; };
+		0D59A2372815C3B0001342FE /* RenderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderManager.swift; sourceTree = "<group>"; };
+		0D59A23D2815E9EA001342FE /* crow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crow.mp3; sourceTree = "<group>"; };
+		0D59A23F2815F823001342FE /* PrintNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintNode.swift; sourceTree = "<group>"; };
+		0D59A24128160A80001342FE /* NodePageDataChapterThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePageDataChapterThree.swift; sourceTree = "<group>"; };
+		0D59A24328161402001342FE /* SetFloatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFloatNode.swift; sourceTree = "<group>"; };
+		0D59A245281614AE001342FE /* RandomNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNode.swift; sourceTree = "<group>"; };
 		0D8E36B0281380A100611D10 /* Collection+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Nil.swift"; sourceTree = "<group>"; };
 		0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntNodeDataPort.swift; sourceTree = "<group>"; };
 		0D8E36C02814AF4900611D10 /* GetTouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTouchNode.swift; sourceTree = "<group>"; };
@@ -185,6 +207,7 @@
 				0D43AD99280CE2E400601308 /* EnvironmentManager.swift */,
 				0D32FFB82810261C0068C52F /* PreferenceManager.swift */,
 				0D2382D82814D09300EE7438 /* PageManager.swift */,
+				0D59A2372815C3B0001342FE /* RenderManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -238,6 +261,7 @@
 				0D59A22028158F78001342FE /* NodePageDataChapterZero.swift */,
 				0D59A20E28153BD0001342FE /* NodePageDataChapterOne.swift */,
 				0D59A2222815926D001342FE /* NodePageDataChapterTwo.swift */,
+				0D59A24128160A80001342FE /* NodePageDataChapterThree.swift */,
 			);
 			path = NodePages;
 			sourceTree = "<group>";
@@ -246,7 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				0D8E36BB2814154300611D10 /* IntNodeDataPort.swift */,
-				0D59A210281562F4001342FE /* SKSpriteNodeNodeDataPort.swift */,
+				0D59A2312815BDBB001342FE /* CGFloatNodeDataPort.swift */,
+				0D59A210281562F4001342FE /* SKNodeNodeDataPort.swift */,
 				0D59A218281572C9001342FE /* CGVectorNodeDataPort.swift */,
 			);
 			path = NodePorts;
@@ -255,6 +280,7 @@
 		0D8E36CC2814C7A000611D10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D59A23D2815E9EA001342FE /* crow.mp3 */,
 				0D8E36CD2814C7B600611D10 /* FlappyBird.sks */,
 			);
 			path = Resources;
@@ -303,9 +329,9 @@
 		0DEBE6C7280EE1D3008D82DB /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				0D2382D42814CB4300EE7438 /* PlayAudioNode.swift */,
 				0D92A657281144E000EA9F1E /* StartNode.swift */,
 				0D92A65D2811530400EA9F1E /* UpdateNode.swift */,
+				0D59A23F2815F823001342FE /* PrintNode.swift */,
 				0D92A66728121B2100EA9F1E /* TriggerNode.swift */,
 				0D59A2082814DF7B001342FE /* VectorNode.swift */,
 				0D59A2062814DD75001342FE /* ApplyImpulseNode.swift */,
@@ -313,6 +339,13 @@
 				0D59A21E28158DF9001342FE /* NewFrameNode.swift */,
 				0D59A2042814DC15001342FE /* BirdNode.swift */,
 				0D59A2292815B808001342FE /* PipeNode.swift */,
+				0D59A22B2815B88B001342FE /* ComparsionNode.swift */,
+				0D59A22D2815B89F001342FE /* GetPositionNode.swift */,
+				0D59A22F2815B8A7001342FE /* SetPositionNode.swift */,
+				0D59A2332815BF63001342FE /* AddFloatNode.swift */,
+				0D59A24328161402001342FE /* SetFloatNode.swift */,
+				0D59A245281614AE001342FE /* RandomNode.swift */,
+				0D59A2352815BFD7001342FE /* LoopFloatNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -376,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E6A69280AAC140071A4D5 /* Preview Assets.xcassets in Resources */,
+				0D59A23E2815E9EA001342FE /* crow.mp3 in Resources */,
 				0D8E6A66280AAC140071A4D5 /* Assets.xcassets in Resources */,
 				0D8E36CE2814C7B600611D10 /* FlappyBird.sks in Resources */,
 			);
@@ -393,26 +427,32 @@
 				0DB6B082280EC738005D7080 /* NodeCanvasToolbarView.swift in Sources */,
 				0D59A2052814DC15001342FE /* BirdNode.swift in Sources */,
 				0D8E36C72814BD8100611D10 /* NodeCanvasTitleIndicatorView.swift in Sources */,
+				0D59A2322815BDBB001342FE /* CGFloatNodeDataPort.swift in Sources */,
 				0D59A2232815926D001342FE /* NodePageDataChapterTwo.swift in Sources */,
 				0D92A65E2811530400EA9F1E /* UpdateNode.swift in Sources */,
 				0D92A66828121B2100EA9F1E /* TriggerNode.swift in Sources */,
+				0D59A24228160A80001342FE /* NodePageDataChapterThree.swift in Sources */,
 				0D8E6A62280AAC100071A4D5 /* NodeEditorApp.swift in Sources */,
 				0D43ADA6280D5DED00601308 /* NodeData.swift in Sources */,
+				0D59A22C2815B88B001342FE /* ComparsionNode.swift in Sources */,
 				0D92A66428117B0C00EA9F1E /* SwiftUI+Conditional.swift in Sources */,
 				0D43ADA0280D4D4D00601308 /* Environment.swift in Sources */,
 				0D59A22128158F78001342FE /* NodePageDataChapterZero.swift in Sources */,
 				0D32FFB5281024940068C52F /* NodeCanvasMinimapView.swift in Sources */,
 				0D59A2072814DD75001342FE /* ApplyImpulseNode.swift in Sources */,
 				0D3B269E280EDCFB0005280A /* NodePortView.swift in Sources */,
-				0D59A211281562F4001342FE /* SKSpriteNodeNodeDataPort.swift in Sources */,
+				0D59A211281562F4001342FE /* SKNodeNodeDataPort.swift in Sources */,
 				0D59A22A2815B808001342FE /* PipeNode.swift in Sources */,
+				0D59A2302815B8A7001342FE /* SetPositionNode.swift in Sources */,
 				0D92A658281144E000EA9F1E /* StartNode.swift in Sources */,
 				0D59A21D2815812F001342FE /* String+Identifiable.swift in Sources */,
 				0D8E36BC2814154300611D10 /* IntNodeDataPort.swift in Sources */,
 				0DE8809428103896008C70C0 /* NodePortData.swift in Sources */,
 				0D32FFB7281026020068C52F /* UserDefaults+SwiftUI.swift in Sources */,
 				0D43AD91280CDC4400601308 /* NodeCanvasNavigationView.swift in Sources */,
+				0D59A2342815BF63001342FE /* AddFloatNode.swift in Sources */,
 				0D32FFB1281001400068C52F /* MoreNavigationView.swift in Sources */,
+				0D59A2402815F823001342FE /* PrintNode.swift in Sources */,
 				0D43AD9E280CE2F300601308 /* Class+Runtime.swift in Sources */,
 				0D59A21F28158DF9001342FE /* NewFrameNode.swift in Sources */,
 				0D8E36CB2814C5E100611D10 /* NodePageData.swift in Sources */,
@@ -420,23 +460,27 @@
 				0D43AD9A280CE2E400601308 /* EnvironmentManager.swift in Sources */,
 				0D3B269C280ED29A0005280A /* NodeCanvasData.swift in Sources */,
 				0DB6B080280E53F0005D7080 /* CoreGraphics+Math.swift in Sources */,
-				0D2382D52814CB4300EE7438 /* PlayAudioNode.swift in Sources */,
 				0D59A21B28158120001342FE /* Any+Equatable.swift in Sources */,
 				0D8E36C12814AF4900611D10 /* GetTouchNode.swift in Sources */,
 				0D43ADA4280D5D1400601308 /* NodeView.swift in Sources */,
 				0D43AD98280CE2CE00601308 /* BaseManager.swift in Sources */,
+				0D59A2362815BFD7001342FE /* LoopFloatNode.swift in Sources */,
 				0D59A20F28153BD0001342FE /* NodePageDataChapterOne.swift in Sources */,
 				0D43AD9D280CE2F300601308 /* Bundle+Version.swift in Sources */,
 				0D8E36B1281380A100611D10 /* Collection+Nil.swift in Sources */,
 				0D2382D92814D09300EE7438 /* PageManager.swift in Sources */,
 				0D8E36C92814C41C00611D10 /* NodeCanvasDocView.swift in Sources */,
 				0D32FFB92810261C0068C52F /* PreferenceManager.swift in Sources */,
+				0D59A22E2815B89F001342FE /* GetPositionNode.swift in Sources */,
+				0D59A2382815C3B0001342FE /* RenderManager.swift in Sources */,
+				0D59A246281614AE001342FE /* RandomNode.swift in Sources */,
 				0D92A6622811759000EA9F1E /* NodeAddSelectionView.swift in Sources */,
 				0D43AD8E280CDAF900601308 /* NodeCanvasView.swift in Sources */,
 				0D32FFBB2810268E0068C52F /* ToggleButtonView.swift in Sources */,
 				0D32FFAF280FFB5F0068C52F /* CoreGraphics+Hashable.swift in Sources */,
 				0D59A2092814DF7B001342FE /* VectorNode.swift in Sources */,
 				0D59A20C281525AF001342FE /* SpriteViewWrapper.swift in Sources */,
+				0D59A24428161402001342FE /* SetFloatNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

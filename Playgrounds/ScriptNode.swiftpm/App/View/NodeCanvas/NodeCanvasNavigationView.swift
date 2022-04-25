@@ -23,13 +23,13 @@ struct NodeCanvasNavigationView: View {
             HStack(alignment: .center, spacing: 8) {
                 if environment.toggleDocPanel {
                     NodeCanvasTitleIndicatorView(title: "Documentation", indicating: indicating, childView:NodeCanvasDocView())
-                        .layoutPriority(0)
+                        .layoutPriority(1)
                 }
                 NodeCanvasTitleIndicatorView(title: "Editor", indicating: indicating, childView: NodeCanvasView())
-                    .layoutPriority(2)
+                    .layoutPriority(1)
                 if environment.toggleLivePanel {
                     NodeCanvasTitleIndicatorView(title: "Live", indicating: indicating, childView:NodeCanvasLiveView())
-                        .layoutPriority(1)
+                        .layoutPriority(0)
                 }
             }
             .padding(.all, 8)

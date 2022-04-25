@@ -11,7 +11,7 @@ import SwiftUI
 
 class NodeCanvasData : ObservableObject {
     
-    @Published var canvasSize : CGSize = .init(width: 3200, height: 3200)
+    @Published var canvasSize : CGSize = .init(width: 1600, height: 1600)
     @Published var nodes : [NodeData] = [] {
         willSet {
             newValue.forEach({ node in

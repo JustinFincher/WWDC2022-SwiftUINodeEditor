@@ -96,7 +96,7 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     }
     
     func perform() {
-        print("\(nodeDescription()) perform()")
+//        print("\(nodeDescription()) perform()")
         type(of: self).getDefaultPerformImplementation()(self)
     }
     

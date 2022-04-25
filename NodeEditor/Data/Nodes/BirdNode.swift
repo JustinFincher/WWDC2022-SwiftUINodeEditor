@@ -19,7 +19,7 @@ class BirdNode : NodeData {
     
     override class func getDefaultDataOutPorts() -> [NodeDataPortData] {
         return [
-            SKSpriteNodeNodeDataPort(portID: 0, direction: .output, name: "", defaultValueGetter: {
+            SKNodeNodeDataPort(portID: 0, direction: .output, name: "", defaultValueGetter: {
                 return PageManager.shared.nodePageData.bird
             }, defaultValueSetter: { _ in })
         ]

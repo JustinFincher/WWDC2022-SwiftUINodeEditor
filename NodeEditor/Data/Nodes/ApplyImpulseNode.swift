@@ -41,7 +41,7 @@ class ApplyImpulseNode : NodeData {
     
     override class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return [
-            SKSpriteNodeNodeDataPort(portID: 0, name: "Object", direction: .input),
+            SKNodeNodeDataPort(portID: 0, name: "Object", direction: .input),
             CGVectorNodeDataPort(portID: 1, name: "Vector", direction: .input)
         ]
     }

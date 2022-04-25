@@ -17,6 +17,7 @@ protocol NodeProtocol : ObservableObject {
     static func getDefaultPerformImplementation() -> ((_ node: BaseImpType) -> ())
     static func getDefaultExposedToUser() -> Bool
     static func getDefaultTitle() -> String
+    static func getDefaultUsage() -> String
     static func getDefaultCategory() -> String
     static func getDefaultControlInPorts() -> [NodeControlPortData]
     static func getDefaultControlOutPorts() -> [NodeControlPortData]
@@ -60,6 +61,10 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
         return ""
     }
     
+    class func getDefaultUsage() -> String {
+        return ""
+    }
+    
     class func getDefaultDataInPorts() -> [NodeDataPortData] {
         return []
     }
@@ -91,7 +96,7 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
     }
     
     func perform() {
-        print("\(nodeDescription()) perform()")
+//        print("\(nodeDescription()) perform()")
         type(of: self).getDefaultPerformImplementation()(self)
     }
     
@@ -185,9 +190,6 @@ class NodeData : NodeProtocol, Identifiable, Hashable, Equatable {
             nodePortData.nodeData = self
             return nodePortData
         })
-        let _ = $childWillChange.sink { newVoid in
-            self.objectWillChange.send()
-        }
         
         postInit()
     }

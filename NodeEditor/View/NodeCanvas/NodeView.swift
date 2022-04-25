@@ -106,8 +106,7 @@ struct NodeView: View, Identifiable {
         }
         .padding(.all, 8)
         .background(
-            Color.clear
-                .background(Material.ultraThin)
+            Color.init(uiColor: (environment.enableBlurEffectOnNodes ? UIColor.clear : UIColor.tertiarySystemGroupedBackground))
                 .contentShape(RoundedRectangle(cornerRadius: 8))
                 .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named("canvas"))
                     .onChanged { value in
@@ -122,7 +121,9 @@ struct NodeView: View, Identifiable {
                         savedOffset = nodeData.canvasPosition
                         holding = false
                     }
-                )
+                ).conditionalModifier(environment.enableBlurEffectOnNodes, transform: { view in
+                    view.background(Material.ultraThin)
+                })
         )
         .mask {
             RoundedRectangle(cornerRadius: 8)
@@ -131,6 +132,10 @@ struct NodeView: View, Identifiable {
             view.contextMenu {
                 if let usage = type(of: nodeData).getDefaultUsage(), !usage.isEmpty {
                     Text("\(type(of: nodeData).getDefaultUsage())")
+                    Divider()
+                }
+                if environment.debugMode {
+                    Text("Position X \(nodeData.canvasPosition.x) Y \(nodeData.canvasPosition.y)")
                     Divider()
                 }
                 Button(role: .destructive) {
