@@ -25,7 +25,7 @@ struct MoreNavigationView: View {
                 
                 Section {
                     Link("Haotian Zheng's Website", destination: URL(string: "https://haotianzheng.com")!)
-                    Text("Haotian Zheng is ")
+                    Text("Haotian Zheng is currently a student in Carnegie Mellon University. He likes coding, photography, video-gaming, and driving.")
                 } header: {
                     Text("About")
                 }

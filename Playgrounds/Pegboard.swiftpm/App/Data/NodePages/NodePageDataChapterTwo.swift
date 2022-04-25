@@ -16,7 +16,7 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
         nodePageData.docView = AnyView(
             List {
                 Section {
-                    Text("👾 How to make games with script node editor")
+                    Text("👾 How to make games with Pegboard")
                         .font(.title2.monospaced())
                     Text("🐦 Chapter 2 - Infinte Pipes")
                         .font(.subheadline.monospaced())
@@ -32,7 +32,7 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
                         .font(.footnote.monospaced())
                     Text("🔂 Seems we got pipes incoming in our way! However, there is currently only one pair of pipes, so you need to 'resue' pipes after they passed behind the bird by looping them back to the right side.")
                         .font(.footnote.monospaced())
-                    Text("💡 I have provided a special node called 🎞 Rendered Frame, it will fire each time the game view is refreshed, so that is 30 times per second. Think how you can use it to examine the current position of the pipe, offset the position to the left, and loop the position back to right when needed!")
+                    Text("💡 I have provided a special node called 🎞 Rendered Frame, it will fire each time the game view is refreshed, so that is 30 times per second (just like what you get with Update() on Unity engine). Think how you can use it to examine the current position of the pipe, offset the position to the left, and loop the position back to right when needed!")
                         .font(.footnote.monospaced())
                 } header: {
                     Text("ONE OR INFINITE?")

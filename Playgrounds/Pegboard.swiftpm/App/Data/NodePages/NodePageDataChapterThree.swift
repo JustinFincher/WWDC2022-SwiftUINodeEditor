@@ -16,7 +16,7 @@ class NodePageDataProviderChapterThree : NodePageDataProvider
         nodePageData.docView = AnyView(
             List {
                 Section {
-                    Text("👾 How to make games with script node editor")
+                    Text("👾 How to make games with Pegboard")
                         .font(.title2.monospaced())
                     Text("🏵 Chapter 3 - Full-on Flappy Bird")
                         .font(.subheadline.monospaced())
@@ -30,14 +30,17 @@ class NodePageDataProviderChapterThree : NodePageDataProvider
                 Section {
                     Text("🙃 OK I know this will be too much, so I am doing it myself this time! All the nodes are already working, just enjoy playing it!")
                         .font(.footnote.monospaced())
-                    Text("👀 What you are seeing is the full potential of script node editor for game dev on an iPad, it is fully interactive, not a single line of code to the user side, and fun to use (just drag and drop).")
+                    Text("👀 What you are seeing is the full potential of Pegboard for game dev on an iPad, it is fully interactive, not a single line of code to the user side, and fun to use (just drag and drop).")
                         .font(.footnote.monospaced())
                 } header: {
                     Text("NODES RULE IT ALL")
                 }
                 
                 Section {
-                    Text("🎉 Thank you for using my script node editor! Hope this one will get you interested into the game development and the world of ode-editor based programming!")
+                    Text("🎉 Thank you for using Pegboard! Hope this one will get you interested into the game development and the world of ode-editor based programming!")
+                        .font(.footnote.monospaced())
+                    
+                    Text("🎉 And remember, Pegboard is more than just a game development framework as demostrated here. It can be used in music production, Shortcuts-like automation, visual story-telling, and much much more. The framework is capable of doing all that, and the only limitation is the user.")
                         .font(.footnote.monospaced())
                 } header: {
                     Text("BYE!")

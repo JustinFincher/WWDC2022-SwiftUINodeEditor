@@ -24,7 +24,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
         nodePageData.docView = AnyView(
             List {
                 Section {
-                    Text("👾 How to make games with script node editor")
+                    Text("👾 How to make games with Pegboard")
                         .font(.title2.monospaced())
                     Text("🐦 Chapter 1 - Bird Logic")
                         .font(.subheadline.monospaced())
@@ -36,7 +36,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
                 }
                 
                 Section {
-                    Text("🤗 Let's use my script node editor to build a game, shall we?")
+                    Text("🤗 Let's use Pegboard to build a game, shall we?")
                         .font(.footnote.monospaced())
                     Text("💡 I have provided you with 4 nodes, they are:\n\t-☝️ Get Touch, an event node that will fire upon tapping on the live game view\n\t-☄️ Apply Force, an operator node that will push the given object with a force\n\t-🏹 Vector, a variable node that provides the value of force in direction and strength\n\t-🐦 Bird, an actor node representing our bird showing on the live game view")
                         .font(.footnote.monospaced())
@@ -48,7 +48,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
 
                 
                 Section {
-                    Text("🎯 If you got stuck or just want to see how node editor works, feel free to click the button below and tap on the bird to see the result!")
+                    Text("🎯 If you got stuck or just want to see how Pegboard works, feel free to click the button below and tap on the bird to see the result!")
                         .font(.footnote.monospaced())
                     Button {
                         self.cheat(nodePageData: nodePageData)

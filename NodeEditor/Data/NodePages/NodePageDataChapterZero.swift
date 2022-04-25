@@ -28,9 +28,9 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
         nodePageData.docView = AnyView(
             List {
                 Section {
-                    Text("👾 How to make games with script node editor")
+                    Text("👾 How to make games with Pegboard")
                         .font(.title2.monospaced())
-                    Text("🖇 Chapter 0 - Node Editor?")
+                    Text("🖇 Chapter 0 - Pegboard?")
                         .font(.subheadline.monospaced())
                 } header: {
                     VStack(alignment: .leading) {
@@ -40,7 +40,7 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
                 }
                 
                 Section {
-                    Text("🤯 Node Editor is a common UI pattern used in visual programming, game dev, and low-code programming environments.")
+                    Text("🤯 Pegboard is my take on the node-editor based interactive scripting solution. Node Editor is a common UI pattern used in visual programming, game dev, and low-code programming environments.")
                         .font(.footnote.monospaced())
                     
                     Text("💡 A node represents a piece of logic block that can be chained together with other nodes via connection lines. The whole node graph, if composed in a well-orgainzed fashion, can greatly visualize the underlying logic. If feels right at home when you combine it with an iPad Pro.")
@@ -50,7 +50,7 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
                 }
                 
                 Section {
-                    Text("📱 I have implemented a simple node editor as your can see at the right hand side. Try drag the two nodes around, connect and disconnect the in/out ports on nodes, and click buttons to see if the console prints the value defined by the print node! (Remember to turn on console logs if you are using Swift Playground)")
+                    Text("📱 In Pegboard, I have implemented a simple graphical editor as your can see at the right hand side. Try drag the two nodes around, connect and disconnect the in/out ports on nodes, and click buttons to see if the console prints the value defined by the print node! (Remember to turn on console logs if you are using Swift Playground)")
                         .font(.footnote.monospaced())
                     
                 } header: {
