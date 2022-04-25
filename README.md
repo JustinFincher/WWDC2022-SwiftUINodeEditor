@@ -2,6 +2,8 @@
 
 # Pegboard
 
+> Pegboard is like Shortcuts from iOS and Blueprints from Unreal Engine combined into one.
+
 ---
 
 A creative workspace with node-based editor built-in. Purely written in SwiftUI.
