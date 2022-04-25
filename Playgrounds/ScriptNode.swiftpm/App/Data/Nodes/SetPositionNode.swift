@@ -11,7 +11,7 @@ import SpriteKit
 class SetPositionNode : NodeData {
     
     override class func getDefaultCategory() -> String {
-        "Operator"
+        "Variable"
     }
     
     class override func getDefaultTitle() -> String {

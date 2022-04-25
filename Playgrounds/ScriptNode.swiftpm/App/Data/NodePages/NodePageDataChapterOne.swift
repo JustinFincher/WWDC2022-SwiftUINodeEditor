@@ -25,18 +25,31 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
             List {
                 Section {
                     Text("👾 How to make games with script node editor")
-                        .font(.headline.monospaced())
-                    Text("🐦 Chapter 1 - Flappy Bird")
+                        .font(.title2.monospaced())
+                    Text("🐦 Chapter 1 - Bird Logic")
                         .font(.subheadline.monospaced())
                 } header: {
                     VStack(alignment: .leading) {
-                        Color.clear.frame(height: 40)
+                        Color.clear.frame(height: 20)
                         Text("TITLE")
                     }
+                }
+                
+                Section {
+                    Text("🤗 Let's use my script node editor to build a game, shall we?")
+                        .font(.footnote.monospaced())
+                    Text("💡 I have provided you with 4 nodes, they are:\n\t-☝️ Get Touch, an event node that will fire upon tapping on the live game view\n\t-☄️ Apply Force, an operator node that will push the given object with a force\n\t-🏹 Vector, a variable node that provides the value of force in direction and strength\n\t-🐦 Bird, an actor node representing our bird showing on the live game view")
+                        .font(.footnote.monospaced())
+                    Text("🧐 There is no need to add new nodes, as these four nodes are sufficient enough to make the little bird jump when the player taps the game view. The only question is how do you actually do it?")
+                        .font(.footnote.monospaced())
+                } header: {
+                    Text("MAKE THE BIRD FLY")
                 }
 
                 
                 Section {
+                    Text("🎯 If you got stuck or just want to see how node editor works, feel free to click the button below and tap on the bird to see the result!")
+                        .font(.footnote.monospaced())
                     Button {
                         self.cheat(nodePageData: nodePageData)
                     } label: {
@@ -44,7 +57,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
                             .font(.body.monospaced())
                     }
                 } header: {
-                    Text("")
+                    Text("TAP TAP TAP")
                 }
 
                 
@@ -60,7 +73,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
                         nodePageData.switchTo(index: 2)
                     } label: {
                         Label("Next Chapter", systemImage: "arrow.right")
-                            .font(.body.monospaced())
+                            .font(.body.bold().monospaced())
                     }
                 } header: {
                     Text("CONTEXT")
@@ -122,6 +135,7 @@ class NodePageDataProviderChapterOne : NodePageDataProvider
         newScene.scaleMode = .aspectFill
         
         nodePageData.liveScene = newScene
+        EnvironmentManager.shared.environment.toggleLivePanel = true
     }
     
     func cheat(nodePageData : NodePageData) {

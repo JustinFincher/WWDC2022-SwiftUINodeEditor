@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Node Script",
+    name: "Pegboard",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Node Script",
+            name: "Pegboard",
             targets: ["App"],
             displayVersion: "1.0",
             bundleVersion: "1",

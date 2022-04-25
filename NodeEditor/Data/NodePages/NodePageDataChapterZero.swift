@@ -50,7 +50,7 @@ class NodePageDataProviderChapterZero : NodePageDataProvider
                 }
                 
                 Section {
-                    Text("📱 I have implemented a simple node editor as your can see at the right hand side. Try drag the two nodes around, connect and disconnect the in/out ports on nodes, and click on the 'click to trigger' button to see if the console prints the value defined by the print node!")
+                    Text("📱 I have implemented a simple node editor as your can see at the right hand side. Try drag the two nodes around, connect and disconnect the in/out ports on nodes, and click buttons to see if the console prints the value defined by the print node! (Remember to turn on console logs if you are using Swift Playground)")
                         .font(.footnote.monospaced())
                     
                 } header: {

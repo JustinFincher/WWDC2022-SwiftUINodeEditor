@@ -27,14 +27,14 @@ class NodePageData : ObservableObject
     var bird : SKSpriteNode = SKSpriteNode()
     var pipe : SKNode = SKNode()
     
-    var modifier : NodePageDataProvider = NodePageDataProviderChapterOne()
+    var modifier : NodePageDataProvider = NodePageDataProviderChapterZero()
     
     required init() {
         nodeCanvasData = NodeCanvasData()
         docView = AnyView(ZStack{})
         liveScene = SKScene()
         
-        switchTo(index: 1)
+        switchTo(index: 0)
     }
     
     func cheat() {
@@ -59,6 +59,9 @@ class NodePageData : ObservableObject
             break
         case 2:
             modifier = NodePageDataProviderChapterTwo()
+            break
+        case 3:
+            modifier = NodePageDataProviderChapterThree()
             break
         default:
             break

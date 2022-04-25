@@ -1,5 +1,5 @@
 //
-//  NodePageDataChapterTwo.swift
+//  NodePageDataChapterThree.swift
 //  ScriptNode
 //
 //  Created by fincher on 4/24/22.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-class NodePageDataProviderChapterTwo : NodePageDataProvider
+class NodePageDataProviderChapterThree : NodePageDataProvider
 {
     func modifyDocView(nodePageData: NodePageData) {
         nodePageData.docView = AnyView(
@@ -18,7 +18,7 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
                 Section {
                     Text("👾 How to make games with script node editor")
                         .font(.title2.monospaced())
-                    Text("🐦 Chapter 2 - Infinte Pipes")
+                    Text("🏵 Chapter 3 - Full-on Flappy Bird")
                         .font(.subheadline.monospaced())
                 } header: {
                     VStack(alignment: .leading) {
@@ -28,43 +28,28 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
                 }
 
                 Section {
-                    Text("🤗 Think that was fun? Now we are talking!")
+                    Text("🙃 OK I know this will be too much, so I am doing it myself this time! All the nodes are already working, just enjoy playing it!")
                         .font(.footnote.monospaced())
-                    Text("🔂 Seems we got pipes incoming in our way! However, there is currently only one pair of pipes, so you need to 'resue' pipes after they passed behind the bird by looping them back to the right side.")
-                        .font(.footnote.monospaced())
-                    Text("💡 I have provided a special node called 🎞 Rendered Frame, it will fire each time the game view is refreshed, so that is 30 times per second. Think how you can use it to examine the current position of the pipe, offset the position to the left, and loop the position back to right when needed!")
+                    Text("👀 What you are seeing is the full potential of script node editor for game dev on an iPad, it is fully interactive, not a single line of code to the user side, and fun to use (just drag and drop).")
                         .font(.footnote.monospaced())
                 } header: {
-                    Text("ONE OR INFINITE?")
+                    Text("NODES RULE IT ALL")
                 }
                 
                 Section {
-                    Text("💯 Again, you can always click on the button to reveal the answer!")
+                    Text("🎉 Thank you for using my script node editor! Hope this one will get you interested into the game development and the world of ode-editor based programming!")
                         .font(.footnote.monospaced())
-                    Button {
-                        self.cheat(nodePageData: nodePageData)
-                    } label: {
-                        Label("See final results 🥳", systemImage: "checkmark")
-                            .font(.body.monospaced())
-                    }
                 } header: {
-                    Text("SCROLLING PIPES")
+                    Text("BYE!")
                 }
 
                 
                 Section {
                     Button {
-                        nodePageData.switchTo(index: 1)
+                        nodePageData.switchTo(index: 2)
                     } label: {
                         Label("Previous Chapter", systemImage: "arrow.left")
                             .font(.body.monospaced())
-                    }
-                    
-                    Button {
-                        nodePageData.switchTo(index: 3)
-                    } label: {
-                        Label("Next Chapter", systemImage: "arrow.right")
-                            .font(.body.bold().monospaced())
                     }
                 } header: {
                     Text("CONTEXT")
@@ -175,25 +160,21 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
             port1.value = CGVector(dx: 0, dy: 80)
         }
         nodePageData.nodeCanvasData.nodes.forEach { node in
-            node.canvasPosition = node.canvasPosition + CGPoint(x: 1000, y: 0)
+            node.canvasPosition = node.canvasPosition + CGPoint(x: 1020, y: 900)
         }
         
         nodePageData.nodeCanvasData.nodes.append(contentsOf: [
             PipeNode(nodeID: 4).withCanvasPosition(canvasPosition: .init(x: 166, y: 717)).withCanvas(canvasData: nodePageData.nodeCanvasData),
             NewFrameNode(nodeID: 5).withCanvasPosition(canvasPosition: .init(x: 160, y: 221)).withCanvas(canvasData: nodePageData.nodeCanvasData),
             GetPositionNode(nodeID: 6).withCanvasPosition(canvasPosition: .init(x: 190, y: 479)).withCanvas(canvasData: nodePageData.nodeCanvasData),
-            SetPositionNode(nodeID: 7).withCanvasPosition(canvasPosition: .init(x: 705, y: 752)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            SetPositionNode(nodeID: 7).withCanvasPosition(canvasPosition: .init(x: 1440, y: 752)).withCanvas(canvasData: nodePageData.nodeCanvasData),
             AddFloatNode(nodeID: 8).withCanvasPosition(canvasPosition: .init(x: 512, y: 190)).withCanvas(canvasData: nodePageData.nodeCanvasData),
-            LoopFloatNode(nodeID: 9).withCanvasPosition(canvasPosition: .init(x: 619, y: 460)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            ComparsionNode(nodeID: 9).withCanvasPosition(canvasPosition: .init(x: 767, y: 240)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            AddFloatNode(nodeID: 10).withCanvasPosition(canvasPosition: .init(x: 1030, y: 200)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            SetFloatNode(nodeID: 11).withCanvasPosition(canvasPosition: .init(x: 1453, y: 410)).withCanvas(canvasData: nodePageData.nodeCanvasData),
+            RandomNode(nodeID: 12).withCanvasPosition(canvasPosition: .init(x: 1290, y: 190)).withCanvas(canvasData: nodePageData.nodeCanvasData),
         ])
-    }
-    
-    func cheat(nodePageData: NodePageData) {
-        destroy(nodePageData: nodePageData)
-        modifyCanvas(nodePageData: nodePageData)
-        modifyDocView(nodePageData: nodePageData)
-        modifyLiveScene(nodePageData: nodePageData)
-                
+        
         if let port1 = nodePageData.nodeCanvasData.nodes[safe: 4]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 6]?.inDataPorts[safe: 0] {
             port1.connectTo(anotherPort: port2)
         }
@@ -204,9 +185,6 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
             port1.connectTo(anotherPort: port2)
         }
         if let port1 = nodePageData.nodeCanvasData.nodes[safe: 6]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 9]?.inDataPorts[safe: 0] {
-            port1.connectTo(anotherPort: port2)
-        }
-        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 9]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inDataPorts[safe: 1] {
             port1.connectTo(anotherPort: port2)
         }
         if let port1 = nodePageData.nodeCanvasData.nodes[safe: 6]?.outDataPorts[safe: 1], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inDataPorts[safe: 2] {
@@ -222,17 +200,55 @@ class NodePageDataProviderChapterTwo : NodePageDataProvider
         if let port1 = nodePageData.nodeCanvasData.nodes[safe: 8]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 9]?.inControlPorts[safe: 0] {
             port1.connectTo(anotherPort: port2)
         }
-        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 9]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inControlPorts[safe: 0] {
-            port1.connectTo(anotherPort: port2)
-        }
         
         if let node1 = nodePageData.nodeCanvasData.nodes[safe: 8] as? AddFloatNode {
             node1.addition = -1.5
         }
-        if let node2 = nodePageData.nodeCanvasData.nodes[safe: 9] as? LoopFloatNode {
-            node2.min = -120
-            node2.max = 120
+        if let node1 = nodePageData.nodeCanvasData.nodes[safe: 9] as? ComparsionNode {
+            node1.comparsionTo = -100
         }
+        
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 9]?.outControlPorts[safe: 2], let port2 = nodePageData.nodeCanvasData.nodes[safe: 10]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 9]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 9]?.outControlPorts[safe: 1], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 6]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 10]?.inDataPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let node1 = nodePageData.nodeCanvasData.nodes[safe: 10] as? AddFloatNode {
+            node1.addition = 200
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 6]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inDataPorts[safe: 1] {
+            port1.connectTo(anotherPort: port2)
+        }
+        
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 10]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 12]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 12]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 11]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 12]?.outDataPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 11]?.inDataPorts[safe: 1] {
+            port1.connectTo(anotherPort: port2)
+        }
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 6]?.outDataPorts[safe: 1], let port2 = nodePageData.nodeCanvasData.nodes[safe: 11]?.inDataPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        
+        if let port1 = nodePageData.nodeCanvasData.nodes[safe: 11]?.outControlPorts[safe: 0], let port2 = nodePageData.nodeCanvasData.nodes[safe: 7]?.inControlPorts[safe: 0] {
+            port1.connectTo(anotherPort: port2)
+        }
+        
+    }
+    
+    func cheat(nodePageData: NodePageData) {
+        
     }
     
     func destroy(nodePageData : NodePageData) {

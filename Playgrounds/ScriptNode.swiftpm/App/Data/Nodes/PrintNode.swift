@@ -1,5 +1,5 @@
 //
-//  AddNode.swift
+//  PrintNode.swift
 //  ScriptNode
 //
 //  Created by fincher on 4/24/22.
@@ -9,23 +9,21 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-class AddFloatNode : NodeData {
+class PrintNode : NodeData {
     
     override class func getDefaultCategory() -> String {
         "Operator"
     }
     
     class override func getDefaultTitle() -> String {
-        "Add Float ➕"
+        "Print String 📝"
     }
     
     override class func getDefaultPerformImplementation() -> ((NodeData) -> ()) {
         return { nodeData in
-            if let nodeData = nodeData as? AddFloatNode,
-                let port1 = nodeData.inDataPorts[safe: 0] as? CGFloatNodeDataPort,
-               let port1Float = port1.value as? CGFloat
+            if let nodeData = nodeData as? PrintNode
             {
-                port1.value = CGFloat(port1Float + nodeData.addition)
+                print("\(nodeData.content)")
             }
             nodeData.outControlPorts[safe: 0]?.connections[safe: 0]?.endPort?.nodeData?.perform()
         }
@@ -43,31 +41,26 @@ class AddFloatNode : NodeData {
         ]
     }
     
-    override class func getDefaultDataInPorts() -> [NodeDataPortData] {
-        return [
-            CGFloatNodeDataPort(portID: 0, name: "Value", direction: .input)
-        ]
-    }
     
-    var addition : CGFloat = 0
+    var content : String = ""
     
     override class func getDefaultCustomRendering(node: NodeData) -> AnyView? {
         return AnyView (
             HStack {
-                Text("Add")
-                TextField("Add", value: .init(get: { () -> CGFloat in
-                    if let node = node as? AddFloatNode {
-                        return node.addition
-                    } else { return CGFloat(0) }
+                Text("Content")
+                TextField("Content", text: .init(get: { () -> String in
+                    if let node = node as? PrintNode {
+                        return node.content
+                    } else { return "" }
                 }, set: { newValue in
-                    if let node = node as? AddFloatNode {
-                        node.addition = newValue
+                    if let node = node as? PrintNode {
+                        node.content = newValue
                     }
-                }), formatter: NumberFormatter(), prompt: Text("Add"))
+                }),prompt: Text("Content"))
                 .textFieldStyle(.roundedBorder)
             }
             .font(.caption.monospaced())
-            .frame(minWidth: 100, maxWidth: 180, alignment: .center)
+            .frame(minWidth: 120, maxWidth: 180, alignment: .center)
         )
     }
 }
