@@ -6,7 +6,7 @@
 
 A creative workspace with node-based editor built-in. Purely written in SwiftUI.
 
-[Download](Playgrounds/Pegboard.swiftpm.zip) | [Dev Log](https://twitter.com/JustZht/status/1516384029636849665) | [Demo Video]()
+[Download](Playgrounds/Pegboard.swiftpm.zip) | [Dev Log](https://twitter.com/JustZht/status/1516384029636849665) | [Demo Video](https://youtu.be/VxOlgJc481o)
 
 ---
 
